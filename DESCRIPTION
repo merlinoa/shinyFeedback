@@ -1,0 +1,19 @@
+Package: shinyFeedback
+Type: Package
+Title: Displays user feedback next to Shiny inputs
+Version: 0.0.9000
+Date: 2016-12-07
+Authors@R: person("Andy", "Merlino", email = "merlinoa88@gmail.com", role =
+    c("aut", "cre"))
+Description: Easily display user feedback next to Shiny inputs
+License: GPL-3
+LazyData: true
+Depends:
+    R (>= 3.1.2)
+RoxygenNote: 5.0.1
+Suggests: 
+    knitr,
+    rmarkdown,
+    shiny,
+    shinyjs
+VignetteBuilder: knitr
