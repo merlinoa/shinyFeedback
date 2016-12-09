@@ -2,25 +2,25 @@
 
   var store = {
     // cache the validation state for each input with feedback
-    isValid: {},
+    isShown: {},
               
     add: function(inputId) {
-      if (store.isValid[inputId] === undefined) {
-         store.isValid[inputId] = true;
+      if (store.isShown[inputId] === undefined) {
+         store.isShown[inputId] = true;
       }
     },
   
     toggle: function(inputId) {
-      store.isValid[inputId] = !store.isValid[inputId];
+      store.isShown[inputId] = !store.isShown[inputId];
     }
   };
                
   this.shinyjs.checkFeedback = function(params) {
     var defaultParams = {
       inputId: null, 
-      invalidState: null, 
+      condition: null,
+      text: null,
       color: null, 
-      text: null, 
       icon: null
     };
 
@@ -34,8 +34,8 @@
     store.add(params.inputId);
   
     // if input transitions to invalid state
-    if (params.invalidState && store.isValid[params.inputId]) {
-      // change input isValid store variable to false
+    if (params.condition && store.isShown[params.inputId]) {
+      // change input isShown store variable to false
       store.toggle(params.inputId);
       // display feedback
       $label.css("color", params.color);
@@ -50,9 +50,9 @@
         .insertAfter($input);
       }  
       
-      // if input transitions from invalid to valid state
-    } else if (!params.invalidState && !store.isValid[params.inputId]){
-      // change input isValid store variable to false
+      // if input transitions from shown to hidden
+    } else if (!params.condition && !store.isShown[params.inputId]){
+      // change input isShown store variable to false
       store.toggle(params.inputId);
       // remove feedback messages
       $input.removeAttr("style");
