@@ -4,14 +4,15 @@
     // cache the validation state for each input with feedback
     isShown: {},
               
-    add: function(inputId) {
-      if (store.isShown[inputId] === undefined) {
-         store.isShown[inputId] = true;
+    add: function(feedbackId) {
+      if (store.isShown[feedbackId] === undefined) {
+         store.isShown[feedbackId] = false;
       }
     },
   
-    toggle: function(inputId) {
-      store.isShown[inputId] = !store.isShown[inputId];
+    toggle: function(feedbackId) {
+      //console.log(this.isShown);
+      store.isShown[feedbackId] = !store.isShown[feedbackId];
     }
   };
                
@@ -21,7 +22,8 @@
       condition: null,
       text: null,
       color: null, 
-      icon: null
+      icon: null,
+      feedbackId: null
     };
 
     params = shinyjs.getParams(params, defaultParams);
@@ -31,12 +33,33 @@
     var $formGroup = $input.parent();
     
     // add input to the store
-    store.add(params.inputId);
-  
-    // if input transitions to invalid state
-    if (params.condition && store.isShown[params.inputId]) {
+    store.add(params.feedbackId);
+    //console.log(params.feedbackId + "a");
+    // remove feedback before showing it in case there
+    // are multiple feedback options
+    //console.log(store.isShown[params.feedbackId]);
+    if (!params.condition && store.isShown[params.feedbackId]){
       // change input isShown store variable to false
-      store.toggle(params.inputId);
+      store.toggle(params.feedbackId);
+      //console.log(params.feedbackId + "b");
+      // remove feedback messages
+      $input.removeAttr("style");
+      $label.removeAttr("style");
+      if (params.icon) {
+        $("#" + params.inputId + "-icon").remove();
+        $formGroup.removeClass("has-feedback");
+      }
+      if (params.text) {
+        $("#" + params.inputId + "-text").remove();
+        $("#spacing").remove();  
+      }
+    }
+    // if feedback should transition to shown
+    if (params.condition && !store.isShown[params.feedbackId]) {
+      // change input isShown store variable to false
+      store.toggle(params.feedbackId);
+      
+      console.log(params.feedbackId);
       // display feedback
       $label.css("color", params.color);
       $input.css("border", "1px solid " + params.color);
@@ -49,22 +72,6 @@
         $("<span id='" + params.inputId + "-icon' class='form-control-feedback' style='color: " + params.color + ";'>" + params.icon + "</span>")
         .insertAfter($input);
       }  
-      
-      // if input transitions from shown to hidden
-    } else if (!params.condition && !store.isShown[params.inputId]){
-      // change input isShown store variable to false
-      store.toggle(params.inputId);
-      // remove feedback messages
-      $input.removeAttr("style");
-      $label.removeAttr("style");
-      if (params.icon) {
-        $("#" + params.inputId + "-icon").remove();
-        $formGroup.removeClass("has-feedback");
-      }
-      if (params.text) {
-        $("#" + params.inputId + "-text").remove();
-        $("#spacing").remove();  
-      }
     }
   };
 })();
