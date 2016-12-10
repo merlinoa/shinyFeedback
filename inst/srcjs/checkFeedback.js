@@ -11,7 +11,6 @@
     },
   
     toggle: function(feedbackId) {
-      //console.log(this.isShown);
       store.isShown[feedbackId] = !store.isShown[feedbackId];
     }
   };
@@ -34,10 +33,8 @@
     
     // add input to the store
     store.add(params.feedbackId);
-    //console.log(params.feedbackId + "a");
     // remove feedback before showing it in case there
     // are multiple feedback options
-    //console.log(store.isShown[params.feedbackId]);
     if (!params.condition && store.isShown[params.feedbackId]){
       // change input isShown store variable to false
       store.toggle(params.feedbackId);
@@ -51,7 +48,7 @@
       }
       if (params.text) {
         $("#" + params.inputId + "-text").remove();
-        $("#spacing").remove();  
+        $("#"+ params.inputId +"-spacing").remove();  
       }
     }
     // if feedback should transition to shown
@@ -64,7 +61,7 @@
       $label.css("color", params.color);
       $input.css("border", "1px solid " + params.color);
       if (params.text) {
-        $("<div id='" + params.inputId + "-text' class='col-xs-12'><p style='color: " + params.color +"; margin-bottom: 0px;'>"+ params.text +"</p></div><br id='spacing'/>").insertAfter($input);
+        $("<div id='" + params.inputId + "-text' class='col-xs-12'><p style='color: " + params.color +"; margin-bottom: 0px;'>"+ params.text +"</p></div><br id='" + params.inputId + "-spacing'/>").insertAfter($input);
       }
       
       if (params.icon) {
