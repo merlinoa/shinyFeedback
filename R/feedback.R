@@ -18,23 +18,21 @@ feedback <- function(inputId, condition, text = NULL, color = NULL,
   # check that shinyjs and shinyFeedback are set up properly
   
   icon_out <- as.character(icon)
-  testing <- list(match.call()[[1]], 
-                     inputId,
-                     text,
-                     color,
-                     icon)
-  paste(testing)
-  feedbackId <- digest::digest(testing)
-  #cat(testing)
+  
+  feedbackId <- digest::digest(list(match.call()[[1]], 
+                                    inputId,
+                                    text,
+                                    color,
+                                    icon))
   # uses shinyjs
   js$checkFeedback(
-    inputId = force(inputId),
-    condition = force(condition),
-    text = force(text),
-    color = force(color),
+    inputId = inputId,
+    condition = condition,
+    text = text,
+    color = color,
     # TODO: 
     # 1. not working with Font Awesome icons for some reason; only Glyphicon
-    icon = force(icon_out),
+    icon = icon_out,
     feedbackId = feedbackId
   )
   
