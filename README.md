@@ -1,5 +1,7 @@
 # shinyFeedback
 
+[![Travis-CI Build Status](https://travis-ci.org/merlinoa/shinyFeedback.svg?branch=master)](https://travis-ci.org/merlinoa/shinyFeedback)
+
 R package for displaying user feedback next to Shiny inputs
 
 # Installation
