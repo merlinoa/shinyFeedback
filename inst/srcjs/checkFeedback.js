@@ -14,6 +14,10 @@
       store.isShown[feedbackId] = !store.isShown[feedbackId];
     }
   };
+  
+  function showFeedback() {
+    
+  }
                
   this.shinyjs.checkFeedback = function(params) {
     var defaultParams = {
@@ -31,7 +35,7 @@
     var $label = $input.siblings("label");
     var $formGroup = $input.parent();
     
-    // add input to the store
+    // add feedbackId to the store
     store.add(params.feedbackId);
     // remove feedback before showing it in case there
     // are multiple feedback options

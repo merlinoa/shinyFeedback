@@ -9,7 +9,7 @@
 #' @param color defailt \code{"#F89406"} the color of the feeback
 #' @param icon default \code{icon("warning-sign", lib="glyphicon"))} a \code{shiny::icon} object
 #' 
-#' @import shiny
+#' @impot shiny
 #' 
 #' @export
 #' 
