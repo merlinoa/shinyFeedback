@@ -1,7 +1,7 @@
 (function() {
 
   var store = {
-    // cache the validation state for each input with feedback
+    // cache the state for each feedback
     isShown: {},
               
     add: function(feedbackId) {
@@ -14,10 +14,6 @@
       store.isShown[feedbackId] = !store.isShown[feedbackId];
     }
   };
-  
-  function showFeedback() {
-    
-  }
                
   this.shinyjs.checkFeedback = function(params) {
     var defaultParams = {
@@ -42,7 +38,7 @@
     if (!params.condition && store.isShown[params.feedbackId]){
       // change input isShown store variable to false
       store.toggle(params.feedbackId);
-      //console.log(params.feedbackId + "b");
+  
       // remove feedback messages
       $input.removeAttr("style");
       $label.removeAttr("style");
@@ -60,7 +56,6 @@
       // change input isShown store variable to false
       store.toggle(params.feedbackId);
       
-      console.log(params.feedbackId);
       // display feedback
       $label.css("color", params.color);
       $input.css("border", "1px solid " + params.color);
