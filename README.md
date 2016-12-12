@@ -2,20 +2,21 @@
 
 [![Travis-CI Build Status](https://travis-ci.org/merlinoa/shinyFeedback.svg?branch=master)](https://travis-ci.org/merlinoa/shinyFeedback)
 
-R package for displaying user feedback next to Shiny inputs
+R package for displaying user feedback along side Shiny inputs
 
-# Installation
+# Getting Started
 
 ```R
-devtools::install_github("merlinoa/shinyFeedback")
+# install package
+devtools::install_github("merlinoa/shinyFeedback", build_vignettes = TRUE)
+# read intro vignette
+browseVignettes(package = "shinyFeedback")
 ```
 
 # Examples
 
-[Example App](https://github.com/merlinoa/shinyFeedbackApp)
+- [Example App on Github](https://github.com/merlinoa/shinyFeedbackApp)
 
-Improved functionality and documentation coming soon.
+- Screenshot of shiny inputs with shinyFeedback messages displayed
 
-# Detail
-
-The `shinyFeedback` package uses [`shinyjs::extendShinyjs`](https://github.com/daattali/shinyjs) to display the feedback messages.
+![](inst/img/feedback-screenshot.png)

@@ -52,7 +52,7 @@ shinyApp(ui, server)
 
 The primary function provided by `shinyFeedback` is `feedback`.  `feedback` allows you to set the color of the feedback, the icon to be displayed in the right corner of the input box, and the text that appears beneath the input.  The feedback is displayed when the expression supplied to the `condition` argument evaluates to `r TRUE`. Run `?feedback` in your R console for more information.
 
-## Handy `feeback` wrappers
+## Handy `feedback` wrappers
 
 `shinyFeedback` has 3 convenient wrappers functions:
 - `feedbackWarning`
