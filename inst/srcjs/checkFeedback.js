@@ -1,5 +1,5 @@
 (function() {
-
+  
   var store = {
     // cache the state for each feedback
     isShown: {},
