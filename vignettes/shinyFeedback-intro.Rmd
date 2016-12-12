@@ -1,0 +1,62 @@
+---
+title: "shinyFeedback Introduction"
+author: "Andy Merlino"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The `shinyFeedback` package allows for the insertion of conditional feedback messages along side `shiny` inputs.
+
+## Setup
+
+`shinyFeedback` uses the `shinyjs` package to implement the functionality to display the feedback messages.  In order to use `shinyFeedback` you need to include the following two functions at the top of your UI.
+
+```{r, eval=FALSE}
+shinyjs::useShinyjs()
+shinyjs::extendShinyjs(script = useShinyFeedback())
+```
+
+The following is a minimal example of a `shiny` app that uses `shinyFeedback`.  Run the following code in your R console to run the app.
+
+```{r, eval=FALSE}
+library(shiny)
+library(shinyjs)
+library(shinyFeedback)
+
+ui <- fluidPage(
+  useShinyjs(),  # Include shinyjs
+  extendShinyjs(script = useShinyFeedback()), # include shinyFeedback
+  numericInput(
+    "warningInput", 
+    "Warn if Negative"
+  )
+)
+
+server <- function(input, output) {
+  observeEvent(input$warningInput, {
+    feedbackWarning(
+      inputId = "warningInput",
+      condition = input$warningInput < 0
+    )
+  })
+}
+
+shinyApp(ui, server)
+```
+
+## The `feedback` function
+
+The primary function provided by `shinyFeedback` is `feedback`.  `feedback` allows you to set the color of the feedback, the icon to be displayed in the right corner of the input box, and the text that appears beneath the input.  The feedback is displayed when the expression supplied to the `condition` argument evaluates to `r TRUE`. Run `?feedback` in your R console for more information.
+
+## Handy `feeback` wrappers
+
+`shinyFeedback` has 3 convenient wrappers functions:
+- `feedbackWarning`
+- `feedbackDanger`
+- `feedbackSuccess`
+
+These functions provide default arguments for all the formal arguments in the `feedback` function besides `inputId` and `condition`.  A live app using these function is available [here](https://www.shinyapps.io/admin/#/application/143769).

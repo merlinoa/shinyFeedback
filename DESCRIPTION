@@ -11,8 +11,10 @@ LazyData: true
 Depends:
     R (>= 3.1.2)
 RoxygenNote: 5.0.1
-Suggests: 
-    shinyjs
+Suggests:
+    shinyjs,
+    knitr,
+    rmarkdown
 VignetteBuilder: knitr
 Imports:
     shiny,
