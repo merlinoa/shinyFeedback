@@ -12,14 +12,14 @@ feedbackSuccess(inputId, condition, text = NULL, color = "#5cb85c",
 
 \item{condition}{condition under which feeback is displayed}
 
-\item{text}{default \code{"Ye be warned"} text string to display below input}
+\item{text}{default \code{NULL} text string to display below input}
 
-\item{color}{defailt \code{"#F89406"} the color of the feeback}
+\item{color}{defailt \code{"#5cb85c"} the color of the feeback}
 
-\item{icon}{default \code{icon("warning-sign", lib="glyphicon"))} a \code{shiny::icon} object}
+\item{icon}{default \code{icon("ok", lib="glyphicon"))} a \code{shiny::icon} object}
 }
 \description{
 wrapper for \code{feedback()} function that displays a
-danger message by default
+success message by default
 }
 

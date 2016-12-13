@@ -13,26 +13,25 @@ The `shinyFeedback` package allows for the insertion of conditional feedback mes
 
 ## Setup
 
-`shinyFeedback` uses the `shinyjs` package to implement the functionality to display the feedback messages.  In order to use `shinyFeedback` you need to include the following two functions at the top of your UI.
+In order to use `shinyFeedback` you need to include the following two functions at the top of your UI.
 
 ```{r, eval=FALSE}
-shinyjs::useShinyjs()
-shinyjs::extendShinyjs(script = useShinyFeedback())
+useShinyFeedback()
 ```
 
 The following is a minimal example of a `shiny` app that uses `shinyFeedback`.  Run the following code in your R console to run the app.
 
 ```{r, eval=FALSE}
 library(shiny)
-library(shinyjs)
 library(shinyFeedback)
 
 ui <- fluidPage(
-  useShinyjs(),  # Include shinyjs
-  extendShinyjs(script = useShinyFeedback()), # include shinyFeedback
+  useShinyFeedback(), # include shinyFeedback
+  
   numericInput(
     "warningInput", 
-    "Warn if Negative"
+    "Warn if Negative",
+    value = -5
   )
 )
 
@@ -59,4 +58,4 @@ The primary function provided by `shinyFeedback` is `feedback`.  `feedback` allo
 - `feedbackDanger`
 - `feedbackSuccess`
 
-These functions provide default arguments for all the formal arguments in the `feedback` function besides `inputId` and `condition`.  A live app using these function is available [here](https://www.shinyapps.io/admin/#/application/143769).
+These functions provide default arguments for all the formal arguments in the `feedback` function other than `inputId` and `condition`.  A live app using these function is available [here](https://www.shinyapps.io/admin/#/application/143769).

@@ -36,9 +36,9 @@ feedbackWarning <- function(inputId, condition,
 #' 
 #' @param inputId the Shiny input's \code{inputId} argument
 #' @param condition condition under which feeback is displayed
-#' @param text default \code{"Ye be warned"} text string to display below input
-#' @param color defailt \code{"#F89406"} the color of the feeback
-#' @param icon default \code{icon("warning-sign", lib="glyphicon"))} a \code{shiny::icon} object
+#' @param text default \code{"Danger, turn back"} text string to display below input
+#' @param color defailt \code{"#d9534f"} the color of the feeback
+#' @param icon default \code{icon("exclamation-sign", lib="glyphicon"))} a \code{shiny::icon} object
 #' 
 #' @import shiny
 #' 
@@ -46,9 +46,9 @@ feedbackWarning <- function(inputId, condition,
 #' 
 #' 
 feedbackDanger <- function(inputId, condition, 
-                            text = "Danger, turn back!",
-                            color = "#d9534f", 
-                            icon = shiny::icon("exclamation-sign", lib="glyphicon")) {
+                           text = "Danger, turn back!",
+                           color = "#d9534f", 
+                           icon = shiny::icon("exclamation-sign", lib="glyphicon")) {
   
   feedback(
     inputId = inputId,
@@ -62,13 +62,13 @@ feedbackDanger <- function(inputId, condition,
 #' feedbackSuccess
 #' 
 #' wrapper for \code{feedback()} function that displays a
-#' danger message by default
+#' success message by default
 #' 
 #' @param inputId the Shiny input's \code{inputId} argument
 #' @param condition condition under which feeback is displayed
-#' @param text default \code{"Ye be warned"} text string to display below input
-#' @param color defailt \code{"#F89406"} the color of the feeback
-#' @param icon default \code{icon("warning-sign", lib="glyphicon"))} a \code{shiny::icon} object
+#' @param text default \code{NULL} text string to display below input
+#' @param color defailt \code{"#5cb85c"} the color of the feeback
+#' @param icon default \code{icon("ok", lib="glyphicon"))} a \code{shiny::icon} object
 #' 
 #' @import shiny
 #' 

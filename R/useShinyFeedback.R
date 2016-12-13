@@ -2,8 +2,19 @@
 #' 
 #' function to load js for using \code{shinyFeedback}
 #' 
+#' @import shiny
+#' 
 #' @export
 #' 
 useShinyFeedback <- function() {
-  system.file("srcjs/checkFeedback.js", package = "shinyFeedback")
+  shiny::addResourcePath("shinyFeedback", system.file("srcjs", package = "shinyFeedback"))
+  return(
+    shiny::singleton(
+      shiny::tags$head(
+        shiny::tags$script(
+          src = file.path("shinyFeedback", "checkFeedback.js")
+        )
+      ) 
+    )
+  )
 }

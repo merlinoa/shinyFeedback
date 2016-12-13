@@ -13,11 +13,11 @@ feedbackDanger(inputId, condition, text = "Danger, turn back!",
 
 \item{condition}{condition under which feeback is displayed}
 
-\item{text}{default \code{"Ye be warned"} text string to display below input}
+\item{text}{default \code{"Danger, turn back"} text string to display below input}
 
-\item{color}{defailt \code{"#F89406"} the color of the feeback}
+\item{color}{defailt \code{"#d9534f"} the color of the feeback}
 
-\item{icon}{default \code{icon("warning-sign", lib="glyphicon"))} a \code{shiny::icon} object}
+\item{icon}{default \code{icon("exclamation-sign", lib="glyphicon"))} a \code{shiny::icon} object}
 }
 \description{
 wrapper for \code{feedback()} function that displays a

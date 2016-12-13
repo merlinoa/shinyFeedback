@@ -11,11 +11,11 @@ feedback(inputId, condition, text = NULL, color = NULL, icon = NULL)
 
 \item{condition}{condition under which feeback is displayed}
 
-\item{.text}{text string to display below input}
+\item{text}{text string to display below input}
 
-\item{.color}{the color of the feeback}
+\item{color}{the color of the feeback}
 
-\item{.icon}{a \code{shiny::icon} object}
+\item{icon}{a \code{shiny::icon} object}
 }
 \description{
 displays feedback next to Shiny input
