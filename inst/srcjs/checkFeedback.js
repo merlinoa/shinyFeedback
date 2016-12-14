@@ -1,37 +1,41 @@
 (function() {
   
-  var store = {
-    // cache the state for each feedback
-    isShown: {},
+  inputs = {};
+  
+  // store all the feedbacks for a single inputId
+  function Feedbacks() {
+    // cache whether each feedback is shown
+    this.isShown = {},
               
-    add: function(feedbackId) {
+    this.add = function(feedbackId) {
       if (this.isShown[feedbackId] === undefined) {
          this.isShown[feedbackId] = false;
       }
     },
   
-    toggle: function(feedbackId) {
+    this.toggle = function(feedbackId) {
       this.isShown[feedbackId] = !this.isShown[feedbackId];
+    },
+    
+    this.setAllFalse = function() {
+      for (var fb in this.isShown) {
+        this.isShown[fb] = false;
+      }
     }
-  };
+  }
+  
+  
                
   Shiny.addCustomMessageHandler(
     "checkFeedback",
     function(message) {
-    
+      
       var $input = $("#" + message.inputId);
       var $label = $input.siblings("label");
       var $formGroup = $input.parent();
-    
-      // add feedbackId to the store
-      store.add(message.feedbackId);
-      // remove feedback before showing it in case there
-      // are multiple feedback options
-      if (!message.condition && store.isShown[message.feedbackId]){
-        // change input isShown store variable to false
-        store.toggle(message.feedbackId);
-    
-        // remove feedback messages
+      
+      // remove feedback display
+      function removeFeedback() {
         $input.removeAttr("style");
         $label.removeAttr("style");
         if (message.icon) {
@@ -43,10 +47,29 @@
           $("#"+ message.inputId +"-spacing").remove();  
         }
       }
-      // if feedback should transition to shown
-      if (message.condition && !store.isShown[message.feedbackId]) {
+      
+      // create a property key = inputId and value = feedbacks associated with
+      // that feedback id
+      if (inputs[message.inputId] === undefined) {
+        inputs[message.inputId] = new Feedbacks();
+      }
+      var inp = inputs[message.inputId];
+      // add feedbackId to the store
+      inp.add(message.feedbackId);
+      // remove feedback before showing it in case there
+      // are multiple feedback options
+      if (!message.condition && inp.isShown[message.feedbackId]){
         // change input isShown store variable to false
-        store.toggle(message.feedbackId);
+        inp.toggle(message.feedbackId);
+        removeFeedback();
+      }
+      // if feedback should transition to shown
+      if (message.condition && !inp.isShown[message.feedbackId]) {
+        // set all feedbacks besides feedback transitioning to isShown false
+        inp.setAllFalse();
+        removeFeedback();
+        // change feedback isShown value to true
+        inp.toggle(message.feedbackId);
         
         // display feedback
         $label.css("color", message.color);
