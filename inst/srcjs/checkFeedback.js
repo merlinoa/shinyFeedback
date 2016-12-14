@@ -5,13 +5,13 @@
     isShown: {},
               
     add: function(feedbackId) {
-      if (store.isShown[feedbackId] === undefined) {
-         store.isShown[feedbackId] = false;
+      if (this.isShown[feedbackId] === undefined) {
+         this.isShown[feedbackId] = false;
       }
     },
   
     toggle: function(feedbackId) {
-      store.isShown[feedbackId] = !store.isShown[feedbackId];
+      this.isShown[feedbackId] = !this.isShown[feedbackId];
     }
   };
                
