@@ -11,8 +11,35 @@
 #' 
 #' @import shiny
 #' 
-#' @export
+#' @family feedback wrappers
+#' @seealso \code{\link{feedback}}, \code{\link{feedbackDanger}}, \code{\link{feedbackSuccess}}
 #' 
+#' @export
+#' @examples 
+#' 
+#' ## Only run examples in interacive R sessions
+#' if (interactive()) {
+#'   ui <- fluidPage(
+#'     useShinyFeedback(),
+#'     
+#'     numericInput(
+#'       "exampleInput",
+#'       "Show Feedback When < 0",
+#'       value = -5
+#'     )
+#'   )
+#'   
+#'   server <- function(input, output) {
+#'     observeEvent(input$exampleInput, {
+#'       feedbackWarning(
+#'         "exampleInput",
+#'         condition = input$exampleInput < 0
+#'       )
+#'     })
+#'   }
+#'   
+#'   shinyApp(ui, server)
+#' }
 #' 
 feedbackWarning <- function(inputId, condition, 
                             text = "Ye be warned",
@@ -42,8 +69,36 @@ feedbackWarning <- function(inputId, condition,
 #' 
 #' @import shiny
 #' 
+#' @family feedback wrappers
+#' @seealso \code{\link{feedback}}, \code{\link{feedbackWarning}}, \code{\link{feedbackSuccess}}
+#' 
 #' @export
 #' 
+#' @examples 
+#' 
+#' ## Only run examples in interacive R sessions
+#' if (interactive()) {
+#'   ui <- fluidPage(
+#'     useShinyFeedback(),
+#'     
+#'     numericInput(
+#'       "exampleInput",
+#'       "Show Feedback When < 0",
+#'       value = -5
+#'     )
+#'   )
+#'   
+#'   server <- function(input, output) {
+#'     observeEvent(input$exampleInput, {
+#'       feedbackDanger(
+#'         "exampleInput",
+#'         condition = input$exampleInput < 0
+#'       )
+#'     })
+#'   }
+#'   
+#'   shinyApp(ui, server)
+#' }
 #' 
 feedbackDanger <- function(inputId, condition, 
                            text = "Danger, turn back!",
@@ -72,8 +127,36 @@ feedbackDanger <- function(inputId, condition,
 #' 
 #' @import shiny
 #' 
+#' @family feedback wrappers
+#' @seealso \code{\link{feedback}}, \code{\link{feedbackDanger}}, \code{\link{feedbackSuccess}}
+#'
 #' @export
+#'
+#' @examples 
 #' 
+#' ## Only run examples in interacive R sessions
+#' if (interactive()) {
+#'   ui <- fluidPage(
+#'     useShinyFeedback(),
+#'     
+#'     numericInput(
+#'       "exampleInput",
+#'       "Show Feedback When < 0",
+#'       value = -5
+#'     )
+#'   )
+#'   
+#'   server <- function(input, output) {
+#'     observeEvent(input$exampleInput, {
+#'       feedbackSuccess(
+#'         "exampleInput",
+#'         condition = input$exampleInput < 0
+#'       )
+#'     })
+#'   }
+#'   
+#'   shinyApp(ui, server)
+#' }
 #' 
 feedbackSuccess <- function(inputId, condition, 
                             text = NULL,

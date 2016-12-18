@@ -22,4 +22,37 @@ feedbackSuccess(inputId, condition, text = NULL, color = "#5cb85c",
 wrapper for \code{feedback()} function that displays a
 success message by default
 }
+\examples{
+
+## Only run examples in interacive R sessions
+if (interactive()) {
+  ui <- fluidPage(
+    useShinyFeedback(),
+    
+    numericInput(
+      "exampleInput",
+      "Show Feedback When < 0",
+      value = -5
+    )
+  )
+  
+  server <- function(input, output) {
+    observeEvent(input$exampleInput, {
+      feedbackSuccess(
+        "exampleInput",
+        condition = input$exampleInput < 0
+      )
+    })
+  }
+  
+  shinyApp(ui, server)
+}
+
+}
+\seealso{
+\code{\link{feedback}}, \code{\link{feedbackDanger}}, \code{\link{feedbackSuccess}}
+
+Other feedback.wrappers: \code{\link{feedbackDanger}},
+  \code{\link{feedbackWarning}}
+}
 

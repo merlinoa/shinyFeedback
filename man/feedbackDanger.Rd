@@ -23,4 +23,37 @@ feedbackDanger(inputId, condition, text = "Danger, turn back!",
 wrapper for \code{feedback()} function that displays a
 danger message by default
 }
+\examples{
+
+## Only run examples in interacive R sessions
+if (interactive()) {
+  ui <- fluidPage(
+    useShinyFeedback(),
+    
+    numericInput(
+      "exampleInput",
+      "Show Feedback When < 0",
+      value = -5
+    )
+  )
+  
+  server <- function(input, output) {
+    observeEvent(input$exampleInput, {
+      feedbackDanger(
+        "exampleInput",
+        condition = input$exampleInput < 0
+      )
+    })
+  }
+  
+  shinyApp(ui, server)
+}
+
+}
+\seealso{
+\code{\link{feedback}}, \code{\link{feedbackWarning}}, \code{\link{feedbackSuccess}}
+
+Other feedback.wrappers: \code{\link{feedbackSuccess}},
+  \code{\link{feedbackWarning}}
+}
 
