@@ -22,7 +22,7 @@ The `shinyFeedback` package creates `feeback`.  A `feeback` is a user friendly m
 - `numericInput()`
 - `textInput()`
 - `passwordInput()`
-- `selectInput()` : (only with the default selectize = TRUE)
+- `selectInput()` : (only with the default arguments selectize = TRUE and multiple = FALSE)
 
 More inputs and options will be supported in future versions of `shinyFeedback`
 
@@ -43,18 +43,6 @@ library(shinyFeedback)
 ui <- fluidPage(
   useShinyFeedback(), # include shinyFeedback
   
-  selectInput(
-    "testing",
-    "testing select input",
-    choices = c("steve", "andy"),
-    selectize = FALSE
-  ),
-  
-  dateInput(
-    "date",
-    ""
-  ),
-  
   numericInput(
     "warningInput",
     "Warn if Negative",
@@ -67,10 +55,6 @@ server <- function(input, output) {
     feedbackWarning(
       inputId = "warningInput",
       condition = input$warningInput < 0
-    )
-    feedbackWarning(
-      inputId = "testing",
-      condition = input$testing == "steve"
     )
   })
 }
@@ -98,16 +82,14 @@ observe({
 })
 ```
 
-Ofcourse the above code will not work because it is not being executed as a `shinyApp`.
-
 ## Handy `feedback` wrappers
 
 `shinyFeedback` has 3 convenient wrappers functions:
-- `feedbackWarning`
-- `feedbackDanger`
-- `feedbackSuccess`
+- `feedbackWarning()`
+- `feedbackDanger()`
+- `feedbackSuccess()`
 
-These functions provide default arguments for all the formal arguments in the `feedback` function other than `inputId` and `condition`.  A live app using these function is available [here](https://www.shinyapps.io/admin/#/application/143769).
+The above functions provide default arguments for all the formal arguments in the `feedback` function other than `inputId` and `condition`.  A live app using these function is available [here](https://www.shinyapps.io/admin/#/application/143769).
 
 ## Multiple `feedback`s
 
@@ -117,25 +99,24 @@ When assigning multiple `feedback`s to a single input, place the `feedback()`s i
 ui <- fluidPage(
   useShinyFeedback(), # include shinyFeedback
   
-  selectInput(
-    "warningInput", 
-    "What to eat",
-    choices = c("cheese", "burger"),
-    multiple = TRUE
+  numericInput(
+    "multiFeedbacks",
+    "1 is scary 2 is dangerous", 
+    value = 1
   )
 )
 
 server <- function(input, output) {
-  observeEvent(input$warningInput, {
+  observeEvent(input$multiFeedbacks, {
     feedbackWarning(
-      inputId = "warningInput",
-      condition = input$warningInput %in% c("cheese", "burger"),
-      text = "one is good..."
+      inputId = "multiFeedbacks",
+      condition = input$multiFeedbacks >= 1,
+      text = "Warning 1 is a lonely number"
     )
-    feedbackSuccess(
-      inputId = "warningInput",
-      condition = length(input$warningInput) == 2,
-      text = "but together is better"
+    feedbackDanger(
+      inputId = "multiFeedbacks",
+      condition = input$multiFeedbacks >= 2,
+      text = "2+ is danger"
     )
   })
 }
