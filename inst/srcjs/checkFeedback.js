@@ -33,19 +33,26 @@
     return $("#" + inputId);
   }
   
-  function feedbackDefault(message) {
-    var $input = findInput(message.inputId);
-    var $label = $input.siblings("label");
-    var $formGroup = $input.parent();
+  // feedbackHandler
+  // 
+  // generic function that shows the feedback next to
+  // the Shiny input.
+  // 
+  // @param message
+  // @param $el the element that the feedback us being displayed around.
+  // @param $label input label
+  // @param $group input group
+  //
+  function feedbackHandler(message, $el, $label, $group) {
     var inp = inputs[message.inputId];
-    // remove feedback display
+    
     function removeFeedback() {
     
       $label.css("color", "#333");
-      $input.removeAttr("style");
+      $el.removeAttr("style");
       if (message.icon) {
         $("#" + message.inputId + "-icon").remove();
-        $formGroup.removeClass("has-feedback");
+        $group.removeClass("has-feedback");
       }
       if (message.text) {
         $("#" + message.inputId + "-text").remove();
@@ -69,70 +76,48 @@
     
       // display feedback
       $label.css("color", message.color);
-      $input.css("border", "1px solid " + message.color);
+      $el.css("border", "1px solid " + message.color);
       if (message.text) {
-        $("<div id='" + message.inputId + "-text' class='col-xs-12'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p></div><br id='" + message.inputId + "-spacing'/>").insertAfter($input);
+        $("<div id='" + message.inputId + "-text' class='col-xs-12'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p></div><br id='" + message.inputId + "-spacing'/>").insertAfter($el);
       }
       
       if (message.icon) {
-        $formGroup.addClass("has-feedback");
-        $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + ";'>" + message.icon + "</span>").insertAfter($input);
+        $group.addClass("has-feedback");
+        $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + ";'>" + message.icon + "</span>").insertAfter($el);
       }
     }
+  }
+  
+  function feedbackDefault(message) {
+    var $input = findInput(message.inputId);
+    var $label = $input.siblings("label");
+    var $formGroup = $input.parent();
+    
+    feedbackHandler(message, $input, $label, $formGroup);
   }
   
   function feedbackSelectize(message) {
     var $input = findInput(message.inputId);
     var $label = $input.parent().siblings("label");
     var $formGroup = $input.parent().eq(1);
-    var inp = inputs[message.inputId];
     
     // the SELECT html tag does not actually contain the input that is displayed
     // find the the displayed input box here
     var $inputDisplayed = $input
                             .siblings(".selectize-control")
                             .children(".selectize-input");
-    console.log($inputDisplayed);
-  // remove feedback display
-    function removeFeedback() {
-      $label.css("color", "#333");
-      $inputDisplayed.removeAttr("style");
-      if (message.icon) {
-        $("#" + message.inputId + "-icon").remove();
-        $formGroup.removeClass("has-feedback");
-      }
-      if (message.text) {
-        $("#" + message.inputId + "-text").remove();
-        $("#"+ message.inputId +"-spacing").remove();  
-      }
-    }
     
-    if (!message.condition && inp.isShown[message.feedbackId]){
-      inp.toggle(message.feedbackId);
-      removeFeedback();
-    }
+    feedbackHandler(message, $inputDisplayed, $label, $formGroup);
+  }
+  
+  // selectize = FALSE
+  function feedbackSelect(message) {
+    var $input = findInput(message.inputId);
+    var $label = $input.parent().siblings("label");
+    var $formGroup = $input.parent().eq(1);
     
-    //if feedback should transition to shown
-      if (message.condition && !inp.isShown[message.feedbackId]) {
-
-      // set all feedbacks besides feedback transitioning to isShown false
-        inp.setAllFalse();
-      // change feedback isShown value to true
-        inp.toggle(message.feedbackId);
-    
-      // display feedback
-        $label.css("color", message.color);
-        $inputDisplayed.css("border", "1px solid " + message.color);
-        if (message.text) {
-          $("<div id='" + message.inputId + "-text' class='col-xs-12'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p></div><br id='" + message.inputId + "-spacing'/>").insertAfter($inputDisplayed);
-        }
-      
-        if (message.icon) {
-          $formGroup.addClass("has-feedback");
-          $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + ";'>" + message.icon + "</span>").insertAfter($inputDisplayed);
-        }
-      }
-    }
+    feedbackHandler(message, $input, $label, $formGroup);
+  }
                
   Shiny.addCustomMessageHandler(
     "checkFeedback",
@@ -149,10 +134,7 @@
       var inp = inputs[message.inputId];
       // add feedbackId to the store
       inp.add(message.feedbackId);
-      
-      console.log(inp.isShown);
-      
-      console.log(tag);  
+    
       // Shiny inputs where the inputId is in an <input> html element 
       if (tag === "INPUT") {
         if ($input.hasClass("js-range-slider")) {
@@ -165,10 +147,11 @@
         }
       } else if (tag === "SELECT") {
         if ($input.hasClass("selectized")) {
-        // selectized = TRUE function; the default
+          // selectized = TRUE function; the default
           feedbackSelectize(message);
         } else {
-        // selectized = FALSE Function
+          // selectized = FALSE Function
+          feedbackSelect(message);
         }
       }
     }
