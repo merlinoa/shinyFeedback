@@ -11,20 +11,20 @@ vignette: >
 
 ## Functionality
 
-The `shinyFeedback` package creates `feeback`.  A `feeback` is a user friendly message that appears along side a `shiny` input.  A `feedback` is shown when the `shiny` input's value meets some condition.  Here are pictures of a few `shiny` inputs with `feeback` displayed:
+The `shinyFeedback` package creates a user friendly message that appears along side a `shiny` input.  A feedback message is shown when the `shiny` input's value meets some condition.  Here are pictures of a few `shiny` inputs with `feeback` messages displayed:
 
 ![](feedback-screenshot.png)
 
 `shinyFeedback` provides a friendly way to guide your users on how to use your app.
 
-`shinyFeedback` currently only works with the following `shiny::input*` function:
+`shinyFeedback` currently only works with the following `shiny::*Input()` functions:
 
 - `numericInput()`
 - `textInput()`
 - `passwordInput()`
-- `selectInput()` : (only with the default arguments selectize = TRUE and multiple = FALSE)
+- `selectInput()`
 
-More inputs and options will be supported in future versions of `shinyFeedback`
+More inputs and display options will be supported in future versions of `shinyFeedback`
 
 ## Setup
 
@@ -62,25 +62,13 @@ server <- function(input, output) {
 shinyApp(ui, server)
 ```
 
-The above app uses the `feedbackWarning()` function to display a default warning `feedback`.  `feebackWarning()` is a wrapper around the more general `feedback()` function.
+The above app uses the `feedbackWarning()` function to display a default warning feedback message.  `feebackWarning()` is a wrapper around the more general `feedback()` function.
 
 ## The `feedback` function
 
-The primary function provided by `shinyFeedback` is `feedback()`. `feedback()` allows you to set `feedback` color, icons, text, and more.  The feedback is displayed when the expression supplied to the `condition` argument evaluates to `r TRUE`.
+The primary function provided by `shinyFeedback` is `feedback()`. `feedback()` allows you to set feedback message color, icons, and text.  The feedback is displayed when the expression supplied to the `condition` argument evaluates to TRUE.
 
-To use `feedback()`, you will want to call it from inside a `shiny` observer (either `shiny::observe` or `shiny::observeEvent`).  Here is an example:
-
-```{r, eval = FALSE}
-observe({
-  feedback(
-    inputId = "example_id",
-    condition = is.null(input$example_id),
-    text = "This is some text feedback",
-    color = "blue",
-    icon = icon("birthday-cake")
-  )
-})
-```
+To use `feedback()`, you will want to call it from inside a `shiny` observer (either `shiny::observe()` or `shiny::observeEvent()`).
 
 ## Handy `feedback` wrappers
 
@@ -89,11 +77,11 @@ observe({
 - `feedbackDanger()`
 - `feedbackSuccess()`
 
-The above functions provide default arguments for all the formal arguments in the `feedback` function other than `inputId` and `condition`.  A live app using these function is available [here](https://www.shinyapps.io/admin/#/application/143769).
+The above functions provide default arguments for all the formal arguments in the `feedback` function other than `inputId` and `condition`.  A live app using these function is available [here](https://merlinoa.shinyapps.io/shinyfeedbackapp/).
 
 ## Multiple `feedback`s
 
-When assigning multiple `feedback`s to a single input, place the `feedback()`s in the same `shiny` observer.  The `feedback()`s further down in the body of the observer will override the higher `feedback()`s. e.g.
+When assigning multiple `feedback()`s to a single input, place the `feedback()`s in the same `shiny` observer.  The `feedback()`s further down in the body of the observer will override the higher `feedback()`s if multiple `feedback()` function conditions evaluate to TRUE.
 
 ```{r, eval = FALSE}
 ui <- fluidPage(
@@ -124,4 +112,4 @@ server <- function(input, output) {
 shinyApp(ui, server)
 ```
 
-In the above example, an input value of 6 will 
+In the above example, both `feedback*()` function conditions are TRUE when the input is >=2.  The `feedbackDanger()` is displayed because it is called after the `feedbackWarning()`.
