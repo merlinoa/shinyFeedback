@@ -39,20 +39,20 @@
   // the Shiny input.
   // 
   // @param message
-  // @param $el the element that the feedback us being displayed around.
-  // @param $label input label
-  // @param $group input group
+  // @param $eInput the input element
+  // @param $eLabel the label element
+  // @param $egroup the form-group element
   //
-  function feedbackHandler(message, $el, $label, $group) {
+  function feedbackHandler(message, $eInput, $eLabel, $eGroup) {
     var inp = inputs[message.inputId];
     
     function removeFeedback() {
     
-      $label.css("color", "#333");
-      $el.removeAttr("style");
+      $eLabel.css("color", "#333");
+      $eInput.removeAttr("style");
       if (message.icon) {
         $("#" + message.inputId + "-icon").remove();
-        $group.removeClass("has-feedback");
+        $eGroup.removeClass("has-feedback");
       }
       if (message.text) {
         $("#" + message.inputId + "-text").remove();
@@ -75,15 +75,18 @@
       inp.toggle(message.feedbackId);
     
       // display feedback
-      $label.css("color", message.color);
-      $el.css("border", "1px solid " + message.color);
+      if (message.color) {
+        $eLabel.css("color", message.color);
+        $eInput.css("border", "1px solid " + message.color);  
+      }
+      
       if (message.text) {
-        $("<div id='" + message.inputId + "-text' class='col-xs-12'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p></div><br id='" + message.inputId + "-spacing'/>").insertAfter($el);
+        $("<div id='" + message.inputId + "-text' class='col-xs-12'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p></div><br id='" + message.inputId + "-spacing'/>").insertAfter($eInput);
       }
       
       if (message.icon) {
-        $group.addClass("has-feedback");
-        $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + ";'>" + message.icon + "</span>").insertAfter($el);
+        $eGroup.addClass("has-feedback");
+        $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + ";'>" + message.icon + "</span>").insertAfter($eInput);
       }
     }
   }
@@ -99,13 +102,13 @@
   function feedbackSelectize(message) {
     var $input = findInput(message.inputId);
     var $label = $input.parent().siblings("label");
-    var $formGroup = $input.parent().eq(1);
+    var $formGroup = $input.parent();
     
     // the SELECT html tag does not actually contain the input that is displayed
     // find the the displayed input box here
     var $inputDisplayed = $input
                             .siblings(".selectize-control")
-                            .children(".selectize-input");
+                            .find(".selectize-input");
     
     feedbackHandler(message, $inputDisplayed, $label, $formGroup);
   }
@@ -114,7 +117,7 @@
   function feedbackSelect(message) {
     var $input = findInput(message.inputId);
     var $label = $input.parent().siblings("label");
-    var $formGroup = $input.parent().eq(1);
+    var $formGroup = $input.parent();
     
     feedbackHandler(message, $input, $label, $formGroup);
   }

@@ -11,7 +11,7 @@ vignette: >
 
 ## Functionality
 
-The `shinyFeedback` package creates a user friendly message that appears along side a `shiny` input.  A feedback message is shown when the `shiny` input's value meets some condition.  Here are pictures of a few `shiny` inputs with `feeback` messages displayed:
+The `shinyFeedback` package creates a user friendly message that appears along side a `shiny` input.  Here are pictures of `shiny` inputs with feeback messages displayed:
 
 ![](feedback-screenshot.png)
 
@@ -66,22 +66,23 @@ The above app uses the `feedbackWarning()` function to display a default warning
 
 ## The `feedback` function
 
-The primary function provided by `shinyFeedback` is `feedback()`. `feedback()` allows you to set feedback message color, icons, and text.  The feedback is displayed when the expression supplied to the `condition` argument evaluates to TRUE.
+The primary function provided by `shinyFeedback` is `feedback()`. `feedback()` creates messages similar to those shown in the image at the top of this vignette.  The color, icon, and text of the feedback message can be customized.
 
 To use `feedback()`, you will want to call it from inside a `shiny` observer (either `shiny::observe()` or `shiny::observeEvent()`).
 
 ## Handy `feedback` wrappers
 
 `shinyFeedback` has 3 convenient wrappers functions:
+
 - `feedbackWarning()`
 - `feedbackDanger()`
 - `feedbackSuccess()`
 
-The above functions provide default arguments for all the formal arguments in the `feedback` function other than `inputId` and `condition`.  A live app using these function is available [here](https://merlinoa.shinyapps.io/shinyfeedbackapp/).
+The above functions provide default arguments for all the formal arguments in the `feedback` function other than `inputId` and `condition`.  A live app using these functions is available [here](https://merlinoa.shinyapps.io/shinyfeedbackapp/).
 
 ## Multiple `feedback`s
 
-When assigning multiple `feedback()`s to a single input, place the `feedback()`s in the same `shiny` observer.  The `feedback()`s further down in the body of the observer will override the higher `feedback()`s if multiple `feedback()` function conditions evaluate to TRUE.
+When assigning multiple `feedback()`s to a single input (e.g. you want to display a certain feedback message if the input value >= 1, and a different feedback value if the input is >= 2), place the `feedback()`s in the same `shiny` observer.  The `feedback()`s further down in the body of the observer will override the higher `feedback()`s if multiple `feedback()` function conditions evaluate to TRUE.
 
 ```{r, eval = FALSE}
 ui <- fluidPage(

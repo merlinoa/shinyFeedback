@@ -1,8 +1,8 @@
 Package: shinyFeedback
 Type: Package
 Title: Displays User Feedback Next to Shiny Inputs
-Version: 0.0.1.9000
-Date: 2016-12-12
+Version: 0.0.2
+Date: 2016-12-19
 Authors@R: person("Andy", "Merlino", email = "merlinoa88@gmail.com", role =
     c("aut", "cre"))
 Description: Easily display user feedback next to Shiny inputs.  The feedback message is displayed when the feedback condition evaluates to TRUE.

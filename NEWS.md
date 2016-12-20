@@ -1,4 +1,9 @@
-# shinyFeedback 0.0.1.9000
+# shinyFeedback 0.0.2
+
+- support for `shiny::selectInput()`
+- feedback messages are not longer displayed for non supported `shiny::*Input()`s
+- support for multiple feedbacks for a single shiny input
+- Font Awesome icons can now be used
 
 # shinyFeedback 0.0.1
 
