@@ -6,9 +6,20 @@ R package for displaying user feedback along side Shiny inputs
 
 # Getting Started
 
+### Install from CRAN
+
 ```R
-# install package
+install.packages("shinyFeeedback")
+```
+
+### Or Install Dev Version from GitHub
+
+```R
 devtools::install_github("merlinoa/shinyFeedback", build_vignettes = TRUE)
+```
+### Read Intro Vignette
+
+```R
 # load package
 library(shinyFeedback)
 # read intro vignette
@@ -17,7 +28,7 @@ browseVignettes(package = "shinyFeedback")
 
 # Examples
 
-- [Example App on Github](https://github.com/merlinoa/shinyFeedbackApp)
+- [Example App on GitHub](https://github.com/merlinoa/shinyFeedbackApp)
 
 - Screenshot of shiny inputs with shinyFeedback messages displayed
 
