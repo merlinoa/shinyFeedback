@@ -81,7 +81,8 @@
       }
       
       if (message.text) {
-        $("<div id='" + message.inputId + "-text' class='col-xs-12'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p></div><br id='" + message.inputId + "-spacing'/>").insertAfter($eInput);
+        $("<div id='" + message.inputId + "-text' class='col-xs-12'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter($eInput);
+        $eGroup.append("</div><br id='" + message.inputId + "-spacing'/>");
       }
       
       if (message.icon) {
