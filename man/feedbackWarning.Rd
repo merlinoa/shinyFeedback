@@ -5,7 +5,8 @@
 \title{feedbackWarning}
 \usage{
 feedbackWarning(inputId, condition, text = "Ye be warned",
-  color = "#F89406", icon = shiny::icon("warning-sign", lib = "glyphicon"))
+  color = "#F89406", icon = shiny::icon("warning-sign", lib = "glyphicon"),
+  cancelOutput = FALSE)
 }
 \arguments{
 \item{inputId}{the Shiny input's \code{inputId} argument}
@@ -17,6 +18,11 @@ feedbackWarning(inputId, condition, text = "Ye be warned",
 \item{color}{defailt \code{"#F89406"} the color of the feeback}
 
 \item{icon}{default \code{icon("warning-sign", lib="glyphicon"))} a \code{shiny::icon} object}
+
+\item{cancelOutput}{FALSE; whether or not to stop the reactive chain when
+the \code{condition} argument evaluates to TRUE.  This calls 
+\code{shiny::req(expr = !condition)} where \code{condition}
+is the argument passed to \code{feedback}}
 }
 \description{
 wrapper for \code{feedback()} function that displays a

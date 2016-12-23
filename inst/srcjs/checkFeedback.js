@@ -130,6 +130,16 @@
       var $input = findInput(message.inputId);
       var tag = $input.prop("tagName");
       
+      // stop the input from rendering any output if cancelOutput is TRUE
+      if (!message.cancelOutput || !message.condition) {
+        $(document).off('shiny:value');
+      } else {
+        $(document).on('shiny:value', function(event) {
+          event.preventDefault();
+          //event.stoppropogation();
+        });
+      }
+      
       // create a property key = inputId and value = feedbacks associated with
       // that feedback id
       if (inputs[message.inputId] === undefined) {

@@ -7,6 +7,10 @@
 #' @param text text string to display below input
 #' @param color the color of the feeback
 #' @param icon a \code{shiny::icon} object
+#' @param cancelOutput FALSE; whether or not to stop the reactive chain when
+#' the \code{condition} argument evaluates to TRUE.  This calls 
+#' \code{shiny::req(expr = !condition)} where \code{condition}
+#' is the argument passed to \code{feedback}
 #' 
 #' @import digest
 #' @import shiny
@@ -45,7 +49,7 @@
 #' }
 #' 
 feedback <- function(inputId, condition, text = NULL, color = NULL, 
-                     icon = NULL) {
+                     icon = NULL, cancelOutput = FALSE) {
   
   # check that shinyjs and shinyFeedback are set up properly
   
@@ -55,7 +59,8 @@ feedback <- function(inputId, condition, text = NULL, color = NULL,
                                     inputId,
                                     text,
                                     color,
-                                    icon))
+                                    icon,
+                                    cancelOutput))
   
   session <- shiny::getDefaultReactiveDomain()
   # uses shinyjs
@@ -66,10 +71,9 @@ feedback <- function(inputId, condition, text = NULL, color = NULL,
       condition = condition,
       text = text,
       color = color,
-      # TODO: 
-      # 1. not working with Font Awesome icons for some reason; only Glyphicon
       icon = icon_out,
-      feedbackId = feedbackId
+      feedbackId = feedbackId,
+      cancelOutput = cancelOutput
     )
   )
 }
