@@ -5,24 +5,26 @@
   // store all the feedbacks for a single inputId
   function Feedbacks() {
     // cache whether each feedback is shown
-    this.isShown = {},
-              
+    this.isShown = {};
+  }
+  // add method to Feedbacks prototype
+  (function() {
     this.add = function(feedbackId) {
       if (this.isShown[feedbackId] === undefined) {
          this.isShown[feedbackId] = false;
       }
-    },
+    };
   
     this.toggle = function(feedbackId) {
       this.isShown[feedbackId] = !this.isShown[feedbackId];
-    },
+    };
     
     this.setAllFalse = function() {
       for (var fb in this.isShown) {
         this.isShown[fb] = false;
       }
-    }
-  }
+    };
+  }).call(Feedbacks.prototype);
   
   // return the element containing the shiny inputId
   function findInput(inputId) {
@@ -136,7 +138,7 @@
       } else {
         $(document).on('shiny:value', function(event) {
           event.preventDefault();
-          //event.stoppropogation();
+          //event.stopPropagation();
         });
       }
       
