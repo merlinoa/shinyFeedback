@@ -6,7 +6,7 @@
   // by setting the cancelOuput argument to TRUE
   $(document).on('shiny:inputchanged', function(event) {
     if (inputs[event.name] === undefined) {
-      $(document).off('shiny:value')
+      $(document).off('shiny:value');
     }
   });
   
