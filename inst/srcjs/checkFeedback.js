@@ -2,6 +2,14 @@
   
   inputs = {};
   
+  // used to allow output to appear if it has been disabled
+  // by setting the cancelOuput argument to TRUE
+  $(document).on('shiny:inputchanged', function(event) {
+    if (inputs[event.name] === undefined) {
+      $(document).off('shiny:value')
+    }
+  });
+  
   // store all the feedbacks for a single inputId
   function Feedbacks() {
     // cache whether each feedback is shown
@@ -132,7 +140,16 @@
       var $input = findInput(message.inputId);
       var tag = $input.prop("tagName");
       
-      // stop the input from rendering any output if cancelOutput is TRUE
+      
+      
+      // create a property key = inputId and value = feedbacks associated with
+      // that feedback id
+      if (inputs[message.inputId] === undefined) {
+        inputs[message.inputId] = new Feedbacks();
+      }
+      
+      // stop the input from rendering any output if cancelOutput is TRUE  
+      //$(document).on('shiny::inputchanged', function(event) {
       if (!message.cancelOutput || !message.condition) {
         $(document).off('shiny:value');
       } else {
@@ -142,11 +159,7 @@
         });
       }
       
-      // create a property key = inputId and value = feedbacks associated with
-      // that feedback id
-      if (inputs[message.inputId] === undefined) {
-        inputs[message.inputId] = new Feedbacks();
-      }
+      
       var inp = inputs[message.inputId];
       // add feedbackId to the store
       inp.add(message.feedbackId);
