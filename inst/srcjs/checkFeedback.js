@@ -132,6 +132,15 @@
     
     feedbackHandler(message, $input, $label, $formGroup);
   }
+  
+  // dateInput
+  function feedbackDate(message) {
+    var $formGroup = findInput(message.inputId);
+    var $label = $formGroup.children("label");
+    var $input = $formGroup.children("input");
+    
+    feedbackHandler(message, $input, $label, $formGroup);
+  }
                
   Shiny.addCustomMessageHandler(
     "checkFeedback",
@@ -182,6 +191,10 @@
         } else {
           // selectized = FALSE Function
           feedbackSelect(message);
+        }
+      } else if (tag === "DIV") {
+        if ($input.hasClass("shiny-date-input")) {
+          feedbackDate(message);
         }
       }
     }
