@@ -167,7 +167,8 @@
       // Shiny inputs where the inputId is in an <input> html element 
       if (tag === "INPUT") {
         if ($input.hasClass("js-range-slider")) {
-        // function to deal with sliderInput
+          // function to deal with sliderInput
+          feedbackDefault(message);
         } else if ($input.attr("type") === "button") {
         // function to deal with actionButtons
         } else {
