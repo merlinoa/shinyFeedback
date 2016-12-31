@@ -11,11 +11,11 @@ vignette: >
 
 ## Functionality
 
-The `shinyFeedback` package creates a user friendly message that appears along side a `shiny` input.  Here are pictures of `shiny` inputs with feeback messages displayed:
+The `shinyFeedback` package displays user friendly message that appears along side `shiny` inputs.  Here are pictures of `shiny` inputs with feeback messages displayed:
 
 ![](feedback-screenshot.png)
 
-`shinyFeedback` provides a friendly way to guide your users on how to use your app.
+These messages can be helpful for guiding your users on how to use the app. 
 
 `shinyFeedback` currently only works with the following `shiny::*Input()` functions:
 
@@ -23,6 +23,8 @@ The `shinyFeedback` package creates a user friendly message that appears along s
 - `textInput()`
 - `passwordInput()`
 - `selectInput()`
+- `sliderInput()`
+- `dateInput()`
 
 More inputs and display options will be supported in future versions of `shinyFeedback`
 
@@ -34,7 +36,9 @@ In order to use `shinyFeedback` you need to include the following function at th
 useShinyFeedback()
 ```
 
-The following is a minimal example of a `shiny` app that uses `shinyFeedback`.  Run the following code in your R console to run the app.
+The above function is the only change you need to make to your shiny UI.  All other code to include the feedback messages is written in the server function.
+
+The following is a minimal example of a `shiny` app that uses `shinyFeedback`.  To see the app, run the following code in your R console.
 
 ```{r, eval=FALSE}
 library(shiny)
@@ -62,13 +66,15 @@ server <- function(input, output) {
 shinyApp(ui, server)
 ```
 
-The above app uses the `feedbackWarning()` function to display a default warning feedback message.  `feebackWarning()` is a wrapper around the more general `feedback()` function.
+The above app has one `numericInput()` input in the UI.  In the server function, a feedback message is attached to this input. This feedback message is displayed when the user enters a negative value in the input.
+
+The `feedbackWarning()` function is the `shinyFeedback` function that attaches the feedback message to the input.  All `shinyFeedback` functions that display feedback messages have the naming convention `feedback*()`.  And all of these functions call the more generalized `feedback()` function.  The `feedback*()` functions are just wrappers around `feedback()` with certain default arguments defined for convenience.  The two inputs that will never have default arguments are `inputId` and `condition`.  The input that the message should appear next to is specified in the `inputId` argument, and the message is displayed when the `condition` argument evaluates to TRUE.
+
+The above `feedbackWarning()` function sits inside a `shiny::observeEvent()` function which is called each time the `input$warningInput` is changed. `feedback*()` functions will always appear inside of these shiny observers.  Please check out the excellent [shiny documentation](https://shiny.rstudio.com/) if you are not familiar with shiny reactivity. 
 
 ## The `feedback` function
 
-The primary function provided by `shinyFeedback` is `feedback()`. `feedback()` creates messages similar to those shown in the image at the top of this vignette.  The color, icon, and text of the feedback message can be customized.
-
-To use `feedback()`, you will want to call it from inside a `shiny` observer (either `shiny::observe()` or `shiny::observeEvent()`).
+The primary function provided by `shinyFeedback` is `feedback()`. `feedback()` creates messages like those shown in the image at the top of this vignette.  The color, icon, and text of the feedback message can be customized.
 
 ## Handy `feedback` wrappers
 
@@ -114,3 +120,38 @@ shinyApp(ui, server)
 ```
 
 In the above example, both `feedback*()` function conditions are TRUE when the input is >=2.  The `feedbackDanger()` is displayed because it is called after the `feedbackWarning()`.
+
+# Optionally Cancel Output
+
+This is an experimental feature.  The `cancelOuput` argument was added to the `feedback*()` functions to stop all output from updating if the condition of the `feedback*()` is TRUE.  Here is a simple example:
+
+```{r, eval = FALSE}
+library(shiny)
+library(shinyFeedback)
+
+ui <- fluidPage(
+  useShinyFeedback(), # include shinyFeedback
+  
+  numericInput(
+    "warningInput",
+    "Warn if Negative",
+    value = 10
+  ),
+  
+  verbatimTextOutput("warningOutput")
+)
+
+server <- function(input, output) {
+  observeEvent(input$warningInput, {
+    feedbackWarning(
+      inputId = "warningInput",
+      condition = input$warningInput < 0,
+      cancelOutput = TRUE
+    )
+  })
+  
+  output$warningOutput <- renderPrint({input$warningInput})
+}
+
+shinyApp(ui, server)
+```
