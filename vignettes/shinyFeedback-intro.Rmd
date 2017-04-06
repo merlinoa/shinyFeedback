@@ -120,38 +120,3 @@ shinyApp(ui, server)
 ```
 
 In the above example, both `feedback*()` function conditions are TRUE when the input is >=2.  The `feedbackDanger()` is displayed because it is called after the `feedbackWarning()`.
-
-# Optionally Cancel Output
-
-This is an experimental feature.  The `cancelOuput` argument was added to the `feedback*()` functions to stop all output from updating if the condition of the `feedback*()` is TRUE.  Here is a simple example:
-
-```{r, eval = FALSE}
-library(shiny)
-library(shinyFeedback)
-
-ui <- fluidPage(
-  useShinyFeedback(), # include shinyFeedback
-  
-  numericInput(
-    "warningInput",
-    "Warn if Negative",
-    value = 10
-  ),
-  
-  verbatimTextOutput("warningOutput")
-)
-
-server <- function(input, output) {
-  observeEvent(input$warningInput, {
-    feedbackWarning(
-      inputId = "warningInput",
-      condition = input$warningInput < 0,
-      cancelOutput = TRUE
-    )
-  })
-  
-  output$warningOutput <- renderPrint({input$warningInput})
-}
-
-shinyApp(ui, server)
-```

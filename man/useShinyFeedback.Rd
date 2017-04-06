@@ -9,4 +9,3 @@ useShinyFeedback()
 \description{
 function to load js for using \code{shinyFeedback}
 }
-

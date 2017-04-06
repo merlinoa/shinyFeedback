@@ -43,16 +43,14 @@
 feedbackWarning <- function(inputId, condition, 
                             text = "Ye be warned",
                             color = "#F89406", 
-                            icon = shiny::icon("warning-sign", lib="glyphicon"),
-                            cancelOutput = FALSE) {
+                            icon = shiny::icon("warning-sign", lib="glyphicon")) {
   
   feedback(
     inputId = inputId,
     condition = condition,
     text = text,
     color = color,
-    icon = icon,
-    cancelOutput = cancelOutput
+    icon = icon
   )
 }
 
@@ -103,16 +101,14 @@ feedbackWarning <- function(inputId, condition,
 feedbackDanger <- function(inputId, condition, 
                            text = "Danger, turn back!",
                            color = "#d9534f", 
-                           icon = shiny::icon("exclamation-sign", lib="glyphicon"),
-                           cancelOutput = FALSE) {
+                           icon = shiny::icon("exclamation-sign", lib="glyphicon")) {
   
   feedback(
     inputId = inputId,
     condition = condition,
     text = text,
     color = color,
-    icon = icon,
-    cancelOutput = cancelOutput
+    icon = icon
   )
 }
 
@@ -162,15 +158,13 @@ feedbackDanger <- function(inputId, condition,
 feedbackSuccess <- function(inputId, condition, 
                             text = NULL,
                             color = "#5cb85c", 
-                            icon = shiny::icon("ok", lib="glyphicon"),
-                            cancelOutput = FALSE) {
+                            icon = shiny::icon("ok", lib="glyphicon")) {
   
   feedback(
     inputId = inputId,
     condition = condition,
     text = text,
     color = color,
-    icon = icon,
-    cancelOutput = cancelOutput
+    icon = icon
   )
 }

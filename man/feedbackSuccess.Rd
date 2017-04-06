@@ -5,7 +5,7 @@
 \title{feedbackSuccess}
 \usage{
 feedbackSuccess(inputId, condition, text = NULL, color = "#5cb85c",
-  icon = shiny::icon("ok", lib = "glyphicon"), cancelOutput = FALSE)
+  icon = shiny::icon("ok", lib = "glyphicon"))
 }
 \arguments{
 \item{inputId}{the Shiny input's \code{inputId} argument}
@@ -17,11 +17,6 @@ feedbackSuccess(inputId, condition, text = NULL, color = "#5cb85c",
 \item{color}{defailt \code{"#5cb85c"} the color of the feeback}
 
 \item{icon}{default \code{icon("ok", lib="glyphicon"))} a \code{shiny::icon} object}
-
-\item{cancelOutput}{FALSE; whether or not to stop the reactive chain when
-the \code{condition} argument evaluates to TRUE.  This calls 
-\code{shiny::req(expr = !condition)} where \code{condition}
-is the argument passed to \code{feedback}}
 }
 \description{
 wrapper for \code{feedback()} function that displays a
@@ -57,7 +52,6 @@ if (interactive()) {
 \seealso{
 \code{\link{feedback}}, \code{\link{feedbackDanger}}, \code{\link{feedbackSuccess}}
 
-Other feedback.wrappers: \code{\link{feedbackDanger}},
+Other feedback wrappers: \code{\link{feedbackDanger}},
   \code{\link{feedbackWarning}}
 }
-

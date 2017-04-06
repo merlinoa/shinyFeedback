@@ -4,8 +4,7 @@
 \alias{feedback}
 \title{feedback}
 \usage{
-feedback(inputId, condition, text = NULL, color = NULL, icon = NULL,
-  cancelOutput = FALSE)
+feedback(inputId, condition, text = NULL, color = NULL, icon = NULL)
 }
 \arguments{
 \item{inputId}{the Shiny input's \code{inputId} argument}
@@ -17,11 +16,6 @@ feedback(inputId, condition, text = NULL, color = NULL, icon = NULL,
 \item{color}{the color of the feeback}
 
 \item{icon}{a \code{shiny::icon} object}
-
-\item{cancelOutput}{FALSE; whether or not to stop the reactive chain when
-the \code{condition} argument evaluates to TRUE.  This calls 
-\code{shiny::req(expr = !condition)} where \code{condition}
-is the argument passed to \code{feedback}}
 }
 \description{
 displays feedback next to Shiny input
@@ -59,4 +53,3 @@ if (interactive()) {
 \seealso{
 \code{\link{feedbackWarning}}, \code{\link{feedbackDanger}}, \code{\link{feedbackSuccess}}
 }
-

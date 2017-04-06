@@ -7,10 +7,6 @@
 #' @param text text string to display below input
 #' @param color the color of the feeback
 #' @param icon a \code{shiny::icon} object
-#' @param cancelOutput FALSE; whether or not to stop the reactive chain when
-#' the \code{condition} argument evaluates to TRUE.  This calls 
-#' \code{shiny::req(expr = !condition)} where \code{condition}
-#' is the argument passed to \code{feedback}
 #' 
 #' @import digest
 #' @import shiny
@@ -49,15 +45,16 @@
 #' }
 #' 
 feedback <- function(inputId, condition, text = NULL, color = NULL, 
-                     icon = NULL, cancelOutput = FALSE) {
+                     icon = NULL) {
   
-  # check that shinyjs and shinyFeedback are set up properly
+  # TDOD: check that shinyjs and shinyFeedback are set up properly
+  
+  
   
   # some argument checks
   stopifnot(is.character(inputId))
   stopifnot(is.logical(condition))
   icon <- as.character(shiny:::validateIcon(icon))
-  stopifnot(is.logical(cancelOutput))
   stopifnot(is.character(text) || is.null(text))
   stopifnot(is.character(color) || is.null(color))
   
@@ -66,8 +63,7 @@ feedback <- function(inputId, condition, text = NULL, color = NULL,
                                     inputId,
                                     text,
                                     color,
-                                    icon,
-                                    cancelOutput))
+                                    icon))
   
   # get the session
   session <- shiny::getDefaultReactiveDomain()
@@ -81,8 +77,7 @@ feedback <- function(inputId, condition, text = NULL, color = NULL,
       text = text,
       color = color,
       icon = icon,
-      feedbackId = feedbackId,
-      cancelOutput = cancelOutput
+      feedbackId = feedbackId
     )
   )
 }

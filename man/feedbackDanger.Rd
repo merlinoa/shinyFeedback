@@ -6,7 +6,7 @@
 \usage{
 feedbackDanger(inputId, condition, text = "Danger, turn back!",
   color = "#d9534f", icon = shiny::icon("exclamation-sign", lib =
-  "glyphicon"), cancelOutput = FALSE)
+  "glyphicon"))
 }
 \arguments{
 \item{inputId}{the Shiny input's \code{inputId} argument}
@@ -18,11 +18,6 @@ feedbackDanger(inputId, condition, text = "Danger, turn back!",
 \item{color}{defailt \code{"#d9534f"} the color of the feeback}
 
 \item{icon}{default \code{icon("exclamation-sign", lib="glyphicon"))} a \code{shiny::icon} object}
-
-\item{cancelOutput}{FALSE; whether or not to stop the reactive chain when
-the \code{condition} argument evaluates to TRUE.  This calls 
-\code{shiny::req(expr = !condition)} where \code{condition}
-is the argument passed to \code{feedback}}
 }
 \description{
 wrapper for \code{feedback()} function that displays a
@@ -58,7 +53,6 @@ if (interactive()) {
 \seealso{
 \code{\link{feedback}}, \code{\link{feedbackWarning}}, \code{\link{feedbackSuccess}}
 
-Other feedback.wrappers: \code{\link{feedbackSuccess}},
+Other feedback wrappers: \code{\link{feedbackSuccess}},
   \code{\link{feedbackWarning}}
 }
-
