@@ -55,7 +55,6 @@
       if (message.icon) {
         $("#" + message.inputId + "-icon").remove();
         $eGroup.removeClass("has-feedback");
-        $eInput.removeClass("has-shiny-feedback");
       }
       if (message.text) {
         $("#" + message.inputId + "-text").remove();
@@ -68,23 +67,14 @@
       removeFeedback();
     }
     
-    // need to check if the input has the `has-shiny-feedback` class
-    // because the inp.isShown property does not properly account for
-    // inputs that appear and disappear from the UI (e.g. inputs in a modal, and
-    // inputs created from insertUI)
-    var hasShinyFeedback = $eInput.hasClass('has-shiny-feedback'); 
-    
-    
-    console.log(hasShinyFeedback);
     // if feedback should transition to shown
-    if (message.condition && !hasShinyFeedback) {//!inp.isShown[message.feedbackId]) {
+    if (message.condition) {
       
       // set all feedbacks besides feedback transitioning to isShown false
       inp.setAllFalse();
       removeFeedback();
       // change feedback isShown value to true
       inp.toggle(message.feedbackId);
-      $eInput.addClass('has-shiny-feedback');
       
       // display feedback
       if (message.color) {
