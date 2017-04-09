@@ -4,6 +4,14 @@
 
 R package for displaying user feedback along side Shiny inputs
 
+# Examples
+
+- [Example App on GitHub](https://github.com/merlinoa/shinyFeedbackApp)
+
+- Screenshot of shiny inputs with shinyFeedback messages displayed
+
+![](inst/img/feedback-screenshot.png)
+
 # Getting Started
 
 ### Install from CRAN
@@ -25,11 +33,3 @@ library(shinyFeedback)
 # read intro vignette
 browseVignettes(package = "shinyFeedback")
 ```
-
-# Examples
-
-- [Example App on GitHub](https://github.com/merlinoa/shinyFeedbackApp)
-
-- Screenshot of shiny inputs with shinyFeedback messages displayed
-
-![](inst/img/feedback-screenshot.png)

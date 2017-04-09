@@ -1,4 +1,7 @@
-# shinyFeedback 0.0.2.9000
+# shinyFeedback 0.0.3
+
+- added checks that throw error if shiny input binding is not supported by shinyFeedback
+- displaying feedback based on shiny binding type rather than inferring binding type by DOM structure 
 
 # shinyFeedback 0.0.2
 
