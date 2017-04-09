@@ -10,9 +10,7 @@
   // add method to Feedbacks prototype
   (function() {
     this.add = function(feedbackId) {
-      if (this.isShown[feedbackId] === undefined) {
-         this.isShown[feedbackId] = false;
-      }
+      this.isShown[feedbackId] = false;
     };
   
     this.toggle = function(feedbackId) {
@@ -116,13 +114,21 @@
     feedbackHandler(message, $inputDisplayed, $label, $formGroup);
   }
   
-  // selectize = FALSE
   function feedbackSelect(message) {
     var $input = findInput(message.inputId);
-    var $label = $input.parent().siblings("label");
-    var $formGroup = $input.parent();
     
-    feedbackHandler(message, $input, $label, $formGroup);
+    // could not find a better way to distinguish between if selectize = TRUE by only 
+    // looking at the input binding, so I am having to check the input class
+    if ($input.hasClass("selectized")) {
+      // selectized = TRUE function; the default
+      feedbackSelectize(message);
+    } else {
+      // selectized = FALSE Function
+      var $label = $input.parent().siblings("label");
+      var $formGroup = $input.parent();
+    
+      feedbackHandler(message, $input, $label, $formGroup);
+    }
   }
   
   // dateInput
@@ -133,50 +139,70 @@
     
     feedbackHandler(message, $input, $label, $formGroup);
   }
+  
+  // all shiny input bindings that are supported by shinyFeedback
+  var bindingNames = [
+    "shiny.selectInput",
+    "shiny.dateInput",
+    "shiny.sliderInput",
+    "shiny.numberInput",
+    "shiny.passwordInput",
+    "shiny.textareaInput",
+    "shiny.textInput"
+  ];
+  
+  function findInputBinding(id) {
+    var $el = $("#" + id);
+    if ($el.length === 0 || !$el.data("shinyInputBinding")) {
+      var msg = "shinyFeedback: Unable to find input binding for element with id " + id;
+      throw msg;
+    }
+    
+    return $el.data("shinyInputBinding");
+  }
+  
+  function checkInputSupported(inputBindingName) {
+    if ($.inArray(inputBindingName, bindingNames) === -1) {
+      var msg = "shinyFeedback: Input Binding " + inputBindingName + " is not supported by shinyFeedback";
+      throw msg;
+    }
+    console.log(inputBindingName);
+    return;
+  }
                
   Shiny.addCustomMessageHandler(
     "checkFeedback",
     function(message) {
       
-      var $input = findInput(message.inputId);
-      var tag = $input.prop("tagName");
+      var myBindingName = findInputBinding(message.inputId).name;
+      //check that the input type is supported
+      checkInputSupported(myBindingName);
       
-      
-      
-      // create a property key = inputId and value = feedbacks associated with
-      // that feedback id
+      var inp = null;
       if (inputs[message.inputId] === undefined) {
-        inputs[message.inputId] = new Feedbacks();
+        // create an object holding all the feedbacks for the given inputId.
+        // this object will hold the isShown state of each feedback (true or false). 
+        // There can be multiple feedbacks associated with a single input.
+        inp = inputs[message.inputId] = new Feedbacks();
+        // add feedbackId to the store of feedbacks for the input
+        // and set the isShown property to false
+        inp.add(message.feedbackId);
+      } else {
+        inp = inputs[message.inputId];  
       }
       
-      
-      var inp = inputs[message.inputId];
-      // add feedbackId to the store
-      inp.add(message.feedbackId);
     
-      // Shiny inputs where the inputId is in an <input> html element 
-      if (tag === "INPUT") {
-        if ($input.hasClass("js-range-slider")) {
-          // function to deal with sliderInput
-          feedbackDefault(message);
-        } else if ($input.attr("type") === "button") {
-        // function to deal with actionButtons
-        } else {
-        // numericInput, textInput, or passwordInput
-          feedbackDefault(message);
-        }
-      } else if (tag === "SELECT") {
-        if ($input.hasClass("selectized")) {
-          // selectized = TRUE function; the default
-          feedbackSelectize(message);
-        } else {
-          // selectized = FALSE Function
-          feedbackSelect(message);
-        }
-      } else if (tag === "DIV") {
-        if ($input.hasClass("shiny-date-input")) {
+      // call right function to insert / remove feedback message
+      // depending on the type of input binding
+      switch (myBindingName) {
+        case "shiny.dateInput":
           feedbackDate(message);
-        }
+          break;
+        case "shiny.selectInput":
+          feedbackSelect(message);
+          break;
+        default:
+          feedbackDefault(message);
       }
     }
   );
