@@ -54,7 +54,7 @@ feedback <- function(inputId, condition, text = NULL, color = NULL,
   # some argument checks
   stopifnot(is.character(inputId))
   stopifnot(is.logical(condition))
-  icon <- as.character(shiny:::validateIcon(icon))
+  icon <- as.character(icon)
   stopifnot(is.character(text) || is.null(text))
   stopifnot(is.character(color) || is.null(color))
   
