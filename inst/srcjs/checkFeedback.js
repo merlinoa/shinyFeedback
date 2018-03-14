@@ -166,7 +166,6 @@
       var msg = "shinyFeedback: Input Binding " + inputBindingName + " is not supported by shinyFeedback";
       throw msg;
     }
-    console.log(inputBindingName);
     return;
   }
                
