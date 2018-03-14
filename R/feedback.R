@@ -60,10 +60,11 @@ feedback <- function(inputId, condition, text = NULL, color = NULL,
   
   # create unique feedbackId for each feedback
   feedbackId <- digest::digest(list(match.call()[[1]], 
-                                    inputId,
-                                    text,
-                                    color,
-                                    icon))
+                                    quote(inputId),
+                                    quote(condition),
+                                    quote(text),
+                                    quote(color),
+                                    quote(icon)))
   
   # get the session
   session <- shiny::getDefaultReactiveDomain()
