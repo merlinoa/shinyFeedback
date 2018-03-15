@@ -4,4 +4,3 @@
 .Ruserdata
 .Rbuildignore
 inst/doc
-^cran-comments\.md$
