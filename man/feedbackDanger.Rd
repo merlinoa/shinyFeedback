@@ -15,7 +15,7 @@ feedbackDanger(inputId, condition, text = "Danger, turn back!",
 
 \item{text}{default \code{"Danger, turn back"} text string to display below input}
 
-\item{color}{default \code{"#d9534f"} the color of the feeback}
+\item{color}{default \code{"#d9534f"} the color of the feedback}
 
 \item{icon}{default \code{icon("exclamation-sign", lib="glyphicon"))} a \code{shiny::icon} object}
 }

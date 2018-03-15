@@ -14,7 +14,7 @@ feedbackSuccess(inputId, condition, text = NULL, color = "#5cb85c",
 
 \item{text}{default \code{NULL} text string to display below input}
 
-\item{color}{default \code{"#5cb85c"} the color of the feeback}
+\item{color}{default \code{"#5cb85c"} the color of the feedback}
 
 \item{icon}{default \code{icon("ok", lib="glyphicon"))} a \code{shiny::icon} object}
 }
