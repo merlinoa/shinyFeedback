@@ -5,7 +5,7 @@
 #' 
 #' @inheritParams feedback
 #' @param text default \code{"Ye be warned"} text string to display below input
-#' @param color defailt \code{"#F89406"} the color of the feeback
+#' @param color default \code{"#F89406"} the color of the feeback
 #' @param icon default \code{icon("warning-sign", lib="glyphicon"))} a \code{shiny::icon} object
 #' 
 #' @import shiny
@@ -62,7 +62,7 @@ feedbackWarning <- function(inputId, condition,
 #' 
 #' @inheritParams feedback
 #' @param text default \code{"Danger, turn back"} text string to display below input
-#' @param color defailt \code{"#d9534f"} the color of the feeback
+#' @param color default \code{"#d9534f"} the color of the feeback
 #' @param icon default \code{icon("exclamation-sign", lib="glyphicon"))} a \code{shiny::icon} object
 #' 
 #' @import shiny
@@ -119,7 +119,7 @@ feedbackDanger <- function(inputId, condition,
 #' 
 #' @inheritParams feedback
 #' @param text default \code{NULL} text string to display below input
-#' @param color defailt \code{"#5cb85c"} the color of the feeback
+#' @param color default \code{"#5cb85c"} the color of the feeback
 #' @param icon default \code{icon("ok", lib="glyphicon"))} a \code{shiny::icon} object
 #' 
 #' @import shiny

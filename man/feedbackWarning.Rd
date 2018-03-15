@@ -10,11 +10,11 @@ feedbackWarning(inputId, condition, text = "Ye be warned",
 \arguments{
 \item{inputId}{the Shiny input's \code{inputId} argument}
 
-\item{condition}{condition under which feeback is displayed}
+\item{condition}{condition under which feedback is displayed}
 
 \item{text}{default \code{"Ye be warned"} text string to display below input}
 
-\item{color}{defailt \code{"#F89406"} the color of the feeback}
+\item{color}{default \code{"#F89406"} the color of the feeback}
 
 \item{icon}{default \code{icon("warning-sign", lib="glyphicon"))} a \code{shiny::icon} object}
 }

@@ -11,11 +11,11 @@ feedbackDanger(inputId, condition, text = "Danger, turn back!",
 \arguments{
 \item{inputId}{the Shiny input's \code{inputId} argument}
 
-\item{condition}{condition under which feeback is displayed}
+\item{condition}{condition under which feedback is displayed}
 
 \item{text}{default \code{"Danger, turn back"} text string to display below input}
 
-\item{color}{defailt \code{"#d9534f"} the color of the feeback}
+\item{color}{default \code{"#d9534f"} the color of the feeback}
 
 \item{icon}{default \code{icon("exclamation-sign", lib="glyphicon"))} a \code{shiny::icon} object}
 }

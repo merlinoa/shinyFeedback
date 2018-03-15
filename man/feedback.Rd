@@ -9,7 +9,7 @@ feedback(inputId, condition, text = NULL, color = NULL, icon = NULL)
 \arguments{
 \item{inputId}{the Shiny input's \code{inputId} argument}
 
-\item{condition}{condition under which feeback is displayed}
+\item{condition}{condition under which feedback is displayed}
 
 \item{text}{text string to display below input}
 

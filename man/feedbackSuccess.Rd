@@ -10,11 +10,11 @@ feedbackSuccess(inputId, condition, text = NULL, color = "#5cb85c",
 \arguments{
 \item{inputId}{the Shiny input's \code{inputId} argument}
 
-\item{condition}{condition under which feeback is displayed}
+\item{condition}{condition under which feedback is displayed}
 
 \item{text}{default \code{NULL} text string to display below input}
 
-\item{color}{defailt \code{"#5cb85c"} the color of the feeback}
+\item{color}{default \code{"#5cb85c"} the color of the feeback}
 
 \item{icon}{default \code{icon("ok", lib="glyphicon"))} a \code{shiny::icon} object}
 }
