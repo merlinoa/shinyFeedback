@@ -1,4 +1,6 @@
-# shinyFeedback 0.0.3.9000
+# shinyFeedback 0.0.4
+
+- bug fix: feedbacks now properly tracked if the arguments to `feeback*()` are dynamic (#4)
 
 # shinyFeedback 0.0.3
 
