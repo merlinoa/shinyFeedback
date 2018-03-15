@@ -5,7 +5,7 @@
 #' @param inputId the Shiny input's \code{inputId} argument
 #' @param condition condition under which feedback is displayed
 #' @param text text string to display below input
-#' @param color the color of the feeback
+#' @param color the color of the feedback
 #' @param icon a \code{shiny::icon} object
 #' 
 #' @import digest

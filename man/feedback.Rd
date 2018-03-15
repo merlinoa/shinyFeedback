@@ -13,7 +13,7 @@ feedback(inputId, condition, text = NULL, color = NULL, icon = NULL)
 
 \item{text}{text string to display below input}
 
-\item{color}{the color of the feeback}
+\item{color}{the color of the feedback}
 
 \item{icon}{a \code{shiny::icon} object}
 }
