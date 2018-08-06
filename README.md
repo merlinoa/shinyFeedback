@@ -17,7 +17,7 @@ R package for displaying user feedback along side Shiny inputs
 ### Install from CRAN
 
 ```R
-install.packages("shinyFeeedback")
+install.packages("shinyFeedback")
 ```
 
 ### Or Install Dev Version from GitHub
