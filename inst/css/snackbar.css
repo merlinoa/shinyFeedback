@@ -6,7 +6,7 @@
 /* The snackbar - position it at the bottom and in the middle of the screen */
 .snackbar {
     display: none;
-    min-width: 250px; /* Set a default minimum width */
+    min-width: 350px; /* Set a default minimum width */
     margin-left: -125px; /* Divide value of min-width by 2 */
     background-color: #333; /* Black background color */
     color: #fff; /* White text color */
@@ -38,4 +38,16 @@
 @keyframes fadeout {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
+}
+
+.snackbar_danger {
+  color: #d9534f;
+}
+
+.snackbar_success {
+  color: #5cb85c;
+}
+
+.snackbar_warning {
+  color: #f0ad4e;
 }

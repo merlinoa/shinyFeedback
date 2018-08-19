@@ -167,7 +167,7 @@ Above we used `observe()` instead of `observeEvent()` because we need the feedba
 
 Snackbars are a nice way to notify users that an action has occurred without getting in the users way.
 
-```{r snackbar, eval = FALSE}
+```{r snackbar_wrappers, eval = FALSE}
 ui <- fluidPage(
    useShinyFeedback(),
    br(),
@@ -186,6 +186,61 @@ ui <- fluidPage(
 server <- function(input, output) {
   observeEvent(input$showSnackbarBtn, {
     showSnackbar("mySnackbar", autoHideDuration = NULL)
+  })
+}
+   
+shinyApp(ui, server)
+```
+
+and some simple snackbar wrapper functions
+
+```{r snackbar, eval = FALSE}
+ui <- fluidPage(
+   useShinyFeedback(),
+   br(),
+   
+   actionButton(
+     "showSuccessSnackbar",
+     "Show Success Snack",
+     class = "btn-success"
+   ),
+   actionButton(
+     "showWarningSnackbar",
+     "Show Warning Snack",
+     class = "btn-warning"
+   ),
+   actionButton(
+     "showDangerSnackbar",
+     "Show Danger Snack",
+     class = "btn-danger"
+   ),
+   
+     
+   snackbarSuccess(
+     id = "successSnackbar",
+     message = "You just did something successfully!"
+   ),
+   snackbarWarning(
+     id = "warningSnackbar",
+     message = "You just did something that might be bad?"
+   ),
+   snackbarDanger(
+     id = "dangerSnackbar",
+     message = "You just did something bad!"
+   )
+)
+   
+server <- function(input, output) {
+  observeEvent(input$showSuccessSnackbar, {
+    showSnackbar("successSnackbar")
+  })
+  
+  observeEvent(input$showWarningSnackbar, {
+    showSnackbar("warningSnackbar")
+  })
+  
+  observeEvent(input$showDangerSnackbar, {
+    showSnackbar("dangerSnackbar")
   })
 }
    
