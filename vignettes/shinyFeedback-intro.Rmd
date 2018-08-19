@@ -161,3 +161,33 @@ shinyApp(ui, server)
 ```
 
 Above we used `observe()` instead of `observeEvent()` because we need the feedback message to be triggered both when the modal is opened and when the password input changes.  With this approach you can use any input (not just the input with the feedback message) to trigger a feedback message to be displayed or hidden.
+
+
+## Snackbars
+
+Snackbars are a nice way to notify users that an action has occurred without getting in the users way.
+
+```{r snackbar, eval = FALSE}
+ui <- fluidPage(
+   useShinyFeedback(),
+   br(),
+      
+   actionButton(
+     "showSnackbarBtn",
+     "Show Snackbar"
+   ),
+     
+   snackbar(
+     id = "mySnackbar",
+     message = "Have a snack!"
+   )
+)
+   
+server <- function(input, output) {
+  observeEvent(input$showSnackbarBtn, {
+    showSnackbar("mySnackbar")
+  })
+}
+   
+shinyApp(ui, server)
+```

@@ -9,6 +9,7 @@
 useShinyFeedback <- function() {
   
   shiny::addResourcePath("shinyFeedback", system.file("srcjs", package = "shinyFeedback"))
+  shiny::addResourcePath("snackbarCSS", system.file("css", package = "shinyFeedback"))
   
   return(
     tags$div(
@@ -16,6 +17,14 @@ useShinyFeedback <- function() {
         shiny::tags$head(
           shiny::tags$script(
             src = file.path("shinyFeedback", "checkFeedback.js")
+          ),
+          shiny::tags$script(
+            src = file.path("shinyFeedback", "snackbar.js")
+          ),
+          shiny::tags$link(
+            type = "text/css", 
+            rel = "stylesheet", 
+            href = file.path("snackbarCSS", "snackbar.css")
           )
         )
       ),
