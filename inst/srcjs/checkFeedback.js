@@ -6,6 +6,10 @@
   function Feedbacks() {
     // cache whether each feedback is shown
     this.isShown = {};
+    
+    // store label color so we can revert to original label color when feedback
+    // is removed
+    this.originalLabelColor = null; 
   }
   // add method to Feedbacks prototype
   (function() {
@@ -15,6 +19,10 @@
   
     this.toggle = function(feedbackId) {
       this.isShown[feedbackId] = !this.isShown[feedbackId];
+    };
+    
+    this.setLabelColor = function(rgb) {
+      this.originalLabelColor = rgb;
     };
     
     this.setAllFalse = function() {
@@ -46,9 +54,17 @@
   function feedbackHandler(message, $eInput, $eLabel, $eGroup) {
     var inp = inputs[message.inputId];
     
-    function removeFeedback() {
+    // if `inp.originalLabelColor` is not set, set it.
+    // `inp.originalLabelColor` is used to restore the label of the input back to
+    // its original color after the feeback is removed
+    if (!inp.originalLabelColor) {
+      var labelColor = $eLabel.css("color");
+      inp.setLabelColor(labelColor);
+    }
     
-      $eLabel.css("color", "#333");
+    function removeFeedback() {
+      
+      $eLabel.css("color", inp.originalLabelColor);
       $eInput.removeAttr("style");
       if (message.icon) {
         $("#" + message.inputId + "-icon").remove();
