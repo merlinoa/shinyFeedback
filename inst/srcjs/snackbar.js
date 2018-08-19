@@ -1,23 +1,26 @@
 (function() {
   
-  function showSnackbar(id) {
+  function showSnackbar(id, autoHideDuration) {
 
     // Get the snackbar DIV
     var snackEl = $("#" + id);
 
     // Add the "show" class to DIV
-    snackEl.addClass("show");
+    snackEl.fadeIn("slow");
 
     // After 3 seconds, remove the show class from DIV
-    setTimeout(function() {
-      snackEl.removeClass("show");
-    }, 3000);
+    
+    if (autoHideDuration !== null) {
+      setTimeout(function() {
+        snackEl.fadeOut("slow");
+      }, autoHideDuration);  
+    }
     
     
     var removeBtn = $("#" + id + "_remove_btn");
     
     removeBtn.click(function() {
-      snackEl.removeClass("show");
+      snackEl.fadeOut("slow");
     });
   }
 
