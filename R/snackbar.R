@@ -16,7 +16,15 @@ snackbar <- function(id, message) {
   shiny::tags$div(
     id = id,
     class = "snackbar",
-    message
+    message,
+    tags$span(
+      id = paste0(id, "_remove_btn"),
+      style="float:right; margin-left: 10px", 
+      tags$i(
+        class = "fa fa-times", 
+        `aria-hidden` = "true"
+      )
+    ) 
   )
 }
 

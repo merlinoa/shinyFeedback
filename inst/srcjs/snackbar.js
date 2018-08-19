@@ -12,6 +12,13 @@
     setTimeout(function() {
       snackEl.removeClass("show");
     }, 3000);
+    
+    
+    var removeBtn = $("#" + id + "_remove_btn");
+    
+    removeBtn.click(function() {
+      snackEl.removeClass("show");
+    });
   }
 
 

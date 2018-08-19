@@ -10,7 +10,7 @@
     margin-left: -125px; /* Divide value of min-width by 2 */
     background-color: #333; /* Black background color */
     color: #fff; /* White text color */
-    text-align: center; /* Centered text */
+    text-align: left; 
     border-radius: 2px; /* Rounded borders */
     padding: 16px; /* Padding */
     position: fixed; /* Sit on top of the screen */
