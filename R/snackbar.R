@@ -51,7 +51,7 @@ snackbar <- function(id, message, includeRemoveButton = TRUE, class = "", style 
 #' to \code{shiny::observe()} or \code{shiny::observeEvent()}.
 #' 
 #' @param id A length 1 character vector.  A unique id for the snackbar.
-#' @param autoHideDuration A length 1 numeric vector.  The abount of time in milliseconds to show the 
+#' @param autoHideDuration A length 1 numeric vector.  The amount of time in milliseconds to show the 
 #' snackbar (e.g. \code{3000} is 3 seconds).  Set to NULL to keep snackbar open indefinitely.
 #' 
 #' @import shiny
