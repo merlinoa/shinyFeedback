@@ -56,3 +56,4 @@ if (interactive()) {
 Other feedback wrappers: \code{\link{feedbackSuccess}},
   \code{\link{feedbackWarning}}
 }
+\concept{feedback wrappers}

@@ -8,10 +8,13 @@ snackbar(id, message)
 }
 \arguments{
 \item{id}{A length 1 character vector.  The unique id of the snackbar. This needs to match up with
-the `id` argument specified in the serve side call to `showSnackbar()`.}
+the \code{id} argument specified in the serve side call to \code{showSnackbar()}.}
 
 \item{message}{the text message to display in the snackbar}
 }
 \description{
 UI side function to generate the snackbar html.
+}
+\seealso{
+\code{\link{showSnackbar}}
 }

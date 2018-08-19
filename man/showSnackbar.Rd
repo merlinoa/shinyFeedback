@@ -10,11 +10,11 @@ showSnackbar(id, autoHideDuration = 3000)
 \item{id}{A length 1 character vector.  A unique id for the snackbar.}
 
 \item{autoHideDuration}{A length 1 numeric vector.  The abount of time in milliseconds to show the 
-snackbar (e.g. `3000` is 3 seconds).  Set to NULL to keep snackbar open indefinitely.}
+snackbar (e.g. \code{3000} is 3 seconds).  Set to NULL to keep snackbar open indefinitely.}
 }
 \description{
 Server side function to show a snackbar.  This function should be called in the expression passed
-to `shiny::observe()` or `shiny::observeEvent()`.
+to \code{shiny::observe()} or \code{shiny::observeEvent()}.
 }
 \examples{
 
@@ -30,13 +30,14 @@ if (interactive()) {
     ),
     
     snackbar(
+      id = "mySnackbar",
       message = "Have a snack!"
     )
   )
   
   server <- function(input, output) {
     observeEvent(input$showSnackbarBtn, {
-      showSnackbar("my_snackbar")
+      showSnackbar("mySnackbar")
     })
   }
   

@@ -3,13 +3,14 @@
 #' UI side function to generate the snackbar html.
 #' 
 #' @param id A length 1 character vector.  The unique id of the snackbar. This needs to match up with
-#' the `id` argument specified in the serve side call to `showSnackbar()`.
+#' the \code{id} argument specified in the serve side call to \code{showSnackbar()}.
 #' @param message the text message to display in the snackbar
 #' 
 #' @import shiny
 #' 
 #' @export
 #' 
+#' @seealso \code{\link{showSnackbar}}
 #' 
 snackbar <- function(id, message) {
   shiny::tags$div(
@@ -23,11 +24,11 @@ snackbar <- function(id, message) {
 #' showSnackbar
 #' 
 #' Server side function to show a snackbar.  This function should be called in the expression passed
-#' to `shiny::observe()` or `shiny::observeEvent()`.
+#' to \code{shiny::observe()} or \code{shiny::observeEvent()}.
 #' 
 #' @param id A length 1 character vector.  A unique id for the snackbar.
 #' @param autoHideDuration A length 1 numeric vector.  The abount of time in milliseconds to show the 
-#' snackbar (e.g. `3000` is 3 seconds).  Set to NULL to keep snackbar open indefinitely.
+#' snackbar (e.g. \code{3000} is 3 seconds).  Set to NULL to keep snackbar open indefinitely.
 #' 
 #' @import shiny
 #' 

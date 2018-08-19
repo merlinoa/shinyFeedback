@@ -55,3 +55,4 @@ if (interactive()) {
 Other feedback wrappers: \code{\link{feedbackDanger}},
   \code{\link{feedbackWarning}}
 }
+\concept{feedback wrappers}
