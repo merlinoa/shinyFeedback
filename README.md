@@ -18,7 +18,7 @@ R package for displaying user feedback along side Shiny inputs
 
 Show simple snackbar messages
 
-![]((inst/img/snackbar_gif.gif)
+![](inst/img/snackbar_gif.gif)
 
 # Getting Started
 
