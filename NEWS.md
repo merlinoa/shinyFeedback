@@ -1,3 +1,8 @@
+# shinyFeedback 0.1.0
+
+- added basic snackbar notifications
+- switched feedback to revert back to actual original label color rather than default `Shiny` label color when removing the feedback from the input. 
+
 # shinyFeedback 0.0.4
 
 - bug fix: feedbacks now properly tracked if the arguments to `feeback*()` are dynamic (#4)
