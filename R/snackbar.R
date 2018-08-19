@@ -5,6 +5,10 @@
 #' @param id A length 1 character vector.  The unique id of the snackbar. This needs to match up with
 #' the \code{id} argument specified in the serve side call to \code{showSnackbar()}.
 #' @param message the text message to display in the snackbar
+#' @param includeRemoveButton whether or not to show the remove button on the right side of the
+#' snackbar
+#' @param class A length 1 character vector of CSS classes to add to the snackbar.
+#' @param style A length 1 character vector of CSS styles to add to the snackbar.
 #' 
 #' @import shiny
 #' 
@@ -12,20 +16,32 @@
 #' 
 #' @seealso \code{\link{showSnackbar}}
 #' 
-snackbar <- function(id, message) {
-  shiny::tags$div(
-    id = id,
-    class = "snackbar",
-    message,
-    tags$span(
-      id = paste0(id, "_remove_btn"),
-      style="float:right; margin-left: 10px", 
-      tags$i(
-        class = "fa fa-times", 
-        `aria-hidden` = "true"
-      )
-    ) 
-  )
+snackbar <- function(id, message, includeRemoveButton = TRUE, class = "", style = "") {
+  
+  if (includeRemoveButton == TRUE) {
+    shiny::tags$div(
+      id = id,
+      class = paste0("snackbar ", class),
+      style = style,
+      message,
+      tags$span(
+        id = paste0(id, "_remove_btn"),
+        style = "float: right; margin-left: 10px;",
+        tags$i(
+          class = "fa fa-times", 
+          `aria-hidden` = "true"
+        )
+      ) 
+    )  
+  } else {
+    shiny::tags$div(
+      id = id,
+      class = paste0("snackbar ", class),
+      style = style,
+      message
+    )  
+  }
+  
 }
 
 

@@ -4,13 +4,21 @@
 \alias{snackbar}
 \title{snackbar}
 \usage{
-snackbar(id, message)
+snackbar(id, message, includeRemoveButton = TRUE, class = "",
+  style = "")
 }
 \arguments{
 \item{id}{A length 1 character vector.  The unique id of the snackbar. This needs to match up with
 the \code{id} argument specified in the serve side call to \code{showSnackbar()}.}
 
 \item{message}{the text message to display in the snackbar}
+
+\item{includeRemoveButton}{whether or not to show the remove button on the right side of the
+snackbar}
+
+\item{class}{A length 1 character vector of CSS classes to add to the snackbar.}
+
+\item{style}{A length 1 character vector of CSS styles to add to the snackbar.}
 }
 \description{
 UI side function to generate the snackbar html.
