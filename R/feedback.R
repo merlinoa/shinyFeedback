@@ -47,10 +47,6 @@
 feedback <- function(inputId, condition, text = NULL, color = NULL, 
                      icon = NULL) {
   
-  # TDOD: check that shinyjs and shinyFeedback are set up properly
-  
-  
-  
   # some argument checks
   stopifnot(is.character(inputId))
   stopifnot(is.logical(condition))
