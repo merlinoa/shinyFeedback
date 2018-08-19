@@ -6,11 +6,19 @@ R package for displaying user feedback along side Shiny inputs
 
 # Examples
 
+### Shiny Input Feedbacks
+
 - [Example App on GitHub](https://github.com/merlinoa/shinyFeedbackApp)
 
 - Screenshot of shiny inputs with shinyFeedback messages displayed
 
 ![](inst/img/feedback-screenshot.png)
+
+### Snackbar feedback
+
+Show simple snackbar messages
+
+![]((inst/img/snackbar_gif.gif)
 
 # Getting Started
 

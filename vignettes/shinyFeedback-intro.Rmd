@@ -179,13 +179,13 @@ ui <- fluidPage(
      
    snackbar(
      id = "mySnackbar",
-     message = "You just did something successfully!"
+     message = "You just did something!"
    )
 )
    
 server <- function(input, output) {
   observeEvent(input$showSnackbarBtn, {
-    showSnackbar("mySnackbar", autoHideDuration = NULL)
+    showSnackbar("mySnackbar")
   })
 }
    
