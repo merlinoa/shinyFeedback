@@ -1,18 +1,23 @@
 ## Test environments
-* local ubuntu 16.04, R 3.3.3
-* ubuntu 12.04 (on travis-ci), R 3.3.3
+* local OS X install, R 3.5.1
+* ubuntu 12.04 (on travis-ci), R 3.5.1
 * win-builder (devel and release)
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 note
+
+* This is a new release.
 
 ## Reverse dependencies
 
-no reverse dependencies.
+This is a new release, so there are no reverse dependencies.
 
 ---
 
-* There are currently no downstream dependencies for this package
+* I have run R CMD check on the NUMBER downstream dependencies.
+  (Summary at ...). 
   
 * FAILURE SUMMARY
+
+* All revdep maintainers were notified of the release on RELEASE DATE.
