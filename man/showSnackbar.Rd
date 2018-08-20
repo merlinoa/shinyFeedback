@@ -9,7 +9,7 @@ showSnackbar(id, autoHideDuration = 3000)
 \arguments{
 \item{id}{A length 1 character vector.  A unique id for the snackbar.}
 
-\item{autoHideDuration}{A length 1 numeric vector.  The abount of time in milliseconds to show the 
+\item{autoHideDuration}{A length 1 numeric vector.  The amount of time in milliseconds to show the 
 snackbar (e.g. \code{3000} is 3 seconds).  Set to NULL to keep snackbar open indefinitely.}
 }
 \description{
