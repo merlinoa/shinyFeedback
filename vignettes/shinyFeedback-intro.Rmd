@@ -11,11 +11,11 @@ vignette: >
 
 ## Functionality
 
-The `shinyFeedback` package displays user friendly message that appear along side `shiny` inputs.  Here are pictures of `shiny` inputs with feeback messages displayed:
+The `shinyFeedback` package displays user friendly messages that appear along side `shiny` inputs.  Here are pictures of `shiny` inputs with feeback messages displayed:
 
 ![](feedback-screenshot.png)
 
-These messages can be helpful for guiding your users on how to use the app. 
+These messages can be helpful for instructing users on how to enter valid inputs. 
 
 `shinyFeedback` currently works with the following `shiny::*Input()` functions:
 
@@ -34,8 +34,6 @@ In order to use `shinyFeedback` you need to include the following function at th
 ```{r, eval=FALSE}
 useShinyFeedback()
 ```
-
-The above function is the only change you need to make to your shiny UI.  All other code changes will occur in the server function.
 
 The following is a minimal example of a `shiny` app that uses `shinyFeedback`.  Run the following code in your R console to run the app.
 
@@ -65,13 +63,9 @@ server <- function(input, output) {
 shinyApp(ui, server)
 ```
 
-The above app has one `numericInput()` input in the UI.  In the server function, we write the code that will display a feedback message. This feedback message is displayed when the user enters a negative value.  It is hidden with the input value is >= 0.
+The above app has one `numericInput()` input in the UI.  In the server function, we write the code to conditionally display a feedback message. This feedback message is displayed when the user enters a negative value.  The feedback message is hidden with the input value is >= 0.
 
-The `feedbackWarning()` function is what makes this work.  Run `?` to see more detail on this function:
-
-```{r eval = FALSE}
-?feedbackWarning
-```
+The `feedbackWarning()` function in `server()` controls where and when feedback messages are displayed.  Run `?feedbackWarning` to view the function documentation.
  
 Going back to our minimal app above, the `feedbackWarning()` function sits inside a `shiny::observeEvent()` function.  `feedback*()` functions will always sit inside of these shiny observers.  If you are not comfortable using shiny observers, check out the excellent [shiny documentation](https://shiny.rstudio.com/). I also highly recommend the videos from the [2016 Shiny Developer Conference](https://www.rstudio.com/resources/webinars/shiny-developer-conference/).
 
@@ -87,11 +81,11 @@ The primary function provided by `shinyFeedback` is `feedback()`. `feedback()` c
 - `feedbackDanger()`
 - `feedbackSuccess()`
 
-The above functions provide default styling options for the feedback messages.  These functions are just thin wrappers around the `feedback()` function. A live app with more examples of these functions is available [here](https://merlinoa.shinyapps.io/shinyfeedbackapp/).
+The above functions provide default styling options that are passed to `feedback()`.  A live app with more examples of these functions is available [here](https://merlinoa.shinyapps.io/shinyfeedbackapp/).
 
 ## Multiple `feedback`s
 
-When assigning multiple `feedback()`s to a single input (e.g. you want to display a certain feedback message if the input value >= 1, and a different feedback value if the input is >= 2), place the `feedback()`s in the same `shiny` observer.  If multiple `feedback()` function conditions evaluate to TRUE, only the `feedback()` furthest down in the expression will be displayed.
+When assigning multiple `feedback()`s to a single input (e.g. you want to display a certain feedback message if the input value >= 1, and a different feedback value if the input is >= 2), place the `feedback()`s in the same `shiny` observer.  If multiple `feedback()` function conditions evaluate to TRUE, only the `feedback()` farthest down in the expression will be displayed.
 
 ```{r, eval = FALSE}
 ui <- fluidPage(
@@ -146,21 +140,23 @@ server <- function(input, output) {
     })
   
   
-  observe({
+  observeEvent({
     input$show
+    input$password
+  }, {
     
     feedbackDanger(
       inputId = "password",
       condition = nchar(input$password) < 4,
       text = "Password must be >= 4 characters"
     )
-  })
+  }, priority = -1)
 }
 
 shinyApp(ui, server)
 ```
 
-Above we used `observe()` instead of `observeEvent()` because we need the feedback message to be triggered both when the modal is opened and when the password input changes.  With this approach you can use any input (not just the input with the feedback message) to trigger a feedback message to be displayed or hidden.
+We placed both `input$show` and `input$password` in `observeEvent()`'s `eventExpr` argument because we need the feedback message to be triggered both when the modal is opened and when the password input changes.  We also set the `priority` argument to `observeEvent()` to -1.  This ensures that this observer runs after the observer containing the modal. 
 
 
 ## Snackbars
