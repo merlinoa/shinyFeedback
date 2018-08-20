@@ -1,7 +1,7 @@
 Package: shinyFeedback
 Type: Package
 Title: Displays User Feedback Next to Shiny Inputs
-Version: 0.1.0
+Version: 0.1.0.9000
 Date: 2018-08-19
 Authors@R: person("Andy", "Merlino", email = "merlinoa88@gmail.com", role =
     c("aut", "cre"))
