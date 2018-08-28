@@ -1,15 +1,23 @@
 (function() {
   
+  function escapeId(inputId) {
+    // from https://github.com/daattali/advanced-shiny/blob/master/update-input/www/app-shinyjs.js
+    // Escape characterss that have special selector meaning in jQuery
+    return inputId.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+    
+    //return inputId;//$("#" + inputId);
+  }
+  
   function showSnackbar(id, autoHideDuration) {
 
     // Get the snackbar DIV
-    var snackEl = $("#" + id);
+    var idEscaped = escapeId(id);
+    var snackEl = $("#" + idEscaped);
 
     // Add the "show" class to DIV
     snackEl.fadeIn("slow");
-
-    // After 3 seconds, remove the show class from DIV
     
+    // After 3 seconds, remove the show class from DIV
     if (autoHideDuration !== null) {
       setTimeout(function() {
         snackEl.fadeOut("slow");
@@ -17,7 +25,7 @@
     }
     
     
-    var removeBtn = $("#" + id + "_remove_btn");
+    var removeBtn = $("#" + idEscaped + "_remove_btn");
     
     removeBtn.click(function() {
       snackEl.fadeOut("slow");
