@@ -76,13 +76,14 @@
       }
     }
     
-    if (!message.condition && inp.isShown[message.feedbackId]){
+    
+    if ((message.condition !== true) && inp.isShown[message.feedbackId]){
       inp.toggle(message.feedbackId);
       removeFeedback();
     }
     
     // if feedback should transition to shown
-    if (message.condition) {
+    if (message.condition === true) {
       
       // set all feedbacks besides feedback transitioning to isShown false
       inp.setAllFalse();
