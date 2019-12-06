@@ -40,7 +40,7 @@
 #'   shinyApp(ui, server)
 #' }
 #' 
-feedbackWarning <- function(inputId, condition, 
+feedbackWarning <- function(inputId, condition = TRUE, 
                             text = "Ye be warned",
                             color = "#F89406", 
                             icon = shiny::icon("warning-sign", lib="glyphicon")) {
@@ -98,7 +98,7 @@ feedbackWarning <- function(inputId, condition,
 #'   shinyApp(ui, server)
 #' }
 #' 
-feedbackDanger <- function(inputId, condition, 
+feedbackDanger <- function(inputId, condition = TRUE, 
                            text = "Danger, turn back!",
                            color = "#d9534f", 
                            icon = shiny::icon("exclamation-sign", lib="glyphicon")) {
@@ -155,7 +155,7 @@ feedbackDanger <- function(inputId, condition,
 #'   shinyApp(ui, server)
 #' }
 #' 
-feedbackSuccess <- function(inputId, condition, 
+feedbackSuccess <- function(inputId, condition = TRUE, 
                             text = NULL,
                             color = "#5cb85c", 
                             icon = shiny::icon("ok", lib="glyphicon")) {

@@ -6,7 +6,7 @@
 \usage{
 feedbackDanger(
   inputId,
-  condition,
+  condition = TRUE,
   text = "Danger, turn back!",
   color = "#d9534f",
   icon = shiny::icon("exclamation-sign", lib = "glyphicon")

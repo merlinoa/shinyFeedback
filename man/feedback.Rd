@@ -4,7 +4,7 @@
 \alias{feedback}
 \title{feedback}
 \usage{
-feedback(inputId, condition, text = NULL, color = NULL, icon = NULL)
+feedback(inputId, condition = TRUE, text = NULL, color = NULL, icon = NULL)
 }
 \arguments{
 \item{inputId}{the Shiny input's \code{inputId} argument}

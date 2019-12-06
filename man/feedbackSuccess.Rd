@@ -6,7 +6,7 @@
 \usage{
 feedbackSuccess(
   inputId,
-  condition,
+  condition = TRUE,
   text = NULL,
   color = "#5cb85c",
   icon = shiny::icon("ok", lib = "glyphicon")

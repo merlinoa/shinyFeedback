@@ -1,3 +1,5 @@
+- `feedback()`, `feedbackDanger()`, `feedbackWarning()` and `feedbackSuccess()` now default to `condition = TRUE`; this means you can control their action with an if statement, like `if (input$a < 0) feedbackDanger("a")`
+
 # shinyFeedback 0.1.0
 
 - added basic snackbar notifications

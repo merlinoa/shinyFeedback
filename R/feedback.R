@@ -44,7 +44,7 @@
 #'   shinyApp(ui, server)
 #' }
 #' 
-feedback <- function(inputId, condition, text = NULL, color = NULL, 
+feedback <- function(inputId, condition = TRUE, text = NULL, color = NULL, 
                      icon = NULL) {
   
   # some argument checks

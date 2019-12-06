@@ -6,7 +6,7 @@
 \usage{
 feedbackWarning(
   inputId,
-  condition,
+  condition = TRUE,
   text = "Ye be warned",
   color = "#F89406",
   icon = shiny::icon("warning-sign", lib = "glyphicon")
