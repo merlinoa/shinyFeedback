@@ -4,8 +4,7 @@
 \alias{snackbar}
 \title{snackbar}
 \usage{
-snackbar(id, message, includeRemoveButton = TRUE, class = "",
-  style = "")
+snackbar(id, message, includeRemoveButton = TRUE, class = "", style = "")
 }
 \arguments{
 \item{id}{A length 1 character vector.  The unique id of the snackbar. This needs to match up with

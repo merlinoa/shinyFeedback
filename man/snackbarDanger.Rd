@@ -21,7 +21,8 @@ This is a wrapper for \code{\link{snackbar}}.  It provides red danger/error styl
 \seealso{
 \code{\link{showSnackbar}}
 
-Other snackbar wrappers: \code{\link{snackbarSuccess}},
-  \code{\link{snackbarWarning}}
+Other snackbar wrappers: 
+\code{\link{snackbarSuccess}()},
+\code{\link{snackbarWarning}()}
 }
 \concept{snackbar wrappers}

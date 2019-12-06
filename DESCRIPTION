@@ -10,7 +10,8 @@ License: GPL-3
 LazyData: true
 Depends:
     R (>= 3.1.2)
-RoxygenNote: 6.1.0
+RoxygenNote: 7.0.2
+Encoding: UTF-8
 Suggests:
     knitr,
     rmarkdown
