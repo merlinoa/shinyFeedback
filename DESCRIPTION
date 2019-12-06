@@ -18,3 +18,5 @@ VignetteBuilder: knitr
 Imports:
     shiny,
     digest
+URL: https://github.com/merlinoa/shinyFeedback
+BugReports: https://github.com/merlinoa/shinyFeedback/issues
