@@ -21,7 +21,8 @@ This is a wrapper for \code{\link{snackbar}}.  It provides yellow warning stylin
 \seealso{
 \code{\link{showSnackbar}}
 
-Other snackbar wrappers: \code{\link{snackbarDanger}},
-  \code{\link{snackbarSuccess}}
+Other snackbar wrappers: 
+\code{\link{snackbarDanger}()},
+\code{\link{snackbarSuccess}()}
 }
 \concept{snackbar wrappers}

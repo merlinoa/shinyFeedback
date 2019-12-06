@@ -4,8 +4,13 @@
 \alias{feedbackSuccess}
 \title{feedbackSuccess}
 \usage{
-feedbackSuccess(inputId, condition, text = NULL, color = "#5cb85c",
-  icon = shiny::icon("ok", lib = "glyphicon"))
+feedbackSuccess(
+  inputId,
+  condition,
+  text = NULL,
+  color = "#5cb85c",
+  icon = shiny::icon("ok", lib = "glyphicon")
+)
 }
 \arguments{
 \item{inputId}{the Shiny input's \code{inputId} argument}
@@ -52,7 +57,8 @@ if (interactive()) {
 \seealso{
 \code{\link{feedback}}, \code{\link{feedbackDanger}}, \code{\link{feedbackSuccess}}
 
-Other feedback wrappers: \code{\link{feedbackDanger}},
-  \code{\link{feedbackWarning}}
+Other feedback wrappers: 
+\code{\link{feedbackDanger}()},
+\code{\link{feedbackWarning}()}
 }
 \concept{feedback wrappers}

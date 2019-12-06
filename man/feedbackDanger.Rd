@@ -4,9 +4,13 @@
 \alias{feedbackDanger}
 \title{feedbackDanger}
 \usage{
-feedbackDanger(inputId, condition, text = "Danger, turn back!",
-  color = "#d9534f", icon = shiny::icon("exclamation-sign", lib =
-  "glyphicon"))
+feedbackDanger(
+  inputId,
+  condition,
+  text = "Danger, turn back!",
+  color = "#d9534f",
+  icon = shiny::icon("exclamation-sign", lib = "glyphicon")
+)
 }
 \arguments{
 \item{inputId}{the Shiny input's \code{inputId} argument}
@@ -53,7 +57,8 @@ if (interactive()) {
 \seealso{
 \code{\link{feedback}}, \code{\link{feedbackWarning}}, \code{\link{feedbackSuccess}}
 
-Other feedback wrappers: \code{\link{feedbackSuccess}},
-  \code{\link{feedbackWarning}}
+Other feedback wrappers: 
+\code{\link{feedbackSuccess}()},
+\code{\link{feedbackWarning}()}
 }
 \concept{feedback wrappers}

@@ -21,7 +21,8 @@ This is a wrapper for \code{\link{snackbar}}.  It provides green success styling
 \seealso{
 \code{\link{showSnackbar}}
 
-Other snackbar wrappers: \code{\link{snackbarDanger}},
-  \code{\link{snackbarWarning}}
+Other snackbar wrappers: 
+\code{\link{snackbarDanger}()},
+\code{\link{snackbarWarning}()}
 }
 \concept{snackbar wrappers}
