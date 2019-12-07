@@ -19,6 +19,9 @@ useShinyFeedback <- function() {
             src = file.path("shinyFeedback", "checkFeedback.js")
           ),
           shiny::tags$script(
+            src = file.path("shinyFeedback", "showHideFeedback.js")
+          ),
+          shiny::tags$script(
             src = file.path("shinyFeedback", "snackbar.js")
           ),
           shiny::tags$link(

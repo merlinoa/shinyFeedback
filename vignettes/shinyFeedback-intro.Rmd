@@ -1,5 +1,5 @@
 ---
-title: "shinyFeedback Introduction"
+title: "shinyFeedback Intro"
 author: "Andy Merlino"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -11,21 +11,13 @@ vignette: >
 
 ## Functionality
 
-The `shinyFeedback` package displays user friendly messages that appear along side `shiny` inputs.  Here are pictures of `shiny` inputs with feeback messages displayed:
+The `shinyFeedback` package displays user friendly messages that appear along side `shiny` inputs.  e.g.
 
 ![](feedback-screenshot.png)
 
-These messages can be helpful for instructing users on how to enter valid inputs. 
-
 `shinyFeedback` currently works with the following `shiny::*Input()` functions:
 
-- `numericInput()`
 - `textInput()`
-- `passwordInput()`
-- `selectInput()`
-- `sliderInput()`
-- `dateInput()`
-- `textAreaInput()`
 
 ## Setup
 
@@ -44,201 +36,28 @@ library(shinyFeedback)
 ui <- fluidPage(
   useShinyFeedback(), # include shinyFeedback
   
-  numericInput(
-    "warningInput",
-    "Warn if Negative",
-    value = 0
+  textInput(
+    "myInput",
+    "Warn if >3 characters",
+    value = ''
   )
 )
 
-server <- function(input, output) {
-  observeEvent(input$warningInput, {
-    feedbackWarning(
-      inputId = "warningInput",
-      condition = input$warningInput < 0
-    )
-  })
-}
-
-shinyApp(ui, server)
-```
-
-The above app has one `numericInput()` input in the UI.  In the server function, we write the code to conditionally display a feedback message. This feedback message is displayed when the user enters a negative value.  The feedback message is hidden with the input value is >= 0.
-
-The `feedbackWarning()` function in `server()` controls where and when feedback messages are displayed.  Run `?feedbackWarning` to view the function documentation.
- 
-Going back to our minimal app above, the `feedbackWarning()` function sits inside a `shiny::observeEvent()` function.  `feedback*()` functions will always sit inside of these shiny observers.  If you are not comfortable using shiny observers, check out the excellent [shiny documentation](https://shiny.rstudio.com/). I also highly recommend the videos from the [2016 Shiny Developer Conference](https://www.rstudio.com/resources/webinars/shiny-developer-conference/).
-
-## The `feedback` function
-
-The primary function provided by `shinyFeedback` is `feedback()`. `feedback()` creates messages like those shown in the image at the top of this vignette.  The color, icon, and text of the feedback message can be customized.
-
-## Handy `feedback` wrappers
-
-`shinyFeedback` has 3 convenience functions:
-
-- `feedbackWarning()`
-- `feedbackDanger()`
-- `feedbackSuccess()`
-
-The above functions provide default styling options that are passed to `feedback()`.  A live app with more examples of these functions is available [here](https://merlinoa.shinyapps.io/shinyfeedbackapp/).
-
-## Multiple `feedback`s
-
-When assigning multiple `feedback()`s to a single input (e.g. you want to display a certain feedback message if the input value >= 1, and a different feedback value if the input is >= 2), place the `feedback()`s in the same `shiny` observer.  If multiple `feedback()` function conditions evaluate to TRUE, only the `feedback()` farthest down in the expression will be displayed.
-
-```{r, eval = FALSE}
-ui <- fluidPage(
-  useShinyFeedback(), # include shinyFeedback
-  
-  numericInput(
-    "multiFeedbacks",
-    "1 is scary 2 is dangerous", 
-    value = 1
-  )
-)
-
-server <- function(input, output) {
-  observeEvent(input$multiFeedbacks, {
-    feedbackWarning(
-      inputId = "multiFeedbacks",
-      condition = input$multiFeedbacks >= 1,
-      text = "Warning 1 is a lonely number"
-    )
-    feedbackDanger(
-      inputId = "multiFeedbacks",
-      condition = input$multiFeedbacks >= 2,
-      text = "2+ is danger"
-    )
-  })
-}
-
-shinyApp(ui, server)
-```
-
-When the above input is >=2, both `feedback*()` function conditions are TRUE, but Only the `feedbackDanger()` is displayed because it is called after the `feedbackWarning()`.
-
-# Modal Popup
-
-If you want to display a feedback message next to an input that is inside a shiny modal, make sure that the observer is executed when the modal is opened.
-
-```{r modal_eg, eval = FALSE}
-ui <- fluidPage(
-  useShinyFeedback(), # include shinyFeedback
-  actionButton("show", "Show modal dialog")
-)
-
-server <- function(input, output) {
-  observeEvent(input$show, {
-      showModal(modalDialog(
-        title = "Important message",
-        passwordInput(
-          "password",
-          "Password"
-        )
-      ))
-    })
-  
-  
-  observeEvent({
-    input$show
-    input$password
-  }, {
+server <- function(input, output, session) {
+  observeEvent(input$myInput, {
     
-    feedbackDanger(
-      inputId = "password",
-      condition = nchar(input$password) < 4,
-      text = "Password must be >= 4 characters"
-    )
-  }, priority = -1)
+    if (nchar(input$myInput) > 3) {
+      showFeedback(
+        inputId = "myInput",
+        color = '#FF0000',
+        text = 'too many chars'
+      )  
+    }
+    
+  })
 }
 
 shinyApp(ui, server)
 ```
 
-We placed both `input$show` and `input$password` in `observeEvent()`'s `eventExpr` argument because we need the feedback message to be triggered both when the modal is opened and when the password input changes.  We also set the `priority` argument to `observeEvent()` to -1.  This ensures that this observer runs after the observer containing the modal. 
-
-
-## Snackbars
-
-Snackbars are a nice way to notify users that an action has occurred without getting in the users way.
-
-```{r snackbar_wrappers, eval = FALSE}
-ui <- fluidPage(
-   useShinyFeedback(),
-   br(),
-      
-   actionButton(
-     "showSnackbarBtn",
-     "Show Snackbar"
-   ),
-     
-   snackbar(
-     id = "mySnackbar",
-     message = "You just did something!"
-   )
-)
-   
-server <- function(input, output) {
-  observeEvent(input$showSnackbarBtn, {
-    showSnackbar("mySnackbar")
-  })
-}
-   
-shinyApp(ui, server)
-```
-
-and some simple snackbar wrapper functions
-
-```{r snackbar, eval = FALSE}
-ui <- fluidPage(
-   useShinyFeedback(),
-   br(),
-   
-   actionButton(
-     "showSuccessSnackbar",
-     "Show Success Snack",
-     class = "btn-success"
-   ),
-   actionButton(
-     "showWarningSnackbar",
-     "Show Warning Snack",
-     class = "btn-warning"
-   ),
-   actionButton(
-     "showDangerSnackbar",
-     "Show Danger Snack",
-     class = "btn-danger"
-   ),
-   
-     
-   snackbarSuccess(
-     id = "successSnackbar",
-     message = "You just did something successfully!"
-   ),
-   snackbarWarning(
-     id = "warningSnackbar",
-     message = "You just did something that might be bad?"
-   ),
-   snackbarDanger(
-     id = "dangerSnackbar",
-     message = "You just did something bad!"
-   )
-)
-   
-server <- function(input, output) {
-  observeEvent(input$showSuccessSnackbar, {
-    showSnackbar("successSnackbar")
-  })
-  
-  observeEvent(input$showWarningSnackbar, {
-    showSnackbar("warningSnackbar")
-  })
-  
-  observeEvent(input$showDangerSnackbar, {
-    showSnackbar("dangerSnackbar")
-  })
-}
-   
-shinyApp(ui, server)
-```
+The above app has one `textInput()` input in the UI.  In the server function, we write the code to conditionally display a feedback message. If the text input has more than 3 characters, the feeback message is displayed.
