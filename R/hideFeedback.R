@@ -5,14 +5,9 @@
 #' @param inputId the Shiny input's \code{inputId} argument
 #' @param session the \code{shiny} session
 #' 
-#' @importFrom digest digest
 #' @importFrom shiny getDefaultReactiveDomain
 #' 
-#' @seealso \code{\link{showFeedbackWarning}}, \code{\link{showFeedbackDanger}}, \code{\link{showFeedbackSuccess}}
-#' 
 #' @export
-#' 
-#' @examples 
 #' 
 #' 
 hideFeedback <- function(
