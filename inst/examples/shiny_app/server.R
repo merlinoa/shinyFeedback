@@ -34,4 +34,22 @@ function(input, output, session) {
     
   })
   
+  observeEvent(input$myPasswordInput, {
+    
+    
+    if (nchar(input$myPasswordInput) > 5) {
+      
+      showFeedback(
+        inputId = "myPasswordInput",
+        text = 'hi',
+        color = '#00FF00',
+        icon = icon('check')
+      )  
+      
+    } else {
+      hideFeedback(inputId = "myPasswordInput")
+    }
+    
+  })
+  
 }

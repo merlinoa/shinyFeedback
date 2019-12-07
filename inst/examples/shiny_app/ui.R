@@ -24,7 +24,13 @@ fluidPage(
       value = 11
     ),
     
-    h2("passwordInput")
+    h2("passwordInput"),
+    
+    passwordInput(
+      inputId = "myPasswordInput",
+      label = "Success > 5 chars",
+      value = ""
+    )
     
   ),
   
