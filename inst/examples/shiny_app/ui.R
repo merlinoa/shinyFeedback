@@ -11,6 +11,14 @@ fluidPage(
       inputId = "myTextInput",
       label = "Danger if > 3 chars",
       value = ""
+    ),
+    
+    h2("dateInput"),
+    
+    dateInput(
+      inputId = "myDateInput",
+      label = "Danger if not today",
+      value = Sys.Date()
     )
 
   ),

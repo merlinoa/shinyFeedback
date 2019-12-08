@@ -16,6 +16,21 @@ function(input, output, session) {
     
   })
   
+  observeEvent(input$myDateInput, {
+    
+    if (input$myDateInput != Sys.Date()) {
+      
+      showFeedbackDanger(
+        inputId = "myDateInput",
+        text = 'not today'
+      )  
+      
+    } else {
+      hideFeedback(inputId = "myDateInput")
+    }
+    
+  })
+  
   
   observeEvent(input$myNumericInput, {
     req(input$myNumericInput)

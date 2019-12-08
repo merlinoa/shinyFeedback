@@ -18,6 +18,9 @@ The `shinyFeedback` package displays user friendly messages that appear along si
 `shinyFeedback` currently works with the following `shiny::*Input()` functions:
 
 - `textInput()`
+- `numericInput()`
+- `selectInput()`
+- `dateInput()`
 
 ## Setup
 

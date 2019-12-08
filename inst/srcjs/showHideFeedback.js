@@ -133,10 +133,77 @@
     
   }
   
+  
+  
+  
+  // textInputFeedback functions
+  var dateInputFeedback = {
+    "find": function(inputId) {
+      var formGroup = findInput(inputId);
+      var label = formGroup.children("label");
+      var input = formGroup.children("input");
+    
+      return {
+        "input": input,
+        "label": label,
+        "formGroup": formGroup
+      }
+    },
+    
+    "hasFeedback": function(inputObject) {
+      
+      return inputObject.formGroup.hasClass("has-feedback")
+    },
+    
+    /* show the feedback along side the input
+    *
+    * @param message the `message` object sent from Shiny
+    * 
+    */
+    "show": function(inputObject, message) {
+      
+      var obj = inputObject 
+      
+      if (message.color) {
+        obj.label.css("color", message.color);
+        obj.input.css("border", "1px solid " + message.color);  
+      }
+      
+      if (message.text) {
+        $("<div id='" + message.inputId + "-text' class='col-xs-12'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
+        obj.formGroup.append("</div><br id='" + message.inputId + "-spacing'/>");
+      }
+      
+      obj.formGroup.addClass("has-feedback");
+      if (message.icon) {
+        $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + ";'>" + message.icon + "</span>").insertAfter(obj.input);
+      }
+    },
+    
+    "hide": function(inputObject, message) {
+      
+      var obj = inputObject
+      
+      obj.label.css("color", '');
+      obj.input.removeAttr("style");
+      
+      $("#" + message.inputId + "-icon").remove();
+      
+      inputObject.formGroup.removeClass("has-feedback");
+      
+      $("#" + message.inputId + "-text").remove();
+      $("#" + message.inputId + "-spacing").remove();
+    }
+    
+  }
+  
+  
+  
+  
   // all shiny input bindings that are supported by shinyFeedback
   var supportedInputs = [
     {name: "shiny.selectInput", feedback: selectInputFeedback},
-    //"shiny.dateInput",
+    {name: "shiny.dateInput", feedback: dateInputFeedback},
     //"shiny.sliderInput",
     {name: "shiny.numberInput", feedback: textInputFeedback},
     {name: "shiny.passwordInput", feedback: textInputFeedback},
