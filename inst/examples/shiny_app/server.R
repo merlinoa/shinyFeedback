@@ -31,6 +31,21 @@ function(input, output, session) {
     
   })
   
+  observeEvent(input$myTextAreaInput, {
+    
+    if (nchar(input$myTextAreaInput) > 10) {
+      
+      showFeedbackDanger(
+        inputId = "myTextAreaInput",
+        text = 'not today'
+      )  
+      
+    } else {
+      hideFeedback(inputId = "myTextAreaInput")
+    }
+    
+  })
+  
   
   observeEvent(input$myNumericInput, {
     req(input$myNumericInput)
@@ -63,6 +78,23 @@ function(input, output, session) {
     }
     
   })
+  
+  
+  observeEvent(input$mySliderInput, {
+    
+    if (input$mySliderInput > 5) {
+      
+      showFeedbackWarning(
+        inputId = "mySliderInput"
+      )  
+      
+    } else {
+      hideFeedback(inputId = "mySliderInput")
+    }
+    
+  })
+  
+  
   
   observeEvent(input$mySelectizeInput, {
     

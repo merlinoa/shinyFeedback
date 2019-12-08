@@ -19,6 +19,14 @@ fluidPage(
       inputId = "myDateInput",
       label = "Danger if not today",
       value = Sys.Date()
+    ),
+    
+    h2("textAreaInput"),
+    
+    textAreaInput(
+      inputId = "myTextAreaInput",
+      label = "Success if > 10 chars",
+      value = "Feedback is displayed"
     )
 
   ),
@@ -38,6 +46,16 @@ fluidPage(
       inputId = "myPasswordInput",
       label = "Success > 5 chars",
       value = ""
+    ),
+    
+    h2("sliderInput"),
+    
+    sliderInput(
+      inputId = "mySliderInput",
+      label = "Warn if > 5",
+      value = 8,
+      min = 0,
+      max = 10
     )
     
   ),

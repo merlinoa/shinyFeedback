@@ -204,10 +204,10 @@
   var supportedInputs = [
     {name: "shiny.selectInput", feedback: selectInputFeedback},
     {name: "shiny.dateInput", feedback: dateInputFeedback},
-    //"shiny.sliderInput",
+    {name: "shiny.sliderInput", feedback: textInputFeedback},
     {name: "shiny.numberInput", feedback: textInputFeedback},
     {name: "shiny.passwordInput", feedback: textInputFeedback},
-    //"shiny.textareaInput",
+    {name: "shiny.textareaInput", feedback: textInputFeedback},
     {name: "shiny.textInput", feedback: textInputFeedback}
   ];
   
