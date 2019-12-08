@@ -63,13 +63,9 @@ showFeedbackWarning <- function(
 #' showFeedbackDanger
 #' 
 #' 
-#' @inheritParams showFeedback
-#' 
 #' @importFrom shiny icon
 #' 
 #' @rdname showFeedback-wrappers
-#' 
-#' @family showFeedback wrappers
 #' 
 #' @export
 #' 
@@ -90,8 +86,6 @@ showFeedbackDanger <- function(
 
 #' showFeedbackSuccess
 #' 
-#' 
-#' @inheritParams feedback
 #' 
 #' @importFrom shiny icon
 #'

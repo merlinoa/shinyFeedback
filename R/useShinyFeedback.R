@@ -16,9 +16,6 @@ useShinyFeedback <- function() {
       shiny::singleton(
         shiny::tags$head(
           shiny::tags$script(
-            src = file.path("shinyFeedback", "checkFeedback.js")
-          ),
-          shiny::tags$script(
             src = file.path("shinyFeedback", "showHideFeedback.js")
           ),
           shiny::tags$script(
