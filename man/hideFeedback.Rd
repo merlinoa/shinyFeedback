@@ -14,10 +14,3 @@ hideFeedback(inputId, session = shiny::getDefaultReactiveDomain())
 \description{
 hide feedback next to Shiny input
 }
-\examples{
-
-
-}
-\seealso{
-\code{\link{showFeedbackWarning}}, \code{\link{showFeedbackDanger}}, \code{\link{showFeedbackSuccess}}
-}

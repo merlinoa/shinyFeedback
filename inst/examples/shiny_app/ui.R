@@ -38,7 +38,22 @@ fluidPage(
     width = 4,
     h2("selectInput"),
     
-    h2("Selectize = FALSE")
+    selectizeInput(
+      inputId = "mySelectizeInput",
+      label = "Warn if A",
+      selected = NULL,
+      choices = c("A", "B")
+    ),
+    
+    h2("Selectize = FALSE"),
+    
+    selectInput(
+      inputId = "mySelectInput",
+      label = "Warn if A",
+      selected = NULL,
+      choices = c("A", "B"),
+      selectize = FALSE
+    )
   
   )
   

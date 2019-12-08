@@ -39,15 +39,42 @@ function(input, output, session) {
     
     if (nchar(input$myPasswordInput) > 5) {
       
-      showFeedback(
-        inputId = "myPasswordInput",
-        text = 'hi',
-        color = '#00FF00',
-        icon = icon('check')
+      showFeedbackSuccess(
+        inputId = "myPasswordInput"
       )  
       
     } else {
       hideFeedback(inputId = "myPasswordInput")
+    }
+    
+  })
+  
+  observeEvent(input$mySelectizeInput, {
+    
+    if (input$mySelectizeInput == "A") {
+      
+      showFeedbackWarning(
+        inputId = "mySelectizeInput",
+        text = "Warn for A"
+      )  
+      
+    } else {
+      hideFeedback(inputId = "mySelectizeInput")
+    }
+    
+  })
+  
+  observeEvent(input$mySelectInput, {
+    
+    if (input$mySelectInput == "A") {
+      
+      showFeedbackDanger(
+        inputId = "mySelectInput",
+        text = "A is Dangerous"
+      )  
+      
+    } else {
+      hideFeedback(inputId = "mySelectInput")
     }
     
   })
