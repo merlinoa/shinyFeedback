@@ -2,6 +2,9 @@
 % Please edit documentation in R/showFeedback.R
 \name{showFeedback}
 \alias{showFeedback}
+\alias{showFeedbackWarning}
+\alias{showFeedbackDanger}
+\alias{showFeedbackSuccess}
 \title{showFeedback}
 \usage{
 showFeedback(
@@ -10,6 +13,27 @@ showFeedback(
   color = NULL,
   icon = NULL,
   session = shiny::getDefaultReactiveDomain()
+)
+
+showFeedbackWarning(
+  inputId,
+  text = "Ye be warned",
+  color = "#F89406",
+  icon = shiny::icon("warning-sign", lib = "glyphicon")
+)
+
+showFeedbackDanger(
+  inputId,
+  text = "Danger, turn back!",
+  color = "#d9534f",
+  icon = shiny::icon("exclamation-sign", lib = "glyphicon")
+)
+
+showFeedbackSuccess(
+  inputId,
+  text = NULL,
+  color = "#5cb85c",
+  icon = shiny::icon("ok", lib = "glyphicon")
 )
 }
 \arguments{
@@ -24,7 +48,7 @@ showFeedback(
 \item{session}{the \code{shiny} session}
 }
 \description{
-show feedback next to Shiny input
+Show feedback next to Shiny inputs.
 }
 \examples{
 
@@ -51,6 +75,8 @@ if (interactive()) {
           color = "#d9534f",
           icon = shiny::icon("exclamation-sign", lib="glyphicon")
         )
+      } else {
+        hideFeedback("exampleInput")
       }
       
     })
@@ -59,7 +85,34 @@ if (interactive()) {
   shinyApp(ui, server)
 }
 
+
+## Only run examples in interacive R sessions
+if (interactive()) {
+  library(shiny)
+  
+  ui <- fluidPage(
+    useShinyFeedback(),
+    
+    numericInput(
+      "exampleInput",
+      "Show Feedback When < 0",
+      value = -5
+    )
+  )
+  
+  server <- function(input, output, session) {
+    observeEvent(input$exampleInput, {
+      
+      if (input$exampleInput < 0) {
+        showFeedbackWarning("exampleInput")
+      } else {
+        hideFeedback("exampleInput")
+      }
+      
+    })
+  }
+  
+  shinyApp(ui, server)
 }
-\seealso{
-\code{\link{showFeedbackWarning}}, \code{\link{showFeedbackDanger}}, \code{\link{showFeedbackSuccess}}
+
 }
