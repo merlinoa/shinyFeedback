@@ -99,3 +99,52 @@ server <- function(input, output, session) {
 
 shinyApp(ui, server)
 ```
+
+
+## Usage Inside Shiny Modules
+
+shinyFeedback works inside shiny modules.
+Because shiny modules encapsulate input and output IDs in their own namespaces, the `inputID`s targeted by shinyFeedback must prepend these namespaces, too.
+
+Helpfully, you can also just call `shinyFeedback::useShinyFeedback()` inside the module UI function, neatly encapsulating shinyFeedback inside the module.
+
+Here is the above example adapted to modules:
+
+```{r, eval=FALSE}
+library(shiny)
+library(shinyFeedback)
+
+numberInput <- function(id) {
+  ns <- NS(id)
+  tagList(
+    useShinyFeedback(),  # inclusion here is ideal; b/c inside module
+    numericInput(
+      ns("warningInput"),
+      "Warn if Negative",
+      value = 0
+    )
+  )
+}
+
+number <- function(input, output, session) {
+  ns <- session$ns
+  observeEvent(input$warningInput, {
+    feedbackWarning(
+      inputId = ns("warningInput"),
+      # idiomatic as per https://shiny.rstudio.com/articles/modules.html
+      condition = input$warningInput < 0
+    )
+  })
+}
+
+
+ui <- fluidPage(
+  numberInput(id = "numberFoo")
+)
+
+server <- function(input, output) {
+  callModule(module = number, id = "numberFoo")
+}
+
+shinyApp(ui, server)
+```
