@@ -2,7 +2,7 @@
 #' 
 #' function to load js for using \code{shinyFeedback}
 #' 
-#' @import shiny
+#' @importFrom shiny addResourcePath singleton tags
 #' 
 #' @export
 #' 
