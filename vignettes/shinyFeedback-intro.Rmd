@@ -21,14 +21,12 @@ The `shinyFeedback` package displays user friendly messages that appear along si
 - `numericInput()`
 - `selectInput()`
 - `dateInput()`
+- `selectInput()`
+- `sliderInput()`
 
 ## Setup
 
-In order to use `shinyFeedback` you need to include the following function at the top of your UI.
-
-```{r, eval=FALSE}
-useShinyFeedback()
-```
+In order to use `shinyFeedback` you need to include the `useShinyFeedback()` function at the top of your UI.
 
 The following is a minimal example of a `shiny` app that uses `shinyFeedback`.  Run the following code in your R console to run the app.
 
@@ -50,11 +48,12 @@ server <- function(input, output, session) {
   observeEvent(input$myInput, {
     
     if (nchar(input$myInput) > 3) {
-      showFeedback(
+      showFeedbackDanger(
         inputId = "myInput",
-        color = '#FF0000',
         text = 'too many chars'
       )  
+    } else {
+      hideFeedback("myInput")
     }
     
   })
