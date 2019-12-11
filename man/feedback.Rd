@@ -5,7 +5,7 @@
 \alias{feedbackWarning}
 \alias{feedbackDanger}
 \alias{feedbackSuccess}
-\title{feedback (Defunct)}
+\title{feedback}
 \usage{
 feedback(
   inputId,
@@ -21,7 +21,8 @@ feedbackWarning(
   show,
   text = "Ye be warned",
   color = "#F89406",
-  icon = shiny::icon("warning-sign", lib = "glyphicon")
+  icon = shiny::icon("warning-sign", lib = "glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
 )
 
 feedbackDanger(
@@ -29,7 +30,8 @@ feedbackDanger(
   show,
   text = "Danger, turn back!",
   color = "#d9534f",
-  icon = shiny::icon("exclamation-sign", lib = "glyphicon")
+  icon = shiny::icon("exclamation-sign", lib = "glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
 )
 
 feedbackSuccess(
@@ -37,7 +39,8 @@ feedbackSuccess(
   show,
   text = NULL,
   color = "#5cb85c",
-  icon = shiny::icon("ok", lib = "glyphicon")
+  icon = shiny::icon("ok", lib = "glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
 )
 }
 \arguments{

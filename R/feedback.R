@@ -1,4 +1,4 @@
-#' feedback (Defunct)
+#' feedback
 #' 
 #' Show / hide feedback messages.
 #' 
