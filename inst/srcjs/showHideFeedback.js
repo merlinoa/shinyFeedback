@@ -282,5 +282,35 @@
       
     }
   )
+  
+  
+  Shiny.addCustomMessageHandler(
+    'feedback',
+    function(message) {
+      var inputName = findInputBinding(message.inputId).name;
+    
+      // get the correct feeback handler functions 
+      var feedbackFun = findInputFeedback(inputName);
+      if (feedbackFun === null) {
+        // the input type does not have feedback handlers
+        console.error('input binding is not supported by shinyFeedback')
+        return
+      }
+      
+      var theInput = feedbackFun.find(message.inputId)
+      
+      if (message.show === true) {
+        if (feedbackFun.hasFeedback(theInput) === false) {
+          feedbackFun.show(theInput, message)
+        } else {
+          feedbackFun.hide(theInput, message)
+          feedbackFun.show(theInput, message)
+        }  
+      } else {
+        feedbackFun.hide(theInput, message)
+      }
+      
+    }
+  )
 })()
   

@@ -40,7 +40,7 @@ ui <- fluidPage(
   textInput(
     "myInput",
     "Warn if >3 characters",
-    value = ''
+    value = ""
   )
 )
 
@@ -50,7 +50,7 @@ server <- function(input, output, session) {
     if (nchar(input$myInput) > 3) {
       showFeedbackWarning(
         inputId = "myInput",
-        text = 'too many chars'
+        text = "too many chars"
       )  
     } else {
       hideFeedback("myInput")
@@ -85,7 +85,7 @@ server <- function(input, output, session) {
     if (input$myInput > 3 && input$myInput <= 5) {
       showFeedbackWarning(
         inputId = "myInput",
-        text = 'warning'
+        text = "warning"
       )
     } else if (input$myInput > 5) {
       showFeedbackDanger(
@@ -99,3 +99,48 @@ server <- function(input, output, session) {
 
 shinyApp(ui, server)
 ```
+
+
+# `feedback()`
+
+The `feedback()` function is an alternative to using `showFeedback()` and `hideFeedback()`.  With `feedback()` the feedback message is shown/hidden based on whether the `show` argument to `feedback()` is "truthy".  "truthiness" is determined by `shiny::isTruthy()`.  `feedback()` works nicely with reactive expressions that use `shiny::req()` to check the validity of Shiny inputs.  e.g.
+
+```{r, eval=FALSE}
+library(shiny)
+library(shinyFeedback)
+
+ui <- fluidPage(
+  useShinyFeedback(), # include shinyFeedback
+  
+  selectInput(
+    "dataset",
+    "Dataset",
+    choices = c(
+      "airquality",
+      "Unknown dataset"
+    )
+  ),
+  
+  tableOutput('data_table')
+)
+
+server <- function(input, output, session) {
+  
+  data_out <- reactive({
+    req(input$dataset)
+    
+    dataset_exists <- exists(input$dataset, "package:datasets")
+    feedbackWarning("dataset", !dataset_exists, "Unknown dataset")
+    req(dataset_exists, cancelOutput = TRUE)
+
+    get(input$dataset, "package:datasets")
+  })
+  
+  output$data_table <- renderTable({
+    head(data_out())
+  })
+}
+
+shinyApp(ui, server)
+```
+
