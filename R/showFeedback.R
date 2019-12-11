@@ -64,11 +64,13 @@ showFeedback <- function(
   stopifnot(is.character(text) || is.null(text))
   stopifnot(is.character(color) || is.null(color))
   
+  ns <- session$ns
+  
   # call js function
   session$sendCustomMessage(
     type = "showFeedback",
     message = list(
-      inputId = inputId,
+      inputId = ns(inputId),
       text = text,
       color = color,
       icon = icon
@@ -122,14 +124,16 @@ showFeedbackWarning <- function(
   inputId, 
   text = "Ye be warned",
   color = "#F89406", 
-  icon = shiny::icon("warning-sign", lib="glyphicon")
+  icon = shiny::icon("warning-sign", lib="glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
 ) {
   
   showFeedback(
     inputId = inputId,
     text = text,
     color = color,
-    icon = icon
+    icon = icon,
+    session = shiny::getDefaultReactiveDomain()
   )
 }
 
@@ -147,14 +151,16 @@ showFeedbackDanger <- function(
   inputId,
   text = "Danger, turn back!",
   color = "#d9534f", 
-  icon = shiny::icon("exclamation-sign", lib="glyphicon")
+  icon = shiny::icon("exclamation-sign", lib="glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
 ) {
   
   showFeedback(
     inputId = inputId,
     text = text,
     color = color,
-    icon = icon
+    icon = icon,
+    session = shiny::getDefaultReactiveDomain()
   )
 }
 

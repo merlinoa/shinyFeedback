@@ -28,10 +28,12 @@ feedback <- function(
   stopifnot(is.character(text) || is.null(text))
   stopifnot(is.character(color) || is.null(color))
   
+  ns <- session$ns
+  
   session$sendCustomMessage(
     'feedback',
     message = list(
-      inputId = inputId, 
+      inputId = ns(inputId), 
       show = shiny::isTruthy(show), 
       text = text, 
       color = color, 
@@ -51,7 +53,8 @@ feedbackWarning <- function(
   show, 
   text = "Ye be warned",
   color = "#F89406", 
-  icon = shiny::icon("warning-sign", lib="glyphicon")
+  icon = shiny::icon("warning-sign", lib="glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
 ) {
   
   feedback(
@@ -59,7 +62,8 @@ feedbackWarning <- function(
     show, 
     text,
     color, 
-    icon
+    icon,
+    session = shiny::getDefaultReactiveDomain()
   )
   
 }
@@ -76,7 +80,8 @@ feedbackDanger <- function(
   show, 
   text = "Danger, turn back!",
   color = "#d9534f", 
-  icon = shiny::icon("exclamation-sign", lib="glyphicon")
+  icon = shiny::icon("exclamation-sign", lib="glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
 ) {
   
   feedback(
@@ -84,7 +89,8 @@ feedbackDanger <- function(
     show, 
     text,
     color, 
-    icon
+    icon,
+    session = shiny::getDefaultReactiveDomain()
   )
   
 }
@@ -101,7 +107,8 @@ feedbackSuccess <- function(
   show, 
   text = NULL,
   color = "#5cb85c", 
-  icon = shiny::icon("ok", lib="glyphicon")
+  icon = shiny::icon("ok", lib="glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
 ) {
   
   feedback(
@@ -109,7 +116,8 @@ feedbackSuccess <- function(
     show, 
     text,
     color, 
-    icon
+    icon,
+    session = shiny::getDefaultReactiveDomain()
   )
   
 }
