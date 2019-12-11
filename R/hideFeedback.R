@@ -17,12 +17,14 @@ hideFeedback <- function(
   
   # some argument checks
   stopifnot(is.character(inputId))
-
+  
+  ns <- session$ns
+  
   # call js function
   session$sendCustomMessage(
     type = "hideFeedback",
     message = list(
-      inputId = inputId
+      inputId = ns(inputId)
     )
   )
 }
