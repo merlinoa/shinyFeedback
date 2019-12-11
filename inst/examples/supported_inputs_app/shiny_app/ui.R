@@ -79,7 +79,11 @@ fluidPage(
       selected = NULL,
       choices = c("A", "B"),
       selectize = FALSE
-    )
+    ),
+    
+    h2("Shiny Module Example"),
+    
+    eg_module_ui("eg_module")
   
   )
   

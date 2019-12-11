@@ -126,4 +126,9 @@ function(input, output, session) {
     
   })
   
+  
+  callModule(
+    eg_module,
+    "eg_module"
+  )
 }
