@@ -37,7 +37,7 @@ function(input, output, session) {
       
       showFeedbackDanger(
         inputId = "myTextAreaInput",
-        text = 'not today'
+        text = 'this is a very very very long text feedback message'
       )  
       
     } else {

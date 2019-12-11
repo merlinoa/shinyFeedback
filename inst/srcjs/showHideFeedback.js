@@ -35,7 +35,7 @@
       }
       
       if (message.text) {
-        $("<div id='" + message.inputId + "-text' class='col-xs-12'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
+        $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
         obj.formGroup.append("</div><br id='" + message.inputId + "-spacing'/>");
       }
       
@@ -105,7 +105,7 @@
       }
       
       if (message.text) {
-        $("<div id='" + message.inputId + "-text' class='col-xs-12'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
+        $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
         obj.formGroup.append("</div><br id='" + message.inputId + "-spacing'/>");
       }
       
@@ -170,7 +170,7 @@
       }
       
       if (message.text) {
-        $("<div id='" + message.inputId + "-text' class='col-xs-12'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
+        $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
         obj.formGroup.append("</div><br id='" + message.inputId + "-spacing'/>");
       }
       
