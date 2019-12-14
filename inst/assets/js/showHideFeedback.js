@@ -309,7 +309,7 @@
   Shiny.addCustomMessageHandler(
     'showFeedback',
     function(message) {
-      console.log('message: ', message)  
+      
       var inputName = findInputBinding(message.inputId).name;
     
       // get the correct feeback handler functions 
