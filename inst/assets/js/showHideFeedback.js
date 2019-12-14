@@ -62,6 +62,71 @@
     
   }
   
+  
+  // numericInputFeedback functions
+  var numericInputFeedback = {
+    "find": function(inputId) {
+      var input = findInput(inputId);
+      var label = input.siblings("label");
+      var formGroup = input.parent();
+    
+      return {
+        "input": input,
+        "label": label,
+        "formGroup": formGroup
+      }
+    },
+    
+    "hasFeedback": function(inputObject) {
+      
+      return inputObject.formGroup.hasClass("has-feedback")
+    },
+    
+    /* show the feedback along side the input
+    *
+    * @param message the `message` object sent from Shiny
+    * 
+    */
+    "show": function(inputObject, message) {
+      
+      var obj = inputObject 
+      
+      if (message.color) {
+        obj.label.css("color", message.color);
+        obj.input.css("border", "1px solid " + message.color);  
+      }
+      
+      if (message.text) {
+        $("<div id='" + message.inputId + "-text'><p style='color: " + 
+        message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
+        obj.formGroup.append("</div><br id='" + message.inputId + "-spacing'/>");
+      }
+      
+      obj.formGroup.addClass("has-feedback");
+      if (message.icon) {
+        $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + 
+        message.color + "; margin-right: 20px;'>" + message.icon + "</span>").insertAfter(obj.input);
+      }
+    },
+    
+    "hide": function(inputObject, message) {
+      
+      var obj = inputObject
+      
+      obj.label.css("color", '');
+      obj.input.removeAttr("style");
+      
+      $("#" + message.inputId + "-icon").remove();
+      
+      inputObject.formGroup.removeClass("has-feedback");
+      
+      $("#" + message.inputId + "-text").remove();
+      $("#" + message.inputId + "-spacing").remove();
+    }
+    
+  }
+  
+  
   var selectInputFeedback = {
     "find": function(inputId) {
       var input = findInput(inputId)
@@ -205,7 +270,7 @@
     {name: "shiny.selectInput", feedback: selectInputFeedback},
     {name: "shiny.dateInput", feedback: dateInputFeedback},
     {name: "shiny.sliderInput", feedback: textInputFeedback},
-    {name: "shiny.numberInput", feedback: textInputFeedback},
+    {name: "shiny.numberInput", feedback: numericInputFeedback},
     {name: "shiny.passwordInput", feedback: textInputFeedback},
     {name: "shiny.textareaInput", feedback: textInputFeedback},
     {name: "shiny.textInput", feedback: textInputFeedback}
@@ -244,7 +309,7 @@
   Shiny.addCustomMessageHandler(
     'showFeedback',
     function(message) {
-      
+      console.log('message: ', message)  
       var inputName = findInputBinding(message.inputId).name;
     
       // get the correct feeback handler functions 

@@ -52,10 +52,9 @@ function(input, output, session) {
     
     if (input$myNumericInput > 10) {
       
-      showFeedback(
+      showFeedbackDanger(
         inputId = "myNumericInput",
-        text = 'hi',
-        color = '#FF0000'
+        text = 'hi'
       )  
       
     } else {

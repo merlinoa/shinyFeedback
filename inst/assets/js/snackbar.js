@@ -1,4 +1,4 @@
-(function() {
+;(function() {
   
   function escapeId(inputId) {
     // from https://github.com/daattali/advanced-shiny/blob/master/update-input/www/app-shinyjs.js
