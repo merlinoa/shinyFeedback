@@ -24,7 +24,7 @@ feedback <- function(
   
   # some argument checks
   stopifnot(is.character(inputId))
-  icon <- as.character(icon)
+  icon <- if (!is.null(icon)) as.character(icon)
   stopifnot(is.character(text) || is.null(text))
   stopifnot(is.character(color) || is.null(color))
   
