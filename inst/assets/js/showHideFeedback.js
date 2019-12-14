@@ -36,7 +36,6 @@
       
       if (message.text) {
         $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
-        obj.formGroup.append("</div><br id='" + message.inputId + "-spacing'/>");
       }
       
       obj.formGroup.addClass("has-feedback");
@@ -57,7 +56,6 @@
       inputObject.formGroup.removeClass("has-feedback");
       
       $("#" + message.inputId + "-text").remove();
-      $("#" + message.inputId + "-spacing").remove();
     }
     
   }
@@ -99,7 +97,6 @@
       if (message.text) {
         $("<div id='" + message.inputId + "-text'><p style='color: " + 
         message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
-        obj.formGroup.append("</div><br id='" + message.inputId + "-spacing'/>");
       }
       
       obj.formGroup.addClass("has-feedback");
@@ -121,7 +118,6 @@
       inputObject.formGroup.removeClass("has-feedback");
       
       $("#" + message.inputId + "-text").remove();
-      $("#" + message.inputId + "-spacing").remove();
     }
     
   }
@@ -171,7 +167,6 @@
       
       if (message.text) {
         $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
-        obj.formGroup.append("</div><br id='" + message.inputId + "-spacing'/>");
       }
       
       obj.formGroup.addClass("has-feedback");
@@ -193,7 +188,6 @@
       inputObject.formGroup.removeClass("has-feedback");
       
       $("#" + message.inputId + "-text").remove();
-      $("#" + message.inputId + "-spacing").remove();
     }
     
   }
@@ -236,7 +230,6 @@
       
       if (message.text) {
         $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
-        obj.formGroup.append("</div><br id='" + message.inputId + "-spacing'/>");
       }
       
       obj.formGroup.addClass("has-feedback");
@@ -257,7 +250,6 @@
       inputObject.formGroup.removeClass("has-feedback");
       
       $("#" + message.inputId + "-text").remove();
-      $("#" + message.inputId + "-spacing").remove();
     }
     
   }
