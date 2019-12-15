@@ -26,7 +26,7 @@ fluidPage(
     textAreaInput(
       inputId = "myTextAreaInput",
       label = "Success if > 10 chars",
-      value = "Feedback is displayed"
+      value = "This is a successful text area input value"
     )
 
   ),
@@ -75,7 +75,7 @@ fluidPage(
     
     selectInput(
       inputId = "mySelectInput",
-      label = "Warn if A",
+      label = "A is Dangerous",
       selected = NULL,
       choices = c("A", "B"),
       selectize = FALSE
