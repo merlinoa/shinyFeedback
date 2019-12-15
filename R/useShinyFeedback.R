@@ -15,20 +15,12 @@ useShinyFeedback <- function() {
       shiny::singleton(
         shiny::tags$head(
           shiny::tags$script(
-            src = file.path("shinyfeedback", "js", "showHideFeedback.js")
-          ),
-          shiny::tags$script(
-            src = file.path("shinyfeedback", "js", "snackbar.js")
+            src = file.path("shinyfeedback", "js", "shinyfeedback.js")
           ),
           shiny::tags$link(
             type = "text/css", 
             rel = "stylesheet", 
-            href = file.path("shinyfeedback", "css", "snackbar.css")
-          ),
-          shiny::tags$link(
-            type = "text/css", 
-            rel = "stylesheet", 
-            href = file.path("shinyfeedback", "css", "feedback.css")
+            href = file.path("shinyfeedback", "css", "shinyfeedback.css")
           )
         )
       ),

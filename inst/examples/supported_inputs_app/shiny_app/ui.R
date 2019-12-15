@@ -44,7 +44,7 @@ fluidPage(
     
     passwordInput(
       inputId = "myPasswordInput",
-      label = "Success > 5 chars",
+      label = NULL,
       value = ""
     ),
     
