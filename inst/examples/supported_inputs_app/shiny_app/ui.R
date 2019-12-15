@@ -44,7 +44,7 @@ fluidPage(
     
     passwordInput(
       inputId = "myPasswordInput",
-      label = NULL,
+      label = "Password must be > 5 chars",
       value = ""
     ),
     

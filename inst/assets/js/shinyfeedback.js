@@ -131,7 +131,8 @@
       var formGroup = input.parent();
       
       // get the correct input element if selectize === true
-      if (input.hasClass("selectized") === true) {
+      var is_selectize = input.hasClass("selectized") === true
+      if (is_selectize === true) {
         
         input = input.siblings(".selectize-control")
           .find(".selectize-input");  
@@ -142,7 +143,8 @@
       return {
         "input": input,
         "label": label,
-        "formGroup": formGroup
+        "formGroup": formGroup,
+        "selectize": is_selectize
       }
     },
     
@@ -171,8 +173,16 @@
       
       obj.formGroup.addClass("has-feedback");
       if (message.icon) {
+        var margin_right = "10px"
+        if (inputObject.selectize === true) {
+          margin_right = "20px"
+        }
+        
         obj.input.parent().css("padding-right", 0);
-        $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + ";'>" + message.icon + "</span>").insertBefore(obj.input);
+        $("<span id='" + message.inputId + 
+        "-icon' class='form-control-feedback' style='color: " + message.color + 
+        "; margin-right: " + margin_right + ";'>" + message.icon + 
+        "</span>").insertBefore(obj.input);
       }
     },
     
