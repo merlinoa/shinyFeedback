@@ -17,12 +17,13 @@ The `shinyFeedback` package displays user friendly messages that appear along si
 
 `shinyFeedback` currently works with the following `shiny::*Input()` functions:
 
-- `textInput()`
-- `numericInput()`
-- `selectInput()`
-- `dateInput()`
-- `selectInput()`
-- `sliderInput()`
+- `shiny::textInput()`
+- `shiny::numericInput()`
+- `shiny::selectInput()`
+- `shiny::dateInput()`
+- `shiny::selectInput()`
+- `shiny::sliderInput()`
+- `shinyWidgets::pickerInput()`
 
 ## Setup
 
@@ -40,7 +41,7 @@ ui <- fluidPage(
   textInput(
     "myInput",
     "Warn if >3 characters",
-    value = ''
+    value = ""
   )
 )
 
@@ -50,7 +51,7 @@ server <- function(input, output, session) {
     if (nchar(input$myInput) > 3) {
       showFeedbackWarning(
         inputId = "myInput",
-        text = 'too many chars'
+        text = "too many chars"
       )  
     } else {
       hideFeedback("myInput")
@@ -80,18 +81,18 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   observeEvent(input$myInput, {
-    
-    hideFeedback("myInput")
     if (input$myInput > 3 && input$myInput <= 5) {
       showFeedbackWarning(
         inputId = "myInput",
-        text = 'warning'
+        text = "warning"
       )
     } else if (input$myInput > 5) {
       showFeedbackDanger(
         inputId = "myInput",
         text = "Danger"
       )
+    } else {
+      hideFeedback("myInput")
     }
     
   })
@@ -101,14 +102,60 @@ shinyApp(ui, server)
 ```
 
 
+# `feedback()`
+
+The `feedback()` function is an alternative to using `showFeedback()` and `hideFeedback()`.  With `feedback()` the feedback message is shown/hidden based on whether the `show` argument to `feedback()` is "truthy".  "truthiness" is determined by `shiny::isTruthy()`.  `feedback()` works nicely with reactive expressions that use `shiny::req()` to check the validity of Shiny inputs.  e.g.
+
+```{r, eval=FALSE}
+library(shiny)
+library(shinyFeedback)
+
+ui <- fluidPage(
+  useShinyFeedback(), # include shinyFeedback
+  
+  selectInput(
+    "dataset",
+    "Dataset",
+    choices = c(
+      "airquality",
+      "Unknown dataset"
+    )
+  ),
+  
+  tableOutput('data_table')
+)
+
+server <- function(input, output, session) {
+  
+  data_out <- reactive({
+    req(input$dataset)
+    
+    dataset_exists <- exists(input$dataset, "package:datasets")
+    feedbackWarning("dataset", !dataset_exists, "Unknown dataset")
+    req(dataset_exists, cancelOutput = TRUE)
+
+    get(input$dataset, "package:datasets")
+  })
+  
+  output$data_table <- renderTable({
+    head(data_out())
+  })
+}
+
+shinyApp(ui, server)
+```
+
+
 ## Usage Inside Shiny Modules
 
-shinyFeedback works inside shiny modules.
-Because shiny modules encapsulate input and output IDs in their own namespaces, the `inputID`s targeted by shinyFeedback must prepend these namespaces, too.
+shinyFeedback works inside [shiny modules](https://shiny.rstudio.com/articles/modules.html).
 
-Helpfully, you can also just call `shinyFeedback::useShinyFeedback()` inside the module UI function, neatly encapsulating shinyFeedback inside the module.
+As for all modules, input and output IDs in the module UI code must be wrapped in `shiny::ns()` calls.
+Inside your module server code, you need *not* wrap input or output IDs inside `shiny::ns()`; shinyFeedback will automatically prepend the namespace of your current module.
 
-Here is the above example adapted to modules:
+Helpfully, you can also just call `shinyFeedback::useShinyFeedback()` inside the module UI function, neatly encapsulating shinyFeedback and its dependencies inside the module.
+
+Here is a simple example using shinyFeedback inside a module:
 
 ```{r, eval=FALSE}
 library(shiny)
@@ -127,16 +174,14 @@ numberInput <- function(id) {
 }
 
 number <- function(input, output, session) {
-  ns <- session$ns
   observeEvent(input$warningInput, {
-    feedbackWarning(
-      inputId = ns("warningInput"),
-      # idiomatic as per https://shiny.rstudio.com/articles/modules.html
-      condition = input$warningInput < 0
-    )
+    if (input$warningInput < 0) {
+      showFeedbackWarning(inputId = "warningInput")
+    } else {
+      hideFeedback("warningInput")
+    }
   })
 }
-
 
 ui <- fluidPage(
   numberInput(id = "numberFoo")

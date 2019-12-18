@@ -26,7 +26,16 @@ fluidPage(
     textAreaInput(
       inputId = "myTextAreaInput",
       label = "Success if > 10 chars",
-      value = "Feedback is displayed"
+      value = "This is a successful text area input value"
+    ),
+    
+    h2("shinyWidgets::pickerInput"),
+    
+    shinyWidgets::pickerInput(
+      inputId = "myPickerInput",
+      label = "Danger if A",
+      choices = c("A", "B"),
+      selected = "A"
     )
 
   ),
@@ -44,7 +53,7 @@ fluidPage(
     
     passwordInput(
       inputId = "myPasswordInput",
-      label = "Success > 5 chars",
+      label = "Password must be > 5 chars",
       value = ""
     ),
     
@@ -75,11 +84,15 @@ fluidPage(
     
     selectInput(
       inputId = "mySelectInput",
-      label = "Warn if A",
+      label = "A is Dangerous",
       selected = NULL,
       choices = c("A", "B"),
       selectize = FALSE
-    )
+    ),
+    
+    h2("Shiny Module Example"),
+    
+    eg_module_ui("eg_module")
   
   )
   

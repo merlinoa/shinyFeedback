@@ -5,28 +5,61 @@
 \alias{feedbackWarning}
 \alias{feedbackDanger}
 \alias{feedbackSuccess}
-\title{feedback (Defunct)}
+\title{feedback}
 \usage{
-feedback(inputId, condition, text = NULL, color = NULL, icon = NULL)
+feedback(
+  inputId,
+  show,
+  text = NULL,
+  color = NULL,
+  icon = NULL,
+  session = shiny::getDefaultReactiveDomain()
+)
 
-feedbackWarning(inputId, condition, text = NULL, color = NULL, icon = NULL)
+feedbackWarning(
+  inputId,
+  show,
+  text = "Ye be warned",
+  color = "#F89406",
+  icon = shiny::icon("warning-sign", lib = "glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
+)
 
-feedbackDanger(inputId, condition, text = NULL, color = NULL, icon = NULL)
+feedbackDanger(
+  inputId,
+  show,
+  text = "Danger, turn back!",
+  color = "#d9534f",
+  icon = shiny::icon("exclamation-sign", lib = "glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
+)
 
-feedbackSuccess(inputId, condition, text = NULL, color = NULL, icon = NULL)
+feedbackSuccess(
+  inputId,
+  show,
+  text = NULL,
+  color = "#5cb85c",
+  icon = shiny::icon("ok", lib = "glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
+)
 }
 \arguments{
 \item{inputId}{the Shiny input's \code{inputId} argument}
 
-\item{condition}{condition under which feedback is displayed}
+\item{show}{Whether or not the feedback should be shown.  The `show` argument
+uses `shiny::isTruthy()` to evaluate its value to `TRUE` or `FALSE`.}
 
 \item{text}{text string to display below input}
 
 \item{color}{the color of the feedback}
 
-\item{icon}{a \code{shiny::icon} object}
+\item{icon}{an html icon tag}
+
+\item{session}{the \code{shiny} session}
 }
 \description{
-These functions have been removed from `shinyFeedback`.  Use `\link{showFeedback}()` 
-and `\link{hideFeedback}()` instead.
+Show / hide feedback messages.
+}
+\seealso{
+showFeedback hideFeedback
 }

@@ -1,23 +1,45 @@
-#' feedback (Defunct)
+#' feedback
 #' 
-#' These functions have been removed from `shinyFeedback`.  Use `\link{showFeedback}()` 
-#' and `\link{hideFeedback}()` instead.
+#' Show / hide feedback messages.
 #' 
-#' @param inputId the Shiny input's \code{inputId} argument
-#' @param condition condition under which feedback is displayed
-#' @param text text string to display below input
-#' @param color the color of the feedback
-#' @param icon a \code{shiny::icon} object
+#' @inheritParams showFeedback
+#' @param show Whether or not the feedback should be shown.  The `show` argument
+#' uses `shiny::isTruthy()` to evaluate its value to `TRUE` or `FALSE`.
 #' 
+#' @importFrom shiny getDefaultReactiveDomain isTruthy
+#' 
+#' @seealso showFeedback hideFeedback
 #' 
 #' @export
 #' 
 #' 
-feedback <- function(inputId, condition, text = NULL, color = NULL, 
-                     icon = NULL) {
+feedback <- function(
+  inputId, 
+  show, 
+  text = NULL, 
+  color = NULL, 
+  icon = NULL,
+  session = shiny::getDefaultReactiveDomain()
+) {
   
-  .Defunct(msg = "`feedback()` has been removed from `shinyFeedback`. Use `showFeedback()` and `hideFeedback()` instead.")
+  # some argument checks
+  stopifnot(is.character(inputId))
+  icon <- if (!is.null(icon)) as.character(icon)
+  stopifnot(is.character(text) || is.null(text))
+  stopifnot(is.character(color) || is.null(color))
   
+  ns <- session$ns
+  
+  session$sendCustomMessage(
+    'feedback',
+    message = list(
+      inputId = ns(inputId), 
+      show = shiny::isTruthy(show), 
+      text = text, 
+      color = color, 
+      icon = icon
+    )
+  )
 }
 
 #' feedbackWarning
@@ -26,12 +48,22 @@ feedback <- function(inputId, condition, text = NULL, color = NULL,
 #'
 #' @export
 #' 
-feedbackWarning <- function(inputId, condition, text = NULL, color = NULL, 
-                     icon = NULL) {
+feedbackWarning <- function(
+  inputId, 
+  show, 
+  text = "Ye be warned",
+  color = "#F89406", 
+  icon = shiny::icon("warning-sign", lib="glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
+) {
   
   feedback(
-    "placeholder_id",
-    "placeholder_condition"
+    inputId, 
+    show, 
+    text,
+    color, 
+    icon,
+    session = shiny::getDefaultReactiveDomain()
   )
   
 }
@@ -43,12 +75,22 @@ feedbackWarning <- function(inputId, condition, text = NULL, color = NULL,
 #'
 #' @export
 #' 
-feedbackDanger <- function(inputId, condition, text = NULL, color = NULL, 
-                            icon = NULL) {
+feedbackDanger <- function(
+  inputId, 
+  show, 
+  text = "Danger, turn back!",
+  color = "#d9534f", 
+  icon = shiny::icon("exclamation-sign", lib="glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
+) {
   
   feedback(
-    "placeholder_id",
-    "placeholder_condition"
+    inputId, 
+    show, 
+    text,
+    color, 
+    icon,
+    session = shiny::getDefaultReactiveDomain()
   )
   
 }
@@ -60,12 +102,22 @@ feedbackDanger <- function(inputId, condition, text = NULL, color = NULL,
 #'
 #' @export
 #' 
-feedbackSuccess <- function(inputId, condition, text = NULL, color = NULL, 
-                            icon = NULL) {
+feedbackSuccess <- function(
+  inputId, 
+  show, 
+  text = NULL,
+  color = "#5cb85c", 
+  icon = shiny::icon("ok", lib="glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
+) {
   
   feedback(
-    "placeholder_id",
-    "placeholder_condition"
+    inputId, 
+    show, 
+    text,
+    color, 
+    icon,
+    session = shiny::getDefaultReactiveDomain()
   )
   
 }

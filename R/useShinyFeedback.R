@@ -8,23 +8,19 @@
 #' 
 useShinyFeedback <- function() {
   
-  shiny::addResourcePath("shinyFeedback", system.file("srcjs", package = "shinyFeedback"))
-  shiny::addResourcePath("snackbarCSS", system.file("css", package = "shinyFeedback"))
+  shiny::addResourcePath("shinyfeedback", system.file("assets", package = "shinyFeedback"))
   
   return(
     tags$div(
       shiny::singleton(
         shiny::tags$head(
           shiny::tags$script(
-            src = file.path("shinyFeedback", "showHideFeedback.js")
-          ),
-          shiny::tags$script(
-            src = file.path("shinyFeedback", "snackbar.js")
+            src = file.path("shinyfeedback", "js", "shinyfeedback.js")
           ),
           shiny::tags$link(
             type = "text/css", 
             rel = "stylesheet", 
-            href = file.path("snackbarCSS", "snackbar.css")
+            href = file.path("shinyfeedback", "css", "shinyfeedback.css")
           )
         )
       ),

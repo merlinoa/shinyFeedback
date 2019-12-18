@@ -4,10 +4,9 @@ function(input, output, session) {
     
     if (nchar(input$myTextInput) > 3) {
       
-      showFeedback(
+      showFeedbackDanger(
         inputId = "myTextInput",
-        text = 'hi',
-        color = '#FF0000'
+        text = 'Danger'
       )  
       
     } else {
@@ -35,13 +34,25 @@ function(input, output, session) {
     
     if (nchar(input$myTextAreaInput) > 10) {
       
-      showFeedbackDanger(
+      showFeedbackSuccess(
         inputId = "myTextAreaInput",
-        text = 'not today'
+        text = 'this is a very very very long text feedback message'
       )  
       
     } else {
       hideFeedback(inputId = "myTextAreaInput")
+    }
+    
+  })
+  
+  observeEvent(input$myPickerInput, {
+    
+    if (input$myPickerInput == 'A') {
+      
+      showFeedbackDanger(inputId = "myPickerInput")  
+      
+    } else {
+      hideFeedback(inputId = "myPickerInput")
     }
     
   })
@@ -52,10 +63,9 @@ function(input, output, session) {
     
     if (input$myNumericInput > 10) {
       
-      showFeedback(
+      showFeedbackDanger(
         inputId = "myNumericInput",
-        text = 'hi',
-        color = '#FF0000'
+        text = 'hi'
       )  
       
     } else {
@@ -85,7 +95,9 @@ function(input, output, session) {
     if (input$mySliderInput > 5) {
       
       showFeedbackWarning(
-        inputId = "mySliderInput"
+        inputId = "mySliderInput",
+        text = "Warning",
+        icon = NULL
       )  
       
     } else {
@@ -117,7 +129,7 @@ function(input, output, session) {
       
       showFeedbackDanger(
         inputId = "mySelectInput",
-        text = "A is Dangerous"
+        text = "Danger"
       )  
       
     } else {
@@ -126,4 +138,9 @@ function(input, output, session) {
     
   })
   
+  
+  callModule(
+    eg_module,
+    "eg_module"
+  )
 }

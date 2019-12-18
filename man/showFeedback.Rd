@@ -19,14 +19,16 @@ showFeedbackWarning(
   inputId,
   text = "Ye be warned",
   color = "#F89406",
-  icon = shiny::icon("warning-sign", lib = "glyphicon")
+  icon = shiny::icon("warning-sign", lib = "glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
 )
 
 showFeedbackDanger(
   inputId,
   text = "Danger, turn back!",
   color = "#d9534f",
-  icon = shiny::icon("exclamation-sign", lib = "glyphicon")
+  icon = shiny::icon("exclamation-sign", lib = "glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
 )
 
 showFeedbackSuccess(
