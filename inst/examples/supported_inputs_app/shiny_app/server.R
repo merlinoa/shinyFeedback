@@ -45,6 +45,18 @@ function(input, output, session) {
     
   })
   
+  observeEvent(input$myPickerInput, {
+    
+    if (input$myPickerInput == 'A') {
+      
+      showFeedbackDanger(inputId = "myPickerInput")  
+      
+    } else {
+      hideFeedback(inputId = "myPickerInput")
+    }
+    
+  })
+  
   
   observeEvent(input$myNumericInput, {
     req(input$myNumericInput)
