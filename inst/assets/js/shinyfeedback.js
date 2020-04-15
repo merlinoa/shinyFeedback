@@ -228,6 +228,8 @@
       
       var obj = inputObject; 
       
+      obj.formGroup.addClass("has-feedback");
+      
       if (message.color) {
         obj.label.css("color", message.color);
         obj.input.css("border", "1px solid " + message.color);  
@@ -237,7 +239,6 @@
         $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
       }
       
-      obj.formGroup.addClass("has-feedback");
       if (message.icon) {
         $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + ";'>" + message.icon + "</span>").insertAfter(obj.input);
       }
@@ -247,13 +248,10 @@
       
       var obj = inputObject;
       
+      inputObject.formGroup.removeClass("has-feedback");
       obj.label.css("color", '');
       obj.input.removeAttr("style");
-      
       $("#" + message.inputId + "-icon").remove();
-      
-      inputObject.formGroup.removeClass("has-feedback");
-      
       $("#" + message.inputId + "-text").remove();
     }
     
@@ -275,7 +273,6 @@
     },
     
     "hasFeedback": function(inputObject) {
-      
       return inputObject.formGroup.hasClass("has-feedback");
     },
     
@@ -288,6 +285,8 @@
       
       var obj = inputObject;
       
+      obj.formGroup.addClass("has-feedback");
+      
       if (message.color) {
         obj.label.css("color", message.color);
         obj.input.css("border", "1px solid " + message.color);  
@@ -297,7 +296,6 @@
         $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
       }
       
-      obj.formGroup.addClass("has-feedback");
       if (message.icon) {
         $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + ";'>" + message.icon + "</span>").insertAfter(obj.input);
       }
@@ -307,13 +305,10 @@
       
       var obj = inputObject;
       
+      inputObject.formGroup.removeClass("has-feedback");
       obj.label.css("color", '');
       obj.input.removeAttr("style");
-      
       $("#" + message.inputId + "-icon").remove();
-      
-      inputObject.formGroup.removeClass("has-feedback");
-      
       $("#" + message.inputId + "-text").remove();
     }
     
@@ -349,6 +344,8 @@
       
       var obj = inputObject ;
       
+      obj.formGroup.addClass("has-feedback");
+
       if (message.color) {
         obj.label.css("color", message.color);
         obj.inputDiv.css("border", "1px solid " + message.color);  
@@ -358,7 +355,6 @@
         $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.inputDiv);
       }
       
-      obj.formGroup.addClass("has-feedback");
       if (message.icon) {
         $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + "; margin-right: 40px;'>" + message.icon + "</span>").insertAfter(obj.input);
       }
@@ -368,16 +364,12 @@
       
       var obj = inputObject;
       
+      inputObject.formGroup.removeClass("has-feedback");
       obj.label.css("color", "");
       obj.inputDiv.removeAttr("style");
-      
       $("#" + message.inputId + "-icon").remove();
-      
-      inputObject.formGroup.removeClass("has-feedback");
-      
       $("#" + message.inputId + "-text").remove();
     }
-    
   };
   
   
