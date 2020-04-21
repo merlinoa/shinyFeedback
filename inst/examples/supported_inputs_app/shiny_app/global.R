@@ -17,8 +17,19 @@ eg_module <- function(input, output, session) {
   
   observeEvent(input$my_input, {
     
-    if (input$my_input > 10) {
+    if (is.na(input$my_input)) {
+      
+      hideFeedback("my_input")
+      showFeedbackDanger(
+        "my_input",
+        text = "required input"
+      )
+      
+    } else if (is.na(input$my_input) || input$my_input > 10) {
+      
+      hideFeedback("my_input")
       showFeedbackWarning("my_input")
+      
     } else {
       hideFeedback("my_input")
     }
