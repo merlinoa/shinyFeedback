@@ -55,18 +55,20 @@ loadingButton <- function(
       style = style,
       label
     ),
-    htmltools::singleton(
-      # Used personalized kit from FA
-      tags$script(src = "https://kit.fontawesome.com/fb4611ff56.js")
-    ),
-    htmltools::singleton(
-      tags$script(src = "shinyfeedback/js/loadingbutton.js")
-    ),
-    tags$script(sprintf(
-      "loadingButtons.create('%s', %s)",
-      inputId,
-      jsonOptions
-    ))
+    tags$head(
+      htmltools::singleton(
+        fontAwesomeDependency() 
+      ),
+      htmltools::singleton(
+        tags$script(src = "shinyfeedback/js/loadingbutton.js"),
+      ),
+      tags$script(sprintf(
+        "loadingButtons.create('%s', %s)",
+        inputId,
+        jsonOptions
+      ))
+    )
+    
   )
 }
 
