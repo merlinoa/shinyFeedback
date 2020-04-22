@@ -2,7 +2,8 @@
 #' 
 #' function to load js for using \code{shinyFeedback}
 #' 
-#' @importFrom shiny addResourcePath singleton tags
+#' @importFrom shiny addResourcePath icon
+#' @importFrom htmltools tags singleton
 #' 
 #' @export
 #' 
@@ -12,7 +13,7 @@ useShinyFeedback <- function() {
   
   return(
     tags$div(
-      shiny::singleton(
+      htmltools::singleton(
         shiny::tags$head(
           shiny::tags$script(
             src = file.path("shinyfeedback", "js", "shinyfeedback.js")

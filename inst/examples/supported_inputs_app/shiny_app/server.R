@@ -106,6 +106,16 @@ function(input, output, session) {
   })
   
   
+  observeEvent(input$myLoadingButton, {
+    Sys.sleep(4)
+    resetLoadingButton("myLoadingButton")
+  })
+  observeEvent(input$myLoadingButtonDanger, {
+    Sys.sleep(4)
+    resetLoadingButton("myLoadingButtonDanger")
+  })
+  
+  
   
   observeEvent(input$mySelectizeInput, {
     
