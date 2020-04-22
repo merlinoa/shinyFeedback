@@ -65,6 +65,20 @@ fluidPage(
       value = 8,
       min = 0,
       max = 10
+    ),
+    
+    h2("loadingButton"),
+    
+    loadingButton(
+      "myLoadingButton",
+      "Submit"
+    ),
+    
+    loadingButton(
+      "myLoadingButtonDanger",
+      "Submit",
+      class = "btn btn-danger",
+      loadingSpinner = "cog"
     )
     
   ),

@@ -10,13 +10,15 @@ License: GPL-3
 LazyData: true
 Depends:
     R (>= 3.1.2)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Encoding: UTF-8
 Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
 Imports:
+    htmltools,
+    jsonlite,
     shiny
 URL: https://github.com/merlinoa/shinyFeedback
 BugReports: https://github.com/merlinoa/shinyFeedback/issues
