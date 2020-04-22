@@ -54,7 +54,7 @@ LoadingButtons.prototype.resetLoading = function (inputId) {
   inputId = inputId.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
   var loading_button = $("#" + inputId);
     
-  // find the loading button options for the correct loadin button
+  // find the loading button options for the correct loading button
   var hold = this.buttons.find(function(obj) {
     return obj.inputId === inputId;
   });

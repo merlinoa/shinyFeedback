@@ -1,6 +1,6 @@
 #' loadingButton
 #'
-#' Button that becomes disabled until reset w/ `reset_loading_button`
+#' Button that becomes disabled until reset w/ `resetLoadingButton`
 #'
 #' @param inputId the input id
 #' @param label the button text (label)
@@ -14,7 +14,7 @@
 #'
 #' @export
 #'
-#' @importFrom htmltools tags tagList singleton
+#' @importFrom htmltools span tags singleton
 #' @importFrom jsonlite toJSON
 #'
 loadingButton <- function(
@@ -73,9 +73,9 @@ loadingButton <- function(
 }
 
 
-#' reset_loading_button
+#' resetLoadingButton
 #'
-#' Reset the `loading_button` to its original style
+#' Reset the `loadingButton` to its original style
 #'
 #' @param inputId the input id
 #' @param session the shiny session
