@@ -19,9 +19,10 @@ LoadingButtons.prototype.create = function (inputId, options) {
     loadingIds.push(obj.id);
   }
   // if element in this.buttons represents a loadingButton that is no longer in the DOM
-  // then remove it from this.buttons
+  // then remove it from this.buttons.  Also remove remove it if the button being added already
+  // exists in this.buttons
   this.buttons = this.buttons.filter(obj => {
-    return loadingIds.includes("sf-loading-button-" + obj.inputId);
+    return loadingIds.includes("sf-loading-button-" + obj.inputId) && (obj.inputId !== inputId);
   });
   
   
