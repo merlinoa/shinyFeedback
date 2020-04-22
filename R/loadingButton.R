@@ -47,7 +47,9 @@ loadingButton <- function(
   
   jsonOptions <- jsonlite::toJSON(rOptions, auto_unbox = TRUE)
   
-  htmltools::tagList(
+  htmltools::span(
+    class = "sf-loading-button",
+    id = paste0("sf-loading-button-", inputId),
     tags$button(
       id = inputId,
       class = class,
@@ -62,7 +64,7 @@ loadingButton <- function(
       tags$script(src = "shinyfeedback/js/loadingbutton.js")
     ),
     tags$script(sprintf(
-      "loadingButton('%s', %s)",
+      "loadingButtons.create('%s', %s)",
       inputId,
       jsonOptions
     ))
