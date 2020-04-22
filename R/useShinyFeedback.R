@@ -10,7 +10,6 @@
 useShinyFeedback <- function() {
   
   shiny::addResourcePath("shinyfeedback", system.file("assets", package = "shinyFeedback"))
-  shiny::addResourcePath("shinyfeedback", system.file("assets", package = "shinyFeedback"))
   
   return(
     tags$div(
