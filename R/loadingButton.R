@@ -36,7 +36,6 @@ loadingButton <- function(
     "label" = label, 
     "class" = class,
     "style" = style,
-    "icon" = icon,
     "loadingLabel" = loadingLabel,
     "loadingSpinner" = loadingSpinner,
     "loadingClass" = loadingClass,
