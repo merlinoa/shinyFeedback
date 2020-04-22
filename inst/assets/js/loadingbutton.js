@@ -6,10 +6,9 @@ function LoadingButtons() {
 }  
 
 LoadingButtons.prototype.create = function (inputId, options) {
-  var btn_value = 0;
-  
+  var btn_value = null;
   // find all loading buttons in the dom and remove any loading buttons from 
-  // this.buttons that are not longer in the dom. By running this "garbage collection"
+  // this.buttons that are no longer in the dom. By running this "garbage collection"
   // each time we add a new loading button to the dom we protect against the this.loadingButtons
   // object growing out of control as loading buttons are quickly added and removed from the dom
   // TODO: confirm that this "garbage collection" is working
@@ -25,20 +24,19 @@ LoadingButtons.prototype.create = function (inputId, options) {
     return loadingIds.includes("sf-loading-button-" + obj.inputId) && (obj.inputId !== inputId);
   });
   
-  
+
   this.buttons.push({inputId: inputId, options: options}); 
-  
-  // Allow Shiny session to start
-  $(document).on('shiny:sessioninitialized', function() {
-    // set the initial loading button value
-    Shiny.setInputValue(inputId, btn_value);
-  });
   
   // Disable button & change text
   $(document).on('click', "#" + inputId, function() {
     // increment the button value by 1.  This is consistent with how `shiny::actionButton`
     // value works.
-    btn_value = btn_value + 1;
+    
+    if (btn_value === null) {
+      btn_value = 1;
+    } else {
+      btn_value = btn_value + 1;
+    }
     Shiny.setInputValue(inputId, btn_value);
 
     var loading_button = $(this);
