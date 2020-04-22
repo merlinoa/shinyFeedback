@@ -34,5 +34,5 @@ loadingButton(
 \item{loadingStyle}{style for button (while loading); character string w/ CSS styling format: "color: black; background-color: red;"}
 }
 \description{
-Button that becomes disabled until reset w/ `reset_loading_button`
+Button that becomes disabled until reset w/ `resetLoadingButton`
 }
