@@ -28,6 +28,8 @@ loadingButton <- function(
   loadingStyle = NULL
 ) {
   
+  shiny::addResourcePath("shinyfeedback", system.file("assets", package = "shinyFeedback"))
+  
   # if NULL, set loading class and stye to same as active button
   if (is.null(loadingClass)) loadingClass <- class
   if (is.null(loadingStyle)) loadingStyle <- style
