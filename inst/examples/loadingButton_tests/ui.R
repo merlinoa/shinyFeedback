@@ -13,7 +13,11 @@ ui <- fluidPage(
         actionButton(
           'insert',
           'Insert Loading Button'
-        )#,
+        ),
+        actionButton(
+          'remove',
+          'Remove Loading Button'
+        )
         # loadingButton(
         #   'btn_2',
         #   'Insert Button'
