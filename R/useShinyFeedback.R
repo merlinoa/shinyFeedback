@@ -6,7 +6,10 @@
 #' 
 #' @export
 #' 
-useShinyFeedback <- function() {
+useShinyFeedback <- function(
+  feedback = TRUE,
+  toastr = TRUE
+) {
   
   shiny::addResourcePath("shinyfeedback", system.file("assets", package = "shinyFeedback"))
   
