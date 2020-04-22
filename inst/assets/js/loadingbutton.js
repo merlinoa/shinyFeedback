@@ -51,6 +51,8 @@ LoadingButtons.prototype.create = function (inputId, options) {
 };
 
 LoadingButtons.prototype.resetLoading = function (inputId) {
+  // Escape characters that have special selector meaning in jQuery
+  inputId = inputId.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
   var loading_button = $("#" + inputId);
     
   // find the loading button options for the correct loadin button
