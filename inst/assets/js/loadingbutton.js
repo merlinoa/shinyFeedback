@@ -74,9 +74,3 @@ $(document).on('shiny:sessioninitialized', function() {
     loadingButtons.resetLoading(message.inputId);
   });
 });
-
-// Reset button to original state w/ JS command 
-$(document).on("shinyfeedback:resetloadingbutton", function(event, inputId) {
-  loadingButtons.resetLoading(inputId);
-});
-
