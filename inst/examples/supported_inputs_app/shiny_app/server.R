@@ -17,7 +17,7 @@ function(input, output, session) {
   
   observeEvent(input$myDateInput, {
     
-    if (input$myDateInput != Sys.Date()) {
+    if (!identical(input$myDateInput, Sys.Date())) {
       
       showFeedbackDanger(
         inputId = "myDateInput",
@@ -59,9 +59,8 @@ function(input, output, session) {
   
   
   observeEvent(input$myNumericInput, {
-    req(input$myNumericInput)
     
-    if (input$myNumericInput > 10) {
+    if (!is.na(input$myNumericInput) && input$myNumericInput > 10) {
       
       showFeedbackDanger(
         inputId = "myNumericInput",
