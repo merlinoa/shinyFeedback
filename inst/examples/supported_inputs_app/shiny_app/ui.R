@@ -76,9 +76,10 @@ fluidPage(
     
     loadingButton(
       "myLoadingButtonDanger",
-      "Submit",
+      "Cancel",
       class = "btn btn-danger",
-      loadingSpinner = "cog"
+      loadingSpinner = "cog",
+      loadingLabel = "Cancelling..."
     )
     
   ),
