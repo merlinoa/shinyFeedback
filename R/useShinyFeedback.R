@@ -7,6 +7,26 @@
 #' 
 #' @importFrom shiny addResourcePath singleton tags icon
 #' 
+#' @section Example:
+#' \preformatted{
+#'   ui <- shinyUI(fluidPage(
+#'     useShinyFeedback(
+#'       feedback = TRUE,
+#'       toastr = TRUE
+#'     ),
+#'     pageWithSidebar(
+#'       headerPanel("Header"),
+#'       sidebarPanel(
+#'         ...
+#'       ),
+#'       mainPanel(
+#'         ...
+#'       )
+#'     )
+#'   ))
+#' }
+#' 
+#' 
 #' @export
 #' 
 useShinyFeedback <- function(
