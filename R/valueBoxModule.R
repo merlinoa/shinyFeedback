@@ -7,7 +7,7 @@
 #' @param textColor A hex color code string
 #' @param width A number between 1 and 12
 #' @param href A url
-#' @param icon_color A valid color string
+#' @param iconColor A valid color string
 #'
 #' @importFrom htmltools tags
 #' @importFrom shiny NS

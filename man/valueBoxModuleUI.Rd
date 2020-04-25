@@ -30,7 +30,7 @@ valueBoxModuleUI(
 
 \item{href}{A url}
 
-\item{icon_color}{A valid color string}
+\item{iconColor}{A valid color string}
 }
 \description{
 valueBoxModuleUI
