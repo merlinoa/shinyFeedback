@@ -11,7 +11,6 @@
 #'
 #' @importFrom htmltools tags
 #' @importFrom shiny NS
-#' @importFrom grDevices rgb
 #'
 #' @export
 #'
@@ -23,7 +22,7 @@ valueBoxModuleUI <- function(
   textColor = "#FFF",
   width = 4, 
   href = NULL, 
-  iconColor = grDevices::rgb(0, 0, 0, 0.15)
+  iconColor = "#00000026"
 ) {
   ns <- shiny::NS(id)
 
