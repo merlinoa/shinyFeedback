@@ -1,6 +1,6 @@
 # custom configuration for the `shinytoastr::toastr_*()` functions
 toast_custom_defaults <- list(
-  position = "bottom-center",
+  positionClass = "toast-bottom-center",
   progressBar = TRUE,
   timeOut = 4000,
   closeButton = TRUE,
@@ -32,17 +32,32 @@ toast_custom_defaults <- list(
 #'
 #' @importFrom shinytoastr toastr_error toastr_success toastr_warning toastr_info
 #' @importFrom utils modifyList
+#' @importFrom shiny getDefaultReactiveDomain
 #'
 #' @return `invisible()`
 #'
 showToast <- function(type, message, .options = list()) {
 
-  args_list <- c(message, toast_custom_defaults)
+  args_list <- c(toast_custom_defaults)
   args_out <- utils::modifyList(args_list, .options)
 
-  function_name <- paste0("shinytoastr::toastr_", type)
+  # function_name <- paste0("toastr_", type)
+  # 
+  # do.call(function_name, args_out)
+  
+  # browser()
+  
+  session <- shiny::getDefaultReactiveDomain()
 
-  do.call(function_name, args_out)
-
-  invisible()
+  session$sendCustomMessage(
+    type = "toastr",
+    message = list(
+      type = type,
+      message = message,
+      title = title,
+      options = args_list
+    )
+  )
+  
+  # invisible()
 }
