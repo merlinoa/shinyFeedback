@@ -194,3 +194,58 @@ server <- function(input, output) {
 
 shinyApp(ui, server)
 ```
+
+
+
+# valueBoxModule
+
+`valueBoxModule` is similar to `shinydashboard::valueBox()` but it moves the UI from 
+the server to the ui (i.e. the entire box is not rerendered everytime the value in 
+the value box updates; only the actual value is rerendered).  The box is only rendered once
+when the page is loaded.  By moving the box content to the UI the value box does not flash onto the screen when rendered.  
+
+`valueBoxModule` also allows for more custom styling of the box colors than `shinydashboard::valueBox()`.
+
+```{r, eval = FALSE}
+library(shiny)
+library(shinyFeedback)
+
+
+server <- function(input, output, session) {
+  
+  count <- reactiveVal(0)
+  
+  observeEvent(input$counter_button, {
+    count(count() + 1)
+  })
+  
+  callModule(
+    valueBoxModule,
+    "betterBox",
+    value = count
+  )
+}
+
+ui <- fluidPage(
+  fluidRow(
+    column(
+      12,
+      actionButton(
+        "counter_button",
+        "+1"
+      )
+    )
+  ),
+  br(),
+  fluidRow(
+    valueBoxModuleUI(
+      "betterBox",
+      "Counter",
+      icon = icon("rocket")
+    )
+  )
+)
+
+
+shinyApp(ui, server)
+```

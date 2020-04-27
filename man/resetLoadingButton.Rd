@@ -2,7 +2,7 @@
 % Please edit documentation in R/loadingButton.R
 \name{resetLoadingButton}
 \alias{resetLoadingButton}
-\title{reset_loading_button}
+\title{resetLoadingButton}
 \usage{
 resetLoadingButton(inputId, session = shiny::getDefaultReactiveDomain())
 }
@@ -12,5 +12,5 @@ resetLoadingButton(inputId, session = shiny::getDefaultReactiveDomain())
 \item{session}{the shiny session}
 }
 \description{
-Reset the `loading_button` to its original style
+Reset the `loadingButton` to its original style
 }
