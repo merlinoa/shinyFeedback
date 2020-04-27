@@ -12,7 +12,7 @@ LoadingButtons.prototype.create = function (inputId, options) {
   // this.buttons that are no longer in the dom. By running this "garbage collection"
   // each time we add a new loading button to the dom we protect against the this.loadingButtons
   // object growing out of control as loading buttons are quickly added and removed from the dom
-  var self = this
+  var self = this;
   $(function() {
     var allDOMLoadingButtons = $(document).find(".sf-loading-button");
     var loadingIds = [];
