@@ -19,8 +19,10 @@ The `shinyFeedback` package displays user friendly messages that appear along si
 
 - `shiny::dateInput()`
 - `shiny::numericInput()`
+- `shiny::passwordInput()`
 - `shiny::selectInput()`
 - `shiny::sliderInput()`
+- `shiny::textAreaInput()`
 - `shiny::textInput()`
 - `shinyWidgets::pickerInput()`
 

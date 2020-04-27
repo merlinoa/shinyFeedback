@@ -29,13 +29,11 @@ fluidPage(
       value = "This is a successful text area input value"
     ),
     
-    h2("shinyWidgets::pickerInput"),
+    h2("dateRangeInput"),
     
-    shinyWidgets::pickerInput(
-      inputId = "myPickerInput",
-      label = "Danger if A",
-      choices = c("A", "B"),
-      selected = "A"
+    dateRangeInput(
+      inputId = "myDateRangeInput",
+      label = "Danger if not after Start"
     )
 
   ),
