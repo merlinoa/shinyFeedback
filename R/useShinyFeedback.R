@@ -41,6 +41,7 @@ useShinyFeedback <- function(
       tags$div(
         shiny::singleton(
           shiny::tags$head(
+            toastrDependency(),
             shiny::tags$script(
               src = file.path("shinyfeedback", "js", "shinyfeedback.js")
             ),
@@ -71,6 +72,7 @@ useShinyFeedback <- function(
       tags$div(
         shiny::singleton(
           shiny::tags$head(
+            toastrDependency(),
             shiny::tags$script(
               src = file.path("shinyfeedback", "js", "toastr", "toastr.min.js")
             ),
