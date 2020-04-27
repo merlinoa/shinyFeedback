@@ -27,9 +27,9 @@ LoadingButtons.prototype.create = function (inputId, options) {
       return loadingIds.includes("sf-loading-button-" + obj.inputId) && (obj.inputId !== inputId);
     });  
   
-    debugger
     self.buttons.push({inputId: inputId, options: options}); 
   });
+  
   // Disable button & change text
   $(document).on('click', "#" + inputId, function() {
     // increment the button value by 1.  This is consistent with how `shiny::actionButton`
