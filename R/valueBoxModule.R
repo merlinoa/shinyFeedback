@@ -72,10 +72,10 @@ valueBoxModuleUI <- function(
 #' 
 #' @param input the Shiny server input
 #' @param output the Shiny server output
-#' @param session the Shiny server session
+#' @param session the Shiny server session (Default: getDefaultReactiveDomain())
 #' @param value reactive - the value to be displayed in the value box
 #'
-#' @importFrom shiny reactive renderText
+#' @importFrom shiny getDefaultReactiveDomain reactive is.reactive renderText req
 #'
 #' @export
 #'
