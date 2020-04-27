@@ -79,7 +79,7 @@ valueBoxModuleUI <- function(
 #'
 #' @export
 #'
-valueBoxModule <- function(input, output, session, value) {
+valueBoxModule <- function(input, output, session = shiny::getDefaultReactiveDomain(), value) {
   
   if (is.reactive(value)) {
     value_prep <- shiny::reactive({
