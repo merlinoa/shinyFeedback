@@ -80,9 +80,20 @@ valueBoxModuleUI <- function(
 #' @export
 #'
 valueBoxModule <- function(input, output, session, value) {
-  value_prep <- shiny::reactive({
-    if (is.null(value())) "" else value()
+  
+  if (is.reactive(value)) {
+    value_prep <- shiny::reactive({
+      if (is.null(value())) "" else value()
+    })
+  } else {
+    value_prep <- shiny::reactive({
+      if (is.null(value)) "" else value
+    })
+  }
+  
+  output$value_out <- shiny::renderText({
+    req(value_prep())  
+    value_prep()
   })
   
-  output$value_out <- shiny::renderText(value_prep())
 }
