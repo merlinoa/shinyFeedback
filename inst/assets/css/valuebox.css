@@ -1,0 +1,28 @@
+.sf-small-box {
+  border-radius: 2px;
+  position: relative;
+  display: block;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+
+.sf-inner {
+  padding: 10px;
+}
+
+.sf-small-box .sf-icon-large {
+  position: absolute;
+  top: auto;
+  bottom: 5px;
+  right: 5px;
+  font-size: 70px;
+}
+      
+.sf-small-box h3 {
+  font-size: 38px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  white-space: nowrap;
+  padding: 0;
+}
+      

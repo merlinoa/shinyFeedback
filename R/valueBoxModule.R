@@ -26,6 +26,7 @@ valueBoxModuleUI <- function(
 ) {
   ns <- shiny::NS(id)
 
+  shiny::addResourcePath("shinyfeedback", system.file("assets", package = "shinyFeedback"))
     
   boxContent <- tags$div(
     class = "sf-small-box",
@@ -47,35 +48,10 @@ valueBoxModuleUI <- function(
   if (!is.null(href)) boxContent <- tags$a(href = href, boxContent)
   
   tags$div(
-    tags$style(
-      ".sf-small-box {
-        border-radius: 2px;
-        position: relative;
-        display: block;
-        margin-bottom: 20px;
-        box-shadow: 0 1px 1px rgba(0,0,0,.1);
-      }
-      
-      .sf-inner {
-        padding: 10px;
-      }
-      
-      .sf-small-box .sf-icon-large {
-        position: absolute;
-        top: auto;
-        bottom: 5px;
-        right: 5px;
-        font-size: 70px;
-      }
-      
-      .sf-small-box h3 {
-        font-size: 38px;
-        font-weight: 700;
-        margin: 0 0 10px 0;
-        white-space: nowrap;
-        padding: 0;
-      }
-      "  
+    tags$head(
+      shiny::singleton(
+        valueBoxDependency()
+      )
     ),
     class = if (!is.null(width)) paste0("col-sm-", width),
     boxContent
@@ -96,17 +72,28 @@ valueBoxModuleUI <- function(
 #' 
 #' @param input the Shiny server input
 #' @param output the Shiny server output
-#' @param session the Shiny server session
+#' @param session the Shiny server session (Default: getDefaultReactiveDomain())
 #' @param value reactive - the value to be displayed in the value box
 #'
-#' @importFrom shiny reactive renderText
+#' @importFrom shiny getDefaultReactiveDomain reactive is.reactive renderText req
 #'
 #' @export
 #'
-valueBoxModule <- function(input, output, session, value) {
-  value_prep <- shiny::reactive({
-    if (is.null(value())) "" else value()
+valueBoxModule <- function(input, output, session = shiny::getDefaultReactiveDomain(), value) {
+  
+  if (is.reactive(value)) {
+    value_prep <- shiny::reactive({
+      if (is.null(value())) "" else value()
+    })
+  } else {
+    value_prep <- shiny::reactive({
+      if (is.null(value)) "" else value
+    })
+  }
+  
+  output$value_out <- shiny::renderText({
+    req(value_prep())  
+    value_prep()
   })
   
-  output$value_out <- shiny::renderText(value_prep())
 }

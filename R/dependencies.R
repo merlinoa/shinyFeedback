@@ -13,3 +13,13 @@ fontAwesomeDependency <- function() {
                    # "css/fontawesome/webfonts/fa-solid-900.woff2")
   )
 }
+
+valueBoxDependency <- function() {
+  htmltools::htmlDependency(
+    name = "valueboxmodule",
+    version = packageVersion("shinyFeedback"),
+    src = "assets",
+    package = "shinyFeedback",
+    stylesheet = "css/valuebox.css"
+  )
+}
