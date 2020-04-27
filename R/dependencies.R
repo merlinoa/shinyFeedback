@@ -6,7 +6,7 @@ toastrDependency <- function() {
     version = "2.1.4",
     src = "assets",
     package = "shinyFeedback",
-    script = "js/toastr/toastr.min.js",
+    script = c("js/toastr/toastr.min.js", "js/shinytoastr.js"),
     stylesheet = "css/toastr/toastr.min.css"
   )
 }
