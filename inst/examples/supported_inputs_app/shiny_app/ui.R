@@ -27,15 +27,6 @@ fluidPage(
       inputId = "myTextAreaInput",
       label = "Success if > 10 chars",
       value = "This is a successful text area input value"
-    ),
-    
-    h2("shinyWidgets::pickerInput"),
-    
-    shinyWidgets::pickerInput(
-      inputId = "myPickerInput",
-      label = "Danger if A",
-      choices = c("A", "B"),
-      selected = "A"
     )
 
   ),
