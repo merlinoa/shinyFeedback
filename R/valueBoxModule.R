@@ -72,27 +72,28 @@ valueBoxModuleUI <- function(
 #' 
 #' @param input the Shiny server input
 #' @param output the Shiny server output
-#' @param session the Shiny server session (Default: getDefaultReactiveDomain())
-#' @param value reactive - the value to be displayed in the value box
+#' @param session the Shiny server session
+#' @param value Either a reactive or an R object that can be coerced into a string.
+#' The value to be displayed in the value box.
 #'
-#' @importFrom shiny getDefaultReactiveDomain reactive is.reactive renderText req
+#' @importFrom shiny reactive is.reactive renderText
 #'
 #' @export
 #'
-valueBoxModule <- function(input, output, session = shiny::getDefaultReactiveDomain(), value) {
+valueBoxModule <- function(input, output, session, value) {
   
-  if (is.reactive(value)) {
-    value_prep <- shiny::reactive({
-      if (is.null(value())) "" else value()
-    })
-  } else {
-    value_prep <- shiny::reactive({
-      if (is.null(value)) "" else value
-    })
-  }
+  
+  value_prep <- shiny::reactive({
+    if (shiny::is.reactive(value)) {
+      out <- value()
+    } else {
+      out <- value
+    }
+      
+    out
+  })
   
   output$value_out <- shiny::renderText({
-    req(value_prep())  
     value_prep()
   })
   

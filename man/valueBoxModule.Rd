@@ -13,7 +13,8 @@ valueBoxModule(input, output, session, value)
 
 \item{session}{the Shiny server session}
 
-\item{value}{reactive - the value to be displayed in the value box}
+\item{value}{Either a reactive or an R object that can be coerced into a string.
+The value to be displayed in the value box.}
 }
 \description{
 Server function for the `valueBoxModule`.  `valueBoxModule` is similar to 
