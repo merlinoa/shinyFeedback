@@ -14,10 +14,11 @@ fontAwesomeDependency <- function() {
   )
 }
 
+#' @importFrom utils packageVersion
 valueBoxDependency <- function() {
   htmltools::htmlDependency(
     name = "valueboxmodule",
-    version = packageVersion("shinyFeedback"),
+    version = utils::packageVersion("shinyFeedback"),
     src = "assets",
     package = "shinyFeedback",
     stylesheet = "css/valuebox.css"
