@@ -27,6 +27,13 @@ fluidPage(
       inputId = "myTextAreaInput",
       label = "Success if > 10 chars",
       value = "This is a successful text area input value"
+    ),
+    
+    h2("dateRangeInput"),
+    
+    dateRangeInput(
+      inputId = "myDateRangeInput",
+      label = "Danger if not after Start"
     )
 
   ),

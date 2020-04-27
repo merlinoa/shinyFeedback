@@ -44,7 +44,17 @@ function(input, output, session) {
     }
     
   })
-
+  
+  observeEvent(input$myDateRangeInput, {
+    if (input$myDateRangeInput[1] >= input$myDateRangeInput[2]) {
+      showFeedbackDanger(
+        inputId = "myDateRangeInput",
+        text = "Invaid Range"
+      )  
+    } else {
+      hideFeedback(inputId = "myDateRangeInput")
+    }
+  })
   
   
   observeEvent(input$myNumericInput, {
