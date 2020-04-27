@@ -1,5 +1,6 @@
 library(shiny)
-library(shinyFeedback)
+# library(shinyFeedback)
+devtools::load_all('/Users/pwan44/Documents/Tychobra/shinyFeedback/')
 
 
 

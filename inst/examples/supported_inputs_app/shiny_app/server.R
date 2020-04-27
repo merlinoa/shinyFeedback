@@ -7,10 +7,14 @@ function(input, output, session) {
       showFeedbackDanger(
         inputId = "myTextInput",
         text = 'Danger'
-      )  
+      )
+      
+      showToast('error', 'Danger if > 3 chars')
       
     } else {
       hideFeedback(inputId = "myTextInput")
+      
+      showToast('success', 'Less than 3 chars!')
     }
     
   })
