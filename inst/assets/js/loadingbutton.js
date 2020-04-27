@@ -6,27 +6,30 @@ function LoadingButtons() {
 }  
 
 LoadingButtons.prototype.create = function (inputId, options) {
+  
   var btn_value = null;
   // find all loading buttons in the dom and remove any loading buttons from 
   // this.buttons that are no longer in the dom. By running this "garbage collection"
   // each time we add a new loading button to the dom we protect against the this.loadingButtons
   // object growing out of control as loading buttons are quickly added and removed from the dom
-  // TODO: confirm that this "garbage collection" is working
-  var allDOMLoadingButtons = $(document).find(".sf-loading-button");
-  var loadingIds = [];
-  for(var obj of allDOMLoadingButtons) {
-    loadingIds.push(obj.id);
-  }
-  // if element in this.buttons represents a loadingButton that is no longer in the DOM
-  // then remove it from this.buttons.  Also remove remove it if the button being added already
-  // exists in this.buttons
-  this.buttons = this.buttons.filter(obj => {
-    return loadingIds.includes("sf-loading-button-" + obj.inputId) && (obj.inputId !== inputId);
+  var self = this
+  $(function() {
+    var allDOMLoadingButtons = $(document).find(".sf-loading-button");
+    var loadingIds = [];
+    for(var obj of allDOMLoadingButtons) {
+      loadingIds.push(obj.id);
+    }
+    
+    // if element in this.buttons represents a loadingButton that is no longer in the DOM
+    // then remove it from this.buttons.  Also remove remove it if the button being added already
+    // exists in this.buttons
+    self.buttons = self.buttons.filter(obj => {
+      return loadingIds.includes("sf-loading-button-" + obj.inputId) && (obj.inputId !== inputId);
+    });  
+  
+    debugger
+    self.buttons.push({inputId: inputId, options: options}); 
   });
-  
-
-  this.buttons.push({inputId: inputId, options: options}); 
-  
   // Disable button & change text
   $(document).on('click', "#" + inputId, function() {
     // increment the button value by 1.  This is consistent with how `shiny::actionButton`
