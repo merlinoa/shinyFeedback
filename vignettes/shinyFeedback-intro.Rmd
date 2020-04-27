@@ -17,12 +17,11 @@ The `shinyFeedback` package displays user friendly messages that appear along si
 
 `shinyFeedback` currently works with the following `shiny::*Input()` functions:
 
-- `shiny::textInput()`
+- `shiny::dateInput()`
 - `shiny::numericInput()`
 - `shiny::selectInput()`
-- `shiny::dateInput()`
-- `shiny::selectInput()`
 - `shiny::sliderInput()`
+- `shiny::textInput()`
 - `shinyWidgets::pickerInput()`
 
 ## Setup
