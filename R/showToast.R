@@ -6,16 +6,15 @@ toast_custom_defaults <- list(
   closeButton = TRUE,
 
   # same as defaults
-  title = "",
   newestOnTop = FALSE,
   preventDuplicates = FALSE,
   showDuration = 300,
   hideDuration = 1000,
   extendedTimeOut = 1000,
-  showEasing = c("swing", "linear"),
-  hideEasing = c("swing", "linear"),
-  showMethod = c("fadeIn", "slideDown", "show"),
-  hideMethod = c("fadeOut", "hide")
+  showEasing = "swing",
+  hideEasing = "swing",
+  showMethod = "fadeIn",
+  hideMethod = "fadeOut"
 )
 
 
@@ -40,24 +39,18 @@ showToast <- function(type, message, .options = list()) {
 
   args_list <- c(toast_custom_defaults)
   args_out <- utils::modifyList(args_list, .options)
-
-  # function_name <- paste0("toastr_", type)
-  # 
-  # do.call(function_name, args_out)
-  
-  # browser()
   
   session <- shiny::getDefaultReactiveDomain()
 
   session$sendCustomMessage(
     type = "toastr",
     message = list(
-      type = type,
-      message = message,
-      title = title,
-      options = args_list
+      'type' = type,
+      'message' = message,
+      'title' = NULL,
+      'options' = args_list
     )
   )
   
-  # invisible()
+  invisible()
 }
