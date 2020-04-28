@@ -1,6 +1,6 @@
 # shinyFeedback
 
-[![Travis-CI Build Status](https://travis-ci.org/merlinoa/shinyFeedback.svg?branch=master)](https://travis-ci.org/merlinoa/shinyFeedback) [![CRAN](http://www.r-pkg.org/badges/version/shinyFeedback)](https://cran.r-project.org/package=shinyFeedback) [![Downloads](http://cranlogs.r-pkg.org/badges/shinyFeedback)](http://www.r-pkg.org/pkg/shinyFeedback) ![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/shinyFeedback)
+[![Travis-CI Build Status](https://travis-ci.org/merlinoa/shinyFeedback.svg?branch=master)](https://travis-ci.org/merlinoa/shinyFeedback) [![CRAN](http://www.r-pkg.org/badges/version/shinyFeedback)](https://cran.r-project.org/package=shinyFeedback) [![Downloads](https://cranlogs.r-pkg.org/badges/shinyFeedback)](https://www.r-pkg.org/pkg/shinyFeedback) ![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/shinyFeedback)
 
 R package for displaying user feedback along side Shiny inputs
 
