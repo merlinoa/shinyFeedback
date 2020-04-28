@@ -18,23 +18,21 @@ toastrDependency <- function() {
     version = "2.1.4",
     src = "assets",
     package = "shinyFeedback",
-    script = c("js/toastr/toastr.min.js", "js/shinytoastr.js"),
-    stylesheet = "css/toastr/toastr.min.css"
+    script = c("toastr/js/toastr.min.js", "toastr/js/shinytoastr.js"),
+    stylesheet = "toastr/css/toastr.min.css"
   )
 }
 
+
+
 #' @importFrom htmltools htmlDependency
 fontAwesomeDependency <- function() {
-  htmltools::htmlDependency(
-    name = "font-awesome",
-    version = "5.13.0",
-    src = "assets",
-    package = "shinyFeedback",
-    script = "js/fontawesome/all.js",
-    stylesheet = c("css/fontawesome/all.css")#, 
-                   # "css/fontawesome/webfonts/fa-solid-900.ttf",
-                   # "css/fontawesome/webfonts/fa-solid-900.woff",
-                   # "css/fontawesome/webfonts/fa-solid-900.woff2")
+  htmlDependency(
+    "font-awesome", 
+    "5.3.1", 
+    "www/shared/fontawesome", 
+    package = "shiny", 
+    stylesheet = c("css/all.min.css", "css/v4-shims.min.css")
   )
 }
 
