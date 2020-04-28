@@ -17,6 +17,8 @@ calculations or execute some database queries while the button is in this loadin
 state.  Once your app is done loading, call `resetLoadingButton()` to restore the
 loading button to an active state.
 
+<video width="100%" height="240" autoplay loop muted playsinline src="loadingButton.mp4"></video>
+
 ```{r, eval = FALSE}
 library(shiny)
 library(shinyFeedback)
@@ -65,6 +67,8 @@ shinyApp(ui, server)
 Show a toast notification.  `showToast()` wraps the JavaScript [toastr library](https://github.com/CodeSeven/toastr).  To use `showToast()` include `useShinyFeedback()`
 at the top of your ui.  If you only want to use the toasts you can set the "feedback" argument
 to `FALSE` to only include css and js for the toasts.
+
+<video width="100%" height="240" autoplay loop muted playsinline src="showToast.mp4"></video>
 
 ```{r, eval = FALSE}
 library(shiny)
