@@ -25,6 +25,7 @@ toast_custom_defaults <- list(
 #'
 #' @param type length 1 character vector.  Valid values are "success", "error", "warning", and "info"
 #' @param message the toast message
+#' @param title the toast title.  Defaults to \code{NULL}
 #' @param .options other options to pass to the `shinytoastr::toast_*()` function
 #' @param session the Shiny session.  Defaults to \code{shiny::getDefaultReactiveDomain()}.
 #'
@@ -37,7 +38,8 @@ toast_custom_defaults <- list(
 #'
 showToast <- function(
   type, 
-  message, 
+  message,
+  title = NULL,
   .options = list(), 
   session = shiny::getDefaultReactiveDomain()
 ) {
@@ -50,10 +52,11 @@ showToast <- function(
     message = list(
       'type' = type,
       'message' = message,
-      'title' = NULL,
+      'title' = title,
       'options' = args_list
     )
   )
   
   invisible()
 }
+
