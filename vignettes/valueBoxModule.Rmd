@@ -4,7 +4,7 @@ author: "Andy Merlino"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ShinyFeedback Introduction}
+  %\VignetteIndexEntry{valueBoxModule}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
