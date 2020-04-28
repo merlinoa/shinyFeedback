@@ -6,3 +6,4 @@ rsconnect
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^revdep$

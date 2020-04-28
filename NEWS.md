@@ -1,3 +1,17 @@
+# shinyFeedback 0.2.0
+
+- simplified and standardized the JavaScript for showing/hiding input feedback.  
+- added input feedback support for the following inputs:
+  - `shiny::dateRangeInput()` - Thanks @pcogis!
+  - `shinyWidgets::airDatePickerInput()` - Thanks @pcogis!
+  - `shinyWidgets::pickerInput()`
+- new `loadingButton()` input and `resetLoadingButton()` function.
+- new `showToast()` function to show toast notifications.
+- new `valueBoxModule` Shiny module.
+
+Breaking Changes: 
+- removed `*Snackbar()` functions.  Use the new `showToast()` function instead.
+
 # shinyFeedback 0.1.0
 
 - added basic snackbar notifications
