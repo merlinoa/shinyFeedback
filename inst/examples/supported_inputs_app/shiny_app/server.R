@@ -49,16 +49,15 @@ function(input, output, session) {
     
   })
   
-  observeEvent(input$myPickerInput, {
-    
-    if (input$myPickerInput == 'A') {
-      
-      showFeedbackDanger(inputId = "myPickerInput")  
-      
+  observeEvent(input$myDateRangeInput, {
+    if (input$myDateRangeInput[1] >= input$myDateRangeInput[2]) {
+      showFeedbackDanger(
+        inputId = "myDateRangeInput",
+        text = "Invaid Range"
+      )  
     } else {
-      hideFeedback(inputId = "myPickerInput")
+      hideFeedback(inputId = "myDateRangeInput")
     }
-    
   })
   
   
@@ -107,6 +106,16 @@ function(input, output, session) {
       hideFeedback(inputId = "mySliderInput")
     }
     
+  })
+  
+  
+  observeEvent(input$myLoadingButton, {
+    Sys.sleep(4)
+    resetLoadingButton("myLoadingButton")
+  })
+  observeEvent(input$myLoadingButtonDanger, {
+    Sys.sleep(4)
+    resetLoadingButton("myLoadingButtonDanger")
   })
   
   

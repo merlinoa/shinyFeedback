@@ -29,13 +29,11 @@ fluidPage(
       value = "This is a successful text area input value"
     ),
     
-    h2("shinyWidgets::pickerInput"),
+    h2("dateRangeInput"),
     
-    shinyWidgets::pickerInput(
-      inputId = "myPickerInput",
-      label = "Danger if A",
-      choices = c("A", "B"),
-      selected = "A"
+    dateRangeInput(
+      inputId = "myDateRangeInput",
+      label = "Danger if not after Start"
     )
 
   ),
@@ -65,6 +63,21 @@ fluidPage(
       value = 8,
       min = 0,
       max = 10
+    ),
+    
+    h2("loadingButton"),
+    
+    loadingButton(
+      "myLoadingButton",
+      "Submit"
+    ),
+    
+    loadingButton(
+      "myLoadingButtonDanger",
+      "Cancel",
+      class = "btn btn-danger",
+      loadingSpinner = "cog",
+      loadingLabel = "Cancelling..."
     )
     
   ),

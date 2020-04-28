@@ -1,22 +1,25 @@
 Package: shinyFeedback
 Type: Package
-Title: Displays User Feedback Next to Shiny Inputs
-Version: 0.1.0.9003
-Date: 2019-12-17
-Authors@R: person("Andy", "Merlino", email = "merlinoa88@gmail.com", role =
-    c("aut", "cre"))
+Title: Display User Feedback in Shiny Apps
+Version: 0.1.0.9005
+Date: 2020-04-27
+Authors@R: c(
+  person("Andy", "Merlino", email = "andy.merlino@tychobra.com", role = c("aut", "cre")),
+  person("Patrick", "Howard", email = "patrick.howard@tychobra.com", role = c("aut")))
 Description: Easily display user feedback next to Shiny inputs.  The feedback message is displayed when the feedback condition evaluates to TRUE.
-License: GPL-3
+License: MIT + file LICENSE
 LazyData: true
 Depends:
     R (>= 3.1.2)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Encoding: UTF-8
 Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
 Imports:
+    htmltools,
+    jsonlite,
     shiny
 URL: https://github.com/merlinoa/shinyFeedback
 BugReports: https://github.com/merlinoa/shinyFeedback/issues

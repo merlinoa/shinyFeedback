@@ -4,8 +4,9 @@
 #' 
 #' @param feedback boolean: source in JS/CSS to use shinyFeedback functions (Default: TRUE)
 #' @param toastr boolean: source in JS/CSS to use showToast functions (Default: TRUE)
-#' 
-#' @importFrom shiny addResourcePath singleton tags icon
+#'
+#' @importFrom shiny addResourcePath icon
+#' @importFrom htmltools tags singleton
 #' 
 #' @section Example:
 #' \preformatted{
