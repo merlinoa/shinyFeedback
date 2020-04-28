@@ -1,7 +1,5 @@
 library(shiny)
-# library(shinyFeedback)
-devtools::load_all('/Users/pwan44/Documents/Tychobra/shinyFeedback/')
-
+library(shinyFeedback)
 
 
 eg_module_ui <- function(id) {
