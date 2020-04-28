@@ -6,7 +6,7 @@ Date: 2020-04-27
 Authors@R: c(
   person("Andy", "Merlino", email = "andy.merlino@tychobra.com", role = c("aut", "cre")),
   person("Patrick", "Howard", email = "patrick.howard@tychobra.com", role = c("aut")))
-Description: Easily display user feedback next to Shiny inputs.  The feedback message is displayed when the feedback condition evaluates to TRUE.
+Description: Easily display user feedback in Shiny apps.
 License: MIT + file LICENSE
 LazyData: true
 Depends:
