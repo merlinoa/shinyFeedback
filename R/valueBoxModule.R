@@ -25,8 +25,6 @@ valueBoxModuleUI <- function(
   iconColor = "#00000026"
 ) {
   ns <- shiny::NS(id)
-
-  shiny::addResourcePath("shinyfeedback", system.file("assets", package = "shinyFeedback"))
     
   boxContent <- tags$div(
     class = "sf-small-box",

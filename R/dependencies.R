@@ -1,5 +1,17 @@
 
 #' @importFrom htmltools htmlDependency
+feedbackDependency <- function() {
+  htmltools::htmlDependency(
+    name = "feedback",
+    version = utils::packageVersion("shinyFeedback"),
+    src = "assets",
+    package = "shinyFeedback",
+    script = "js/shinyfeedback.js",
+    stylesheet = "css/shinyfeedback.css"
+  )
+}
+
+#' @importFrom htmltools htmlDependency
 toastrDependency <- function() {
   htmltools::htmlDependency(
     name = "toastr",

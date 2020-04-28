@@ -35,84 +35,29 @@ useShinyFeedback <- function(
   toastr = TRUE
 ) {
   
-  shiny::addResourcePath("shinyfeedback", system.file("assets", package = "shinyFeedback"))
-  
-  if (feedback == TRUE && toastr == TRUE) {
-    return(
-      tags$div(
-        shiny::singleton(
-          shiny::tags$head(
-            toastrDependency(),
-            shiny::tags$script(
-              src = file.path("shinyfeedback", "js", "shinyfeedback.js")
-            ),
-            shiny::tags$script(
-              src = file.path("shinyfeedback", "js", "shinytoastr.js")
-            ),
-            shiny::tags$link(
-              type = "text/css", 
-              rel = "stylesheet", 
-              href = file.path("shinyfeedback", "css", "shinyfeedback.css")
-            ),
-            shiny::tags$script(
-              src = file.path("shinyfeedback", "js", "toastr", "toastr.min.js")
-            ),
-            shiny::tags$link(
-              type = "text/css", 
-              rel = "stylesheet", 
-              href = file.path("shinyfeedback", "css", "toastr", "toastr.min.css")
-            )
-          )
-        ),
-        # hack to load font-awesome when Shiny loads
-        tags$div(
-          style = "display: none;",
-          shiny::icon("user")
-        )
+  feedback_deps <- NULL
+  if (isTRUE(feedback)) {
+    feedback_deps <- tagList(
+      tags$head(
+        feedbackDependency(),
+        fontAwesomeDependency()
       )
     )
-  } else if (feedback != TRUE && toastr == TRUE) {
-    return(
-      tags$div(
-        shiny::singleton(
-          shiny::tags$head(
-            toastrDependency(),
-            shiny::tags$script(
-              src = file.path("shinyfeedback", "js", "shinytoastr.js")
-            ),
-            shiny::tags$script(
-              src = file.path("shinyfeedback", "js", "toastr", "toastr.min.js")
-            ),
-            shiny::tags$link(
-              type = "text/css", 
-              rel = "stylesheet", 
-              href = file.path("shinyfeedback", "css", "toastr", "toastr.min.css")
-            )
-          )
-        )
-      )
-    )
-  } else if (feedback == TRUE && toastr != TRUE) {
-    return(
-      tags$div(
-        shiny::singleton(
-          shiny::tags$head(
-            shiny::tags$script(
-              src = file.path("shinyfeedback", "js", "shinyfeedback.js")
-            ),
-            shiny::tags$link(
-              type = "text/css", 
-              rel = "stylesheet", 
-              href = file.path("shinyfeedback", "css", "shinyfeedback.css")
-            )
-          )
-        ),
-        # hack to load font-awesome when Shiny loads
-        tags$div(
-          style = "display: none;",
-          shiny::icon("user")
-        )
-      )
-    )  
   }
+  
+  toastr_deps <- NULL
+  if (isTRUE(toastr)) {
+    toastr_deps <- tags$div(
+      shiny::singleton(
+        shiny::tags$head(
+          toastrDependency()
+        )
+      )
+    )
+  }
+
+  tagList(
+    feedback_deps,
+    toastr_deps
+  )
 }
