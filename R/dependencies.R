@@ -16,10 +16,10 @@ toastrDependency <- function() {
   htmltools::htmlDependency(
     name = "toastr",
     version = "2.1.4",
-    src = "assets",
+    src = "assets/toastr",
     package = "shinyFeedback",
-    script = c("toastr/js/toastr.min.js", "toastr/js/shinytoastr.js"),
-    stylesheet = "toastr/css/toastr.min.css"
+    script = c("js/toastr.min.js", "js/shinytoastr.js"),
+    stylesheet = "css/toastr.min.css"
   )
 }
 
