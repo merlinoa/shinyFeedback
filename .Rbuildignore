@@ -3,3 +3,6 @@
 ^\.travis\.yml$
 ^cran-comments\.md$
 rsconnect
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
