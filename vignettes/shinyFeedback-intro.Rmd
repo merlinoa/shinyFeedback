@@ -18,13 +18,16 @@ The `shinyFeedback` package displays user friendly messages that appear along si
 `shinyFeedback` currently works with the following `shiny::*Input()` functions:
 
 - `shiny::dateInput()`
+- `shiny::dateRangeInput()`
 - `shiny::numericInput()`
 - `shiny::passwordInput()`
 - `shiny::selectInput()`
 - `shiny::sliderInput()`
 - `shiny::textAreaInput()`
 - `shiny::textInput()`
+- `shinyWidgets::airDatePickerInput()`
 - `shinyWidgets::pickerInput()`
+
 
 ## Setup
 
@@ -65,43 +68,6 @@ shinyApp(ui, server)
 ```
 
 The above app has one `textInput()` input in the UI.  In the server function, we write the code to conditionally display a feedback message. If the text input has more than 3 characters, the feeback message is displayed.
-
-```{r, eval=FALSE}
-library(shiny)
-library(shinyFeedback)
-
-ui <- fluidPage(
-  useShinyFeedback(), # include shinyFeedback
-  
-  numericInput(
-    "myInput",
-    "Warn > 3; Danger > 5",
-    value = 0
-  )
-)
-
-server <- function(input, output, session) {
-  observeEvent(input$myInput, {
-    if (input$myInput > 3 && input$myInput <= 5) {
-      showFeedbackWarning(
-        inputId = "myInput",
-        text = "warning"
-      )
-    } else if (input$myInput > 5) {
-      showFeedbackDanger(
-        inputId = "myInput",
-        text = "Danger"
-      )
-    } else {
-      hideFeedback("myInput")
-    }
-    
-  })
-}
-
-shinyApp(ui, server)
-```
-
 
 # `feedback()`
 
@@ -154,8 +120,6 @@ shinyFeedback works inside [shiny modules](https://shiny.rstudio.com/articles/mo
 As for all modules, input and output IDs in the module UI code must be wrapped in `shiny::ns()` calls.
 Inside your module server code, you need *not* wrap input or output IDs inside `shiny::ns()`; shinyFeedback will automatically prepend the namespace of your current module.
 
-Helpfully, you can also just call `shinyFeedback::useShinyFeedback()` inside the module UI function, neatly encapsulating shinyFeedback and its dependencies inside the module.
-
 Here is a simple example using shinyFeedback inside a module:
 
 ```{r, eval=FALSE}
@@ -176,6 +140,7 @@ numberInput <- function(id) {
 
 number <- function(input, output, session) {
   observeEvent(input$warningInput, {
+    req(input$warningInput)
     if (input$warningInput < 0) {
       showFeedbackWarning(inputId = "warningInput")
     } else {

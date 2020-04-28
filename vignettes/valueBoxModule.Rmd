@@ -11,13 +11,12 @@ vignette: >
 
 # valueBoxModule
 
-valueboxModule does not have anything to do with user feedback, but we use it frequently,
+`valueboxModule` does not have anything to do with user feedback, but we use it frequently,
 so we decided to include it in `shinyFeedback`.
 
-`valueBoxModule` is similar to `shinydashboard::valueBox()` but it moves the UI from 
-the server to the ui (i.e. the entire box is not rerendered everytime the value in 
-the value box updates; only the actual value is rerendered).  The box is only rendered once
-when the page is loaded.  By moving the box content to the UI the value box does not flash onto the screen when rendered.  
+`valueBoxModule` is similar to `shinydashboard::valueBox()` but it moves the value box UI from 
+the server to the UI.  Moving the value box UI to the UI has the benefit of only rendering the box once
+when the page is loaded rather than delaying the initial render until the initial value is calculated and rerendering the box each time that the value updates.  By moving the box content to the UI, the value box does not flash onto the screen when rendered.  
 
 `valueBoxModule` also allows for more custom styling of the box colors than `shinydashboard::valueBox()`.
 
