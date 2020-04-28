@@ -4,8 +4,34 @@
 \alias{useShinyFeedback}
 \title{useShinyFeedback}
 \usage{
-useShinyFeedback()
+useShinyFeedback(feedback = TRUE, toastr = TRUE)
+}
+\arguments{
+\item{feedback}{boolean: source in JS/CSS to use shinyFeedback functions (Default: TRUE)}
+
+\item{toastr}{boolean: source in JS/CSS to use showToast functions (Default: TRUE)}
 }
 \description{
 function to load js for using \code{shinyFeedback}
 }
+\section{Example}{
+
+\preformatted{
+  ui <- shinyUI(fluidPage(
+    useShinyFeedback(
+      feedback = TRUE,
+      toastr = TRUE
+    ),
+    pageWithSidebar(
+      headerPanel("Header"),
+      sidebarPanel(
+        ...
+      ),
+      mainPanel(
+        ...
+      )
+    )
+  ))
+}
+}
+
