@@ -1,3 +1,6 @@
+# shinyFeedback 0.2.0.9000
+
+
 # shinyFeedback 0.2.0
 
 - simplified and standardized the JavaScript for showing/hiding input feedback.  
