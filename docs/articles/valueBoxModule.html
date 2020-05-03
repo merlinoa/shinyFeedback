@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">shinyFeedback</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -91,7 +91,7 @@
       <h1 data-toc-skip>valueBoxModule</h1>
                         <h4 class="author">Andy Merlino</h4>
             
-            <h4 class="date">2020-04-28</h4>
+            <h4 class="date">2020-05-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/merlinoa/shinyFeedback/blob/master/vignettes/valueBoxModule.Rmd"><code>vignettes/valueBoxModule.Rmd</code></a></small>
       <div class="hidden name"><code>valueBoxModule.Rmd</code></div>
@@ -118,7 +118,7 @@
     <span class="fu">count</span>(<span class="fu">count</span>() + <span class="fl">1</span>)
   })
 
-  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/moduleServer.html">callModule</a></span>(
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/callModule.html">callModule</a></span>(
     <span class="no">valueBoxModule</span>,
     <span class="st">"betterBox"</span>,
     <span class="kw">value</span> <span class="kw">=</span> <span class="no">count</span>
@@ -135,7 +135,7 @@
       )
     )
   ),
-  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reexports.html">br</a></span>(),
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">br</a></span>(),
   <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidRow</a></span>(
     <span class="fu"><a href="../reference/valueBoxModuleUI.html">valueBoxModuleUI</a></span>(
       <span class="st">"betterBox"</span>,

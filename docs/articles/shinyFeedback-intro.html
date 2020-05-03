@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">shinyFeedback</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -91,7 +91,7 @@
       <h1 data-toc-skip>shinyFeedback Intro</h1>
                         <h4 class="author">Andy Merlino</h4>
             
-            <h4 class="date">2020-04-28</h4>
+            <h4 class="date">2020-05-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/merlinoa/shinyFeedback/blob/master/vignettes/shinyFeedback-intro.Rmd"><code>vignettes/shinyFeedback-intro.Rmd</code></a></small>
       <div class="hidden name"><code>shinyFeedback-intro.Rmd</code></div>
@@ -207,7 +207,7 @@
 
 <span class="no">numberInput</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">id</span>) {
   <span class="no">ns</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/NS.html">NS</a></span>(<span class="no">id</span>)
-  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reexports.html">tagList</a></span>(
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tag.html">tagList</a></span>(
     <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span>(),  <span class="co"># inclusion here is ideal; b/c inside module</span>
     <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/numericInput.html">numericInput</a></span>(
       <span class="fu">ns</span>(<span class="st">"warningInput"</span>),
@@ -233,7 +233,7 @@
 )
 
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>) {
-  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/moduleServer.html">callModule</a></span>(<span class="kw">module</span> <span class="kw">=</span> <span class="no">number</span>, <span class="kw">id</span> <span class="kw">=</span> <span class="st">"numberFoo"</span>)
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/callModule.html">callModule</a></span>(<span class="kw">module</span> <span class="kw">=</span> <span class="no">number</span>, <span class="kw">id</span> <span class="kw">=</span> <span class="st">"numberFoo"</span>)
 }
 
 <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>

@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">shinyFeedback</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -132,6 +132,36 @@
       <small>Source: <a href='https://github.com/merlinoa/shinyFeedback/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="shinyfeedback-0209000" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0.9000">
+<a href="#shinyfeedback-0209000" class="anchor"></a>shinyFeedback 0.2.0.9000<small> Unreleased </small>
+</h1>
+</div>
+    <div id="shinyfeedback-020" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#shinyfeedback-020" class="anchor"></a>shinyFeedback 0.2.0<small> 2020-04-29 </small>
+</h1>
+<ul>
+<li>simplified and standardized the JavaScript for showing/hiding input feedback.<br>
+</li>
+<li>added input feedback support for the following inputs:
+<ul>
+<li>
+<code><a href="https://rdrr.io/pkg/shiny/man/dateRangeInput.html">shiny::dateRangeInput()</a></code> - Thanks <a href='https://github.com/pcogis'>@pcogis</a>!</li>
+<li>
+<code>shinyWidgets::airDatePickerInput()</code> - Thanks <a href='https://github.com/pcogis'>@pcogis</a>!</li>
+<li><code><a href="https://rdrr.io/pkg/shinyWidgets/man/pickerInput.html">shinyWidgets::pickerInput()</a></code></li>
+</ul>
+</li>
+<li>new <code><a href="../reference/loadingButton.html">loadingButton()</a></code> input and <code><a href="../reference/resetLoadingButton.html">resetLoadingButton()</a></code> function.</li>
+<li>new <code><a href="../reference/showToast.html">showToast()</a></code> function to show toast notifications.</li>
+<li>new <code>valueBoxModule</code> Shiny module.</li>
+</ul>
+<p>Breaking Changes:</p>
+<ul>
+<li>removed <code>*Snackbar()</code> functions. Use the new <code><a href="../reference/showToast.html">showToast()</a></code> function instead.</li>
+</ul>
+</div>
     <div id="shinyfeedback-010" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.0">
 <a href="#shinyfeedback-010" class="anchor"></a>shinyFeedback 0.1.0<small> 2018-08-20 </small>
@@ -177,7 +207,7 @@
 <ul>
 <li>Initial release of shinyFeedback</li>
 <li>feedback() function to conditionally display feedback along side a shiny input</li>
-<li>feedbackWarning(), feedbackDanger(), and feedbackSuccess() functions that wrap the feedback() function with default arguments to display warning, danger, and suceess messages</li>
+<li>feedbackWarning(), feedbackDanger(), and feedbackSuccess() functions that wrap the feedback() function with default arguments to display warning, danger, and success messages</li>
 </ul>
 </div>
   </div>
