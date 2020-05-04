@@ -91,7 +91,7 @@
       <h1 data-toc-skip>shinyFeedback Intro</h1>
                         <h4 class="author">Andy Merlino</h4>
             
-            <h4 class="date">2020-05-03</h4>
+            <h4 class="date">2020-05-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/merlinoa/shinyFeedback/blob/master/vignettes/shinyFeedback-intro.Rmd"><code>vignettes/shinyFeedback-intro.Rmd</code></a></small>
       <div class="hidden name"><code>shinyFeedback-intro.Rmd</code></div>
@@ -103,9 +103,9 @@
 <div id="functionality" class="section level2">
 <h2 class="hasAnchor">
 <a href="#functionality" class="anchor"></a>Functionality</h2>
-<p>The <code>shinyFeedback</code> package displays user friendly messages that appear along side <code>shiny</code> inputs. e.g.</p>
+<p>The <code>shinyFeedback</code> package displays user friendly messages that appear alongside <code>shiny</code> inputs. e.g.</p>
 <p><img src="feedback-screenshot.png"></p>
-<p><code>shinyFeedback</code> currently works with the following <code>shiny::*Input()</code> functions:</p>
+<p><code>shinyFeedback</code> currently works with the following <code>shiny</code> and <code>shinyWidgets</code> inputs:</p>
 <ul>
 <li><code><a href="https://rdrr.io/pkg/shiny/man/dateInput.html">shiny::dateInput()</a></code></li>
 <li><code><a href="https://rdrr.io/pkg/shiny/man/dateRangeInput.html">shiny::dateRangeInput()</a></code></li>
@@ -115,7 +115,7 @@
 <li><code><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html">shiny::sliderInput()</a></code></li>
 <li><code><a href="https://rdrr.io/pkg/shiny/man/textAreaInput.html">shiny::textAreaInput()</a></code></li>
 <li><code><a href="https://rdrr.io/pkg/shiny/man/textInput.html">shiny::textInput()</a></code></li>
-<li><code>shinyWidgets::airDatePickerInput()</code></li>
+<li><code><a href="https://rdrr.io/pkg/shinyWidgets/man/airDatepicker.html">shinyWidgets::airDatepickerInput()</a></code></li>
 <li><code><a href="https://rdrr.io/pkg/shinyWidgets/man/pickerInput.html">shinyWidgets::pickerInput()</a></code></li>
 </ul>
 </div>
@@ -199,7 +199,7 @@
 <div id="usage-inside-shiny-modules" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage-inside-shiny-modules" class="anchor"></a>Usage Inside Shiny Modules</h2>
-<p>shinyFeedback works inside <a href="https://shiny.rstudio.com/articles/modules.html">shiny modules</a>.</p>
+<p><code>shinyFeedback</code> works inside <a href="https://shiny.rstudio.com/articles/modules.html">shiny modules</a>.</p>
 <p>As for all modules, input and output IDs in the module UI code must be wrapped in <code>shiny::ns()</code> calls. Inside your module server code, you need <em>not</em> wrap input or output IDs inside <code>shiny::ns()</code>; shinyFeedback will automatically prepend the namespace of your current module.</p>
 <p>Here is a simple example using shinyFeedback inside a module:</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
@@ -208,7 +208,7 @@
 <span class="no">numberInput</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">id</span>) {
   <span class="no">ns</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/NS.html">NS</a></span>(<span class="no">id</span>)
   <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tag.html">tagList</a></span>(
-    <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span>(),  <span class="co"># inclusion here is ideal; b/c inside module</span>
+    <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span>(),
     <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/numericInput.html">numericInput</a></span>(
       <span class="fu">ns</span>(<span class="st">"warningInput"</span>),
       <span class="st">"Warn if Negative"</span>,
