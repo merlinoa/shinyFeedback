@@ -48,7 +48,7 @@
       var obj = inputObject;
       
       obj.label.css("color", '');
-      obj.input.removeAttr("style");
+      obj.input.css("border", '');
       
       $("#" + message.inputId + "-icon").remove();
       
