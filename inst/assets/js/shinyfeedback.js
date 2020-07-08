@@ -39,6 +39,30 @@
       
       obj.formGroup.addClass("has-feedback");
       if (message.icon) {
+        
+        if (obj.input[0].type == 'textarea') {
+          
+          
+          // Initial fix of formGroup width
+          obj.formGroup.css('width', obj.input[0].offsetWidth);
+          
+          // Fix width of parent element for icon to show correctly
+          $("#" + message.inputId).bind('mouseup', function(inputObject) {
+            
+            // ONLY update width when Feedback icon is visible (otherwise uses different parent element)
+            if ($('#' + inputObject.target.id + '-icon').is(':visible')) {
+              var obj = $(inputObject.target);
+              var parent = $(inputObject.target.offsetParent);
+              
+              obj.css('margin', '0px');
+              parent.css('width', inputObject.target.offsetWidth);
+            }
+            
+          });
+          
+          
+        }
+        
         $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + ";'>" + message.icon + "</span>").insertAfter(obj.input);
       }
     },
