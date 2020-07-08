@@ -443,7 +443,7 @@
     {name: "shiny.selectInput", feedback: selectInputFeedback},
     {name: "shiny.dateInput", feedback: dateInputFeedback},
     {name: "shiny.dateRangeInput", feedback: dateRangeInputFeedback},
-    {name: "shiny.AirPickerInput", feedback: airPickerInputFeedback},
+    {name: "shinyWidgets.AirPickerInput", feedback: airPickerInputFeedback},
     {name: "shiny.sliderInput", feedback: textInputFeedback},
     {name: "shiny.numberInput", feedback: numericInputFeedback},
     {name: "shiny.passwordInput", feedback: textInputFeedback},
