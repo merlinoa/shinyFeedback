@@ -1,5 +1,7 @@
 # shinyFeedback 0.2.0.9000
 
+- bug fix to maintain all input styles other than the border style applied by
+shinyFeedback when feedback is removed #36
 
 # shinyFeedback 0.2.0
 

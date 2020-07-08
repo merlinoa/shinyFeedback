@@ -108,8 +108,8 @@
       
       var obj = inputObject;
       
-      obj.label.css("color", '');
-      obj.input.removeAttr("style");
+      obj.label.css("color", "");
+      obj.input.css("border", "");
       
       $("#" + message.inputId + "-icon").remove();
       
@@ -188,8 +188,8 @@
       
       var obj = inputObject;
       
-      obj.label.css("color", '');
-      obj.input.removeAttr("style");
+      obj.label.css("color", "");
+      obj.input.css("border", "");
       
       $("#" + message.inputId + "-icon").remove();
       
@@ -249,8 +249,8 @@
       var obj = inputObject;
       
       inputObject.formGroup.removeClass("has-feedback");
-      obj.label.css("color", '');
-      obj.input.removeAttr("style");
+      obj.label.css("color", "");
+      obj.input.css("border", "");
       $("#" + message.inputId + "-icon").remove();
       $("#" + message.inputId + "-text").remove();
     }
@@ -306,8 +306,8 @@
       var obj = inputObject;
       
       inputObject.formGroup.removeClass("has-feedback");
-      obj.label.css("color", '');
-      obj.input.removeAttr("style");
+      obj.label.css("color", "");
+      obj.input.css("border", "");
       $("#" + message.inputId + "-icon").remove();
       $("#" + message.inputId + "-text").remove();
     }
@@ -366,7 +366,7 @@
       
       inputObject.formGroup.removeClass("has-feedback");
       obj.label.css("color", "");
-      obj.inputDiv.removeAttr("style");
+      obj.inputDiv.css("border", "");
       $("#" + message.inputId + "-icon").remove();
       $("#" + message.inputId + "-text").remove();
     }
@@ -425,8 +425,8 @@
       
       var obj = inputObject;
       
-      obj.label.css("color", '');
-      obj.input.removeAttr("style");
+      obj.label.css("color", "");
+      obj.input.css("border", "");
       
       $("#" + message.inputId + "-icon").remove();
       
