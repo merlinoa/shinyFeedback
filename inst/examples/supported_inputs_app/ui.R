@@ -26,7 +26,8 @@ fluidPage(
     textAreaInput(
       inputId = "myTextAreaInput",
       label = "Success if > 10 chars",
-      value = "This is a successful text area input value"
+      value = "This is a successful text area input value",
+      height = "200px"
     ),
     
     h2("dateRangeInput"),
