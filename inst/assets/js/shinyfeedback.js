@@ -514,6 +514,65 @@
   };
   
   
+  // fileInputFeedback functions
+  var fileInputFeedback = {
+    "find": function(inputId) {
+      
+      var formGroup = findInput(inputId);
+      var label = formGroup.parent().parent().parent().siblings('label');
+      var input = formGroup.parent().parent().parent('div');
+    
+      return {
+        "input": input,
+        "label": label,
+        "formGroup": formGroup
+      };
+    },
+    
+    "hasFeedback": function(inputObject) {
+      
+      return inputObject.formGroup.hasClass("has-feedback");
+    },
+    
+    /* show the feedback along side the input
+    *
+    * @param message the `message` object sent from Shiny
+    * 
+    */
+    "show": function(inputObject, message) {
+      
+      var obj = inputObject;
+      
+      obj.formGroup.addClass("has-feedback");
+      
+      if (message.color) {
+        obj.label.css("color", message.color);
+        obj.input.css("border", "1px solid " + message.color);  
+      }
+      
+      if (message.text) {
+        $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
+      }
+      
+      if (message.icon) {
+        $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + ";'>" + message.icon + "</span>").insertAfter(obj.input.children('input'));
+      }
+    },
+    
+    "hide": function(inputObject, message) {
+      
+      var obj = inputObject;
+      
+      inputObject.formGroup.removeClass("has-feedback");
+      obj.label.css("color", "");
+      obj.input.css("border", "");
+      $("#" + message.inputId + "-icon").remove();
+      $("#" + message.inputId + "-text").remove();
+    }
+    
+  };
+  
+  
   // all shiny input bindings that are supported by shinyFeedback
   var supportedInputs = [
     {name: "shiny.selectInput", feedback: selectInputFeedback},
@@ -525,7 +584,8 @@
     {name: "shiny.passwordInput", feedback: textInputFeedback},
     {name: "shiny.textareaInput", feedback: textAreaInputFeedback},
     {name: "shiny.textInput", feedback: textInputFeedback},
-    {name: "shiny.pickerInput", feedback: pickerInputFeedback}
+    {name: "shiny.pickerInput", feedback: pickerInputFeedback},
+    {name: "shiny.fileInputBinding", feedback: fileInputFeedback}
   ];
   
   // return the element containing the shiny inputId
