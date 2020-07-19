@@ -150,6 +150,14 @@ function(input, output, session) {
     
   })
   
+  observeEvent(input$myFileInput, {
+    
+    showFeedbackSuccess(
+      inputId = "myFileInput",
+      text = "I love files!"
+    )
+    
+  })
   
   callModule(
     eg_module,

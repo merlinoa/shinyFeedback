@@ -106,7 +106,14 @@ fluidPage(
     
     h2("Shiny Module Example"),
     
-    eg_module_ui("eg_module")
+    eg_module_ui("eg_module"),
+    
+    h2("fileInput"),
+    
+    fileInput(
+      "myFileInput",
+      label = "File Input"
+    )
   
   )
   
