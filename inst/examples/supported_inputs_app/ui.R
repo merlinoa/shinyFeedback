@@ -113,6 +113,11 @@ fluidPage(
     fileInput(
       "myFileInput",
       label = "File Input"
+    ),
+    
+    actionButton(
+      "removeFileFeedback",
+      "Remove File Feeback"
     )
   
   )

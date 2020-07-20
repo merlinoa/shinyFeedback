@@ -159,6 +159,12 @@ function(input, output, session) {
     
   })
   
+  observeEvent(input$removeFileFeedback, {
+    
+    hideFeedback("myFileInput")
+    
+  })
+  
   callModule(
     eg_module,
     "eg_module"
