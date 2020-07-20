@@ -521,11 +521,13 @@
       var formGroup = findInput(inputId);
       var label = formGroup.parent().parent().parent().siblings('label');
       var input = formGroup.parent().parent().parent('div');
+      var progress = input.siblings('div.progress').children('div.progress-bar');
     
       return {
         "input": input,
         "label": label,
-        "formGroup": formGroup
+        "formGroup": formGroup,
+        "progress": progress
       };
     },
     
