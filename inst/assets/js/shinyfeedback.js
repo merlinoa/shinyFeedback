@@ -549,13 +549,14 @@
       
       if (message.color) {
         obj.label.css("color", message.color);
-        obj.input.css("border", "1px solid " + message.color);  
+        obj.input.css("border", "1px solid " + message.color);
+        obj.progress.css("background-color", message.color);
       }
-      
+
       if (message.text) {
-        $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(obj.input);
+        obj.progress.html(message.text);
       }
-      
+
       if (message.icon) {
         $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + ";'>" + message.icon + "</span>").insertAfter(obj.input.children('input'));
       }
@@ -568,8 +569,9 @@
       inputObject.formGroup.removeClass("has-feedback");
       obj.label.css("color", "");
       obj.input.css("border", "");
+      obj.progress.css("background-color", "#337ab7");
+      obj.progress.html("Upload complete");
       $("#" + message.inputId + "-icon").remove();
-      $("#" + message.inputId + "-text").remove();
     }
     
   };
