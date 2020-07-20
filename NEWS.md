@@ -1,8 +1,9 @@
 # shinyFeedback 0.2.0.9000
 
+- added input feedback support for `shiny::fileInput()` (#41)
 - updated "shinyWidgets.AirPickerInput" name to reflect the change to `shinyWidgets`
 - bug fix to maintain all input styles other than the border style applied by
-shinyFeedback when feedback is removed #36
+shinyFeedback when feedback is removed (#36)
 
 # shinyFeedback 0.2.0
 
