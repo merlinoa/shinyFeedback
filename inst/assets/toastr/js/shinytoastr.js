@@ -10,3 +10,16 @@ Shiny.addCustomMessageHandler(
     );
   }
 );
+
+Shiny.addCustomMessageHandler(
+  "hide_toastr",
+  function(message) {
+    
+    if (message.animate) {
+      toastr.clear();
+    } else {
+      toastr.remove();
+    }
+    
+  }
+);
