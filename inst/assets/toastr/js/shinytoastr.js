@@ -12,7 +12,7 @@ Shiny.addCustomMessageHandler(
 );
 
 Shiny.addCustomMessageHandler(
-  "remove_toastr",
+  "hide_toastr",
   function(message) {
     
     if (message.animate) {

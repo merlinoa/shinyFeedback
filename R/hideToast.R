@@ -1,6 +1,6 @@
 
 
-#' Remove existing toast messages
+#' Hide existing toast messages
 #'
 #' @param animate a logical indicating whether to remove the toast message(s) instantly or use its \code{hideMethod} with animations to remove (Default).
 #' @param session the Shiny session. Defaults to \code{shiny::getDefaultReactiveDomain()}.
@@ -11,13 +11,13 @@
 #'
 #' @return `invisible()`
 #'
-removeToast <- function(
+hideToast <- function(
   animate = FALSE,
   session = shiny::getDefaultReactiveDomain()
 ) {
   
   session$sendCustomMessage(
-    type = "remove_toastr",
+    type = "hide_toastr",
     message = list(
       'animate' = animate
     )

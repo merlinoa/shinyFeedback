@@ -23,7 +23,7 @@ showToast(
 
 \item{title}{the toast title.  Defaults to \code{NULL}}
 
-\item{keepVisible}{a logical indicating whether to the notification should remain visible until removed with \code{\link{removeToast}}. \code{FALSE} by default.}
+\item{keepVisible}{a logical indicating whether to the notification should remain visible until removed with \code{\link{hideToast}}. \code{FALSE} by default.}
 
 \item{.options}{other options to pass to the \code{toastr} JavaScript library.  See 
 \url{https://codeseven.github.io/toastr/demo.html} for a full demo of options.}
