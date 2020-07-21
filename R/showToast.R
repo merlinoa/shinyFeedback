@@ -9,7 +9,7 @@
 #' @param type length 1 character vector.  Valid values are "success", "error", "warning", and "info"
 #' @param message the toast message
 #' @param title the toast title.  Defaults to \code{NULL}
-#' @param keepVisible a logical indicating whether to the notification should remain visible until removed with \code{\link{hideToast}}. \code{FALSE} by default.
+#' @param keepVisible a logical. If \code{TRUE}, the toast notification will remain visible until removed with \code{\link{hideToast}}. If \code{FALSE}, the default, the toast will automatically hide once the "showDuration" option has elapsed.
 #' @param .options other options to pass to the \code{toastr} JavaScript library.  See 
 #' \url{https://codeseven.github.io/toastr/demo.html} for a full demo of options.
 #' @param session the Shiny session.  Defaults to \code{shiny::getDefaultReactiveDomain()}.
