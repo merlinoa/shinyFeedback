@@ -13,12 +13,13 @@ vignette: >
 
 The `shinyFeedback` package displays user friendly messages that appear alongside `shiny` inputs.  e.g.
 
-![](feedback-screenshot.png)
+![](feedback_screenshot.png)
 
 `shinyFeedback` currently works with the following `shiny` and `shinyWidgets` inputs:
 
 - `shiny::dateInput()`
 - `shiny::dateRangeInput()`
+- `shiny::fileInput()`
 - `shiny::numericInput()`
 - `shiny::passwordInput()`
 - `shiny::selectInput()`

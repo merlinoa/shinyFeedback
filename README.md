@@ -4,7 +4,7 @@
 
 R package for displaying user feedback alongside Shiny inputs
 
-![](https://res.cloudinary.com/dxqnb8xjb/image/upload/v1588077144/Screen_Shot_2020-04-28_at_8.31.32_AM_kx4rn8.png)
+![](inst/img/feedback_screenshot.png)
 
 ### [Live Shiny app using `shinyFeedback`](https://tychobra.shinyapps.io/supported_inputs_app/)
 
