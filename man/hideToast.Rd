@@ -4,7 +4,7 @@
 \alias{hideToast}
 \title{Hide existing toast messages}
 \usage{
-hideToast(animate = FALSE, session = shiny::getDefaultReactiveDomain())
+hideToast(animate = TRUE, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{animate}{a logical indicating whether to remove the toast message(s) instantly or use its \code{hideMethod} with animations to remove (Default).}
