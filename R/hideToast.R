@@ -12,7 +12,7 @@
 #' @return `invisible()`
 #'
 hideToast <- function(
-  animate = FALSE,
+  animate = TRUE,
   session = shiny::getDefaultReactiveDomain()
 ) {
   
