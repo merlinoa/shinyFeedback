@@ -119,6 +119,13 @@ function(input, output, session) {
   })
   
   
+  observeEvent(input$removeToast, {
+    hideToast()
+  })
+  observeEvent(input$removeToastASAP, {
+    hideToast(animate = FALSE)
+  })
+  
   
   observeEvent(input$mySelectizeInput, {
     

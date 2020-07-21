@@ -79,6 +79,18 @@ fluidPage(
       class = "btn btn-danger",
       loadingSpinner = "cog",
       loadingLabel = "Cancelling..."
+    ),
+    br(),
+    h2("Remove Toast"),
+    actionButton(
+      "removeToast",
+      "Remove Toast",
+      icon = icon("trash-o")
+    ),
+    actionButton(
+      "removeToastASAP",
+      "Remove Toast ASAP",
+      icon = icon("trash-o")
     )
     
   ),
