@@ -1,4 +1,4 @@
-# shinyFeedback 0.2.0.9000
+# shinyFeedback 0.2.0.9001
 
 - new function `hideToast()` to programatically hide all toasts (#44)
 - simplified and deduped JavaScript (#42) - Thanks @jcheng5!
