@@ -1,5 +1,21 @@
 
-
+#' @noRd default_options
+default_options <- list(
+  positionClass = "toast-bottom-center",
+  progressBar = TRUE,
+  timeOut = 4000,
+  closeButton = TRUE,
+  # same as defaults
+  newestOnTop = FALSE,
+  preventDuplicates = FALSE,
+  showDuration = 300,
+  hideDuration = 1000,
+  extendedTimeOut = 1000,
+  showEasing = "swing",
+  hideEasing = "swing",
+  showMethod = "fadeIn",
+  hideMethod = "fadeOut"
+)
 
 #' show toast message
 #'
@@ -25,26 +41,29 @@ showToast <- function(
   message,
   title = NULL,
   keepVisible = FALSE,
-  .options = list(
-    positionClass = "toast-bottom-center",
-    progressBar = TRUE,
-    timeOut = 4000,
-    closeButton = TRUE,
-    
-    # same as defaults
-    newestOnTop = FALSE,
-    preventDuplicates = FALSE,
-    showDuration = 300,
-    hideDuration = 1000,
-    extendedTimeOut = 1000,
-    showEasing = "swing",
-    hideEasing = "swing",
-    showMethod = "fadeIn",
-    hideMethod = "fadeOut"
-  ), 
+  .options = list(),
   session = shiny::getDefaultReactiveDomain()
 ) {
-
+  
+  # Incorrect option
+  if (!all(names(.options) %in% names(default_options))) {
+    stop('Incorrect option supplied', call. = FALSE)
+  }
+  
+  if (length(.options) == 0) {
+    .options <- default_options
+  } else {
+    .options <- lapply(names(default_options), function(option_name) {
+      if (option_name %in% names(.options)) {
+        return(option_name = .options[[option_name]])
+      } else {
+        return(option_name = default_options[[option_name]])
+      }
+    })
+    
+    names(.options) <- names(default_options)
+  }
+  
   if (isTRUE(keepVisible)) {
     .options$timeOut <- 0
     .options$extendedTimeOut <- 0
