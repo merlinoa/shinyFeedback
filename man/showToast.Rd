@@ -9,10 +9,7 @@ showToast(
   message,
   title = NULL,
   keepVisible = FALSE,
-  .options = list(positionClass = "toast-bottom-center", progressBar = TRUE, timeOut =
-    4000, closeButton = TRUE, newestOnTop = FALSE, preventDuplicates = FALSE,
-    showDuration = 300, hideDuration = 1000, extendedTimeOut = 1000, showEasing =
-    "swing", hideEasing = "swing", showMethod = "fadeIn", hideMethod = "fadeOut"),
+  .options = list(),
   session = shiny::getDefaultReactiveDomain()
 )
 }
