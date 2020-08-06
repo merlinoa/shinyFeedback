@@ -52,20 +52,10 @@ showToast <- function(
     stop('Incorrect option supplied', call. = FALSE)
   }
   
-  if (length(.options) == 0) {
-    .options <- showToast_default_options
-  } else {
-    .options <- lapply(names(showToast_default_options), function(option_name) {
-      if (option_name %in% names(.options)) {
-        return(option_name = .options[[option_name]])
-      } else {
-        return(option_name = showToast_default_options[[option_name]])
-      }
-    })
-    
-    names(.options) <- names(showToast_default_options)
-  }
+  # Update default options
+  .options <- modifyList(default_options, .options)
   
+  # Argument `keepVisible = TRUE`
   if (isTRUE(keepVisible)) {
     .options$timeOut <- 0
     .options$extendedTimeOut <- 0
