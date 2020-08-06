@@ -35,6 +35,7 @@ showToast_default_options <- list(
 #' @export
 #'
 #' @importFrom shiny getDefaultReactiveDomain
+#' @importFrom utils modifyList
 #'
 #' @return `invisible()`
 #'
@@ -53,7 +54,7 @@ showToast <- function(
   }
   
   # Update default options
-  .options <- modifyList(default_options, .options)
+  .options <- modifyList(showToast_default_options, .options)
   
   # Argument `keepVisible = TRUE`
   if (isTRUE(keepVisible)) {
