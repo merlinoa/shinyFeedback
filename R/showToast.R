@@ -48,9 +48,13 @@ showToast <- function(
   session = shiny::getDefaultReactiveDomain()
 ) {
   
+  if (!is.list(.options)) {
+    stop("`.options` must be a list", call. = FALSE)
+  }
+  
   # Incorrect option
   if (!all(names(.options) %in% names(showToast_default_options))) {
-    stop('Incorrect option supplied', call. = FALSE)
+    stop('Incorrect `.options` supplied', call. = FALSE)
   }
   
   # Update default options
