@@ -68,7 +68,7 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 
-The above app has one `textInput()` input in the UI.  In the server function, we write the code to conditionally display a feedback message. If the text input has more than 3 characters, the feeback message is displayed.
+The above app has one `textInput()` input in the UI.  In the server function, we write the code to conditionally display a feedback message. If the text input has more than 3 characters, the feedback message is displayed.
 
 # `feedback()`
 
