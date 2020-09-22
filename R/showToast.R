@@ -1,5 +1,21 @@
 
-
+#' @noRd showToast_default_options
+showToast_default_options <- list(
+  positionClass = "toast-bottom-center",
+  progressBar = TRUE,
+  timeOut = 4000,
+  closeButton = TRUE,
+  # same as defaults
+  newestOnTop = FALSE,
+  preventDuplicates = FALSE,
+  showDuration = 300,
+  hideDuration = 1000,
+  extendedTimeOut = 1000,
+  showEasing = "swing",
+  hideEasing = "swing",
+  showMethod = "fadeIn",
+  hideMethod = "fadeOut"
+)
 
 #' show toast message
 #'
@@ -11,12 +27,15 @@
 #' @param title the toast title.  Defaults to \code{NULL}
 #' @param keepVisible a logical. If \code{TRUE}, the toast notification will remain visible until removed with \code{\link{hideToast}}. If \code{FALSE}, the default, the toast will automatically hide once the "showDuration" option has elapsed.
 #' @param .options other options to pass to the \code{toastr} JavaScript library.  See 
-#' \url{https://codeseven.github.io/toastr/demo.html} for a full demo of options.
+#' \url{https://codeseven.github.io/toastr/demo.html} for a full demo of options. Valid options are "positionClass",
+#' "progressBar", "timeOut", "closeButton", "newestOnTop", "preventDuplicates", "showDuration", "hideDuration", 
+#' "extendedTimeOut", "showEasing", "hideEasing", "showMethod", & "hideMethod"
 #' @param session the Shiny session.  Defaults to \code{shiny::getDefaultReactiveDomain()}.
 #'
 #' @export
 #'
 #' @importFrom shiny getDefaultReactiveDomain
+#' @importFrom utils modifyList
 #'
 #' @return `invisible()`
 #'
@@ -25,26 +44,23 @@ showToast <- function(
   message,
   title = NULL,
   keepVisible = FALSE,
-  .options = list(
-    positionClass = "toast-bottom-center",
-    progressBar = TRUE,
-    timeOut = 4000,
-    closeButton = TRUE,
-    
-    # same as defaults
-    newestOnTop = FALSE,
-    preventDuplicates = FALSE,
-    showDuration = 300,
-    hideDuration = 1000,
-    extendedTimeOut = 1000,
-    showEasing = "swing",
-    hideEasing = "swing",
-    showMethod = "fadeIn",
-    hideMethod = "fadeOut"
-  ), 
+  .options = list(),
   session = shiny::getDefaultReactiveDomain()
 ) {
-
+  
+  if (!is.list(.options)) {
+    stop("`.options` must be a list", call. = FALSE)
+  }
+  
+  # Incorrect option
+  if (!all(names(.options) %in% names(showToast_default_options))) {
+    stop('Incorrect `.options` supplied', call. = FALSE)
+  }
+  
+  # Update default options
+  .options <- modifyList(showToast_default_options, .options)
+  
+  # Argument `keepVisible = TRUE`
   if (isTRUE(keepVisible)) {
     .options$timeOut <- 0
     .options$extendedTimeOut <- 0

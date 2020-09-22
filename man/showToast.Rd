@@ -9,10 +9,7 @@ showToast(
   message,
   title = NULL,
   keepVisible = FALSE,
-  .options = list(positionClass = "toast-bottom-center", progressBar = TRUE, timeOut =
-    4000, closeButton = TRUE, newestOnTop = FALSE, preventDuplicates = FALSE,
-    showDuration = 300, hideDuration = 1000, extendedTimeOut = 1000, showEasing =
-    "swing", hideEasing = "swing", showMethod = "fadeIn", hideMethod = "fadeOut"),
+  .options = list(),
   session = shiny::getDefaultReactiveDomain()
 )
 }
@@ -26,7 +23,9 @@ showToast(
 \item{keepVisible}{a logical. If \code{TRUE}, the toast notification will remain visible until removed with \code{\link{hideToast}}. If \code{FALSE}, the default, the toast will automatically hide once the "showDuration" option has elapsed.}
 
 \item{.options}{other options to pass to the \code{toastr} JavaScript library.  See 
-\url{https://codeseven.github.io/toastr/demo.html} for a full demo of options.}
+\url{https://codeseven.github.io/toastr/demo.html} for a full demo of options. Valid options are "positionClass",
+"progressBar", "timeOut", "closeButton", "newestOnTop", "preventDuplicates", "showDuration", "hideDuration", 
+"extendedTimeOut", "showEasing", "hideEasing", "showMethod", & "hideMethod"}
 
 \item{session}{the Shiny session.  Defaults to \code{shiny::getDefaultReactiveDomain()}.}
 }
