@@ -1,8 +1,8 @@
-# shinyFeedback 0.2.0.9001
+# shinyFeedback 0.3.0
 
 - updated ".options" argument to showToast to use the `shinyFeedback` default options for
 any options not included in the list passed to ".options" (#46)
-- new function `hideToast()` to programatically hide all toasts (#44)
+- new function `hideToast()` to programmatically hide all toasts (#44)
 - simplified and deduped JavaScript (#42) - Thanks @jcheng5!
 - added input feedback support for `shiny::fileInput()` (#41) 
 - updated "shinyWidgets.AirPickerInput" name to reflect the change to `shinyWidgets`
