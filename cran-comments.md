@@ -1,6 +1,6 @@
 ## Test environments
-* local OS X install, R 4.0.0
-* ubuntu 16.04 (on travis-ci), R 4.0.0
+* local OS X install, R 4.0.2
+* ubuntu 16.04 (on travis-ci), R 4.0.2
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -9,4 +9,5 @@
 
 ## Reverse dependencies
 
-There are no reverse dependencies.
+Two reverse dependencies checked with revdepcheck.  There
+were no problems.
