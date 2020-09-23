@@ -1,10 +1,10 @@
-# shinyFeedback <img src="inst/img/shinyfeedback_hex_sticker.png" align="right" width="120" />
+# shinyFeedback <img src="https://raw.githubusercontent.com/merlinoa/shinyFeedback/master/inst/img/shinyfeedback_hex_sticker.png" align="right" width="120" />
 
 [![Travis-CI Build Status](https://travis-ci.org/merlinoa/shinyFeedback.svg?branch=master)](https://travis-ci.org/merlinoa/shinyFeedback) [![CRAN](https://www.r-pkg.org/badges/version/shinyFeedback)](https://cran.r-project.org/package=shinyFeedback) [![Downloads](https://cranlogs.r-pkg.org/badges/shinyFeedback)](https://www.r-pkg.org/pkg/shinyFeedback)
 
 R package for displaying user feedback alongside Shiny inputs
 
-![](inst/img/feedback_screenshot.png)
+![](https://raw.githubusercontent.com/merlinoa/shinyFeedback/master/inst/img/feedback_screenshot.png)
 
 ### [Live Shiny app using `shinyFeedback`](https://tychobra.shinyapps.io/supported_inputs_app/)
 
