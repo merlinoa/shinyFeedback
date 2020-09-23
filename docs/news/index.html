@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">shinyFeedback</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -97,7 +97,7 @@
       <a href="../articles/loading-button-and-toast.html">loadingButton and showToast</a>
     </li>
     <li>
-      <a href="../articles/shinyFeedback-intro.html">shinyFeedback Intro</a>
+      <a href="../articles/shinyFeedback-intro.html">shinyFeedback Introduction</a>
     </li>
     <li>
       <a href="../articles/valueBoxModule.html">valueBoxModule</a>
@@ -132,10 +132,19 @@
       <small>Source: <a href='https://github.com/merlinoa/shinyFeedback/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="shinyfeedback-0209000" class="section level1">
-<h1 class="page-header" data-toc-text="0.2.0.9000">
-<a href="#shinyfeedback-0209000" class="anchor"></a>shinyFeedback 0.2.0.9000<small> Unreleased </small>
+    <div id="shinyfeedback-030" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.0">
+<a href="#shinyfeedback-030" class="anchor"></a>shinyFeedback 0.3.0<small> 2020-09-22 </small>
 </h1>
+<ul>
+<li>updated “.options” argument to showToast to use the <code>shinyFeedback</code> default options for any options not included in the list passed to “.options” (<a href='https://github.com/merlinoa/shinyFeedback/issues/46'>#46</a>)</li>
+<li>new function <code><a href="../reference/hideToast.html">hideToast()</a></code> to programmatically hide all toasts (<a href='https://github.com/merlinoa/shinyFeedback/issues/44'>#44</a>)</li>
+<li>simplified and deduped JavaScript (<a href='https://github.com/merlinoa/shinyFeedback/issues/42'>#42</a>) - Thanks <a href='https://github.com/jcheng5'>@jcheng5</a>!</li>
+<li>added input feedback support for <code><a href="https://shiny.rstudio.com/reference/shiny/latest/fileInput.html">shiny::fileInput()</a></code> (<a href='https://github.com/merlinoa/shinyFeedback/issues/41'>#41</a>)</li>
+<li>updated “shinyWidgets.AirPickerInput” name to reflect the change to <code>shinyWidgets</code>
+</li>
+<li>bug fix to maintain all input styles other than the border style applied by shinyFeedback when feedback is removed (<a href='https://github.com/merlinoa/shinyFeedback/issues/36'>#36</a>)</li>
+</ul>
 </div>
     <div id="shinyfeedback-020" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.0">
@@ -147,7 +156,7 @@
 <li>added input feedback support for the following inputs:
 <ul>
 <li>
-<code><a href="https://rdrr.io/pkg/shiny/man/dateRangeInput.html">shiny::dateRangeInput()</a></code> - Thanks <a href='https://github.com/pcogis'>@pcogis</a>!</li>
+<code><a href="https://shiny.rstudio.com/reference/shiny/latest/dateRangeInput.html">shiny::dateRangeInput()</a></code> - Thanks <a href='https://github.com/pcogis'>@pcogis</a>!</li>
 <li>
 <code>shinyWidgets::airDatePickerInput()</code> - Thanks <a href='https://github.com/pcogis'>@pcogis</a>!</li>
 <li><code><a href="https://rdrr.io/pkg/shinyWidgets/man/pickerInput.html">shinyWidgets::pickerInput()</a></code></li>
@@ -193,7 +202,7 @@
 <a href="#shinyfeedback-002" class="anchor"></a>shinyFeedback 0.0.2<small> 2016-12-20 </small>
 </h1>
 <ul>
-<li>support for <code><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">shiny::selectInput()</a></code>
+<li>support for <code><a href="https://shiny.rstudio.com/reference/shiny/latest/selectInput.html">shiny::selectInput()</a></code>
 </li>
 <li>feedback messages are no longer displayed for non supported <code>shiny::*Input()</code>s</li>
 <li>support for multiple feedbacks for a single shiny input</li>

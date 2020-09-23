@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">shinyFeedback</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@
       <a href="../articles/loading-button-and-toast.html">loadingButton and showToast</a>
     </li>
     <li>
-      <a href="../articles/shinyFeedback-intro.html">shinyFeedback Intro</a>
+      <a href="../articles/shinyFeedback-intro.html">shinyFeedback Introduction</a>
     </li>
     <li>
       <a href="../articles/valueBoxModule.html">valueBoxModule</a>
@@ -144,7 +144,7 @@
   <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/domains.html'>getDefaultReactiveDomain</a></span>()
+  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/domains.html'>getDefaultReactiveDomain</a></span>()
 )
 
 <span class='fu'>feedbackWarning</span>(
@@ -152,8 +152,8 @@
   <span class='no'>show</span>,
   <span class='kw'>text</span> <span class='kw'>=</span> <span class='st'>"Ye be warned"</span>,
   <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#F89406"</span>,
-  <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/icon.html'>icon</a></span>(<span class='st'>"warning-sign"</span>, <span class='kw'>lib</span> <span class='kw'>=</span> <span class='st'>"glyphicon"</span>),
-  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/domains.html'>getDefaultReactiveDomain</a></span>()
+  <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/icon.html'>icon</a></span>(<span class='st'>"warning-sign"</span>, <span class='kw'>lib</span> <span class='kw'>=</span> <span class='st'>"glyphicon"</span>),
+  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/domains.html'>getDefaultReactiveDomain</a></span>()
 )
 
 <span class='fu'>feedbackDanger</span>(
@@ -161,8 +161,8 @@
   <span class='no'>show</span>,
   <span class='kw'>text</span> <span class='kw'>=</span> <span class='st'>"Danger, turn back!"</span>,
   <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#d9534f"</span>,
-  <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/icon.html'>icon</a></span>(<span class='st'>"exclamation-sign"</span>, <span class='kw'>lib</span> <span class='kw'>=</span> <span class='st'>"glyphicon"</span>),
-  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/domains.html'>getDefaultReactiveDomain</a></span>()
+  <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/icon.html'>icon</a></span>(<span class='st'>"exclamation-sign"</span>, <span class='kw'>lib</span> <span class='kw'>=</span> <span class='st'>"glyphicon"</span>),
+  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/domains.html'>getDefaultReactiveDomain</a></span>()
 )
 
 <span class='fu'>feedbackSuccess</span>(
@@ -170,8 +170,8 @@
   <span class='no'>show</span>,
   <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#5cb85c"</span>,
-  <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/icon.html'>icon</a></span>(<span class='st'>"ok"</span>, <span class='kw'>lib</span> <span class='kw'>=</span> <span class='st'>"glyphicon"</span>),
-  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/domains.html'>getDefaultReactiveDomain</a></span>()
+  <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/icon.html'>icon</a></span>(<span class='st'>"ok"</span>, <span class='kw'>lib</span> <span class='kw'>=</span> <span class='st'>"glyphicon"</span>),
+  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/domains.html'>getDefaultReactiveDomain</a></span>()
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>

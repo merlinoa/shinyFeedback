@@ -73,7 +73,7 @@ values." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">shinyFeedback</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -99,7 +99,7 @@ values." />
       <a href="../articles/loading-button-and-toast.html">loadingButton and showToast</a>
     </li>
     <li>
-      <a href="../articles/shinyFeedback-intro.html">shinyFeedback Intro</a>
+      <a href="../articles/shinyFeedback-intro.html">shinyFeedback Introduction</a>
     </li>
     <li>
       <a href="../articles/valueBoxModule.html">valueBoxModule</a>
@@ -144,11 +144,9 @@ values.</p>
   <span class='no'>type</span>,
   <span class='no'>message</span>,
   <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>.options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>positionClass</span> <span class='kw'>=</span> <span class='st'>"toast-bottom-center"</span>, <span class='kw'>progressBar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>timeOut</span> <span class='kw'>=</span>
-    <span class='fl'>4000</span>, <span class='kw'>closeButton</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>newestOnTop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>preventDuplicates</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-    <span class='kw'>showDuration</span> <span class='kw'>=</span> <span class='fl'>300</span>, <span class='kw'>hideDuration</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>extendedTimeOut</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>showEasing</span> <span class='kw'>=</span>
-    <span class='st'>"swing"</span>, <span class='kw'>hideEasing</span> <span class='kw'>=</span> <span class='st'>"swing"</span>, <span class='kw'>showMethod</span> <span class='kw'>=</span> <span class='st'>"fadeIn"</span>, <span class='kw'>hideMethod</span> <span class='kw'>=</span> <span class='st'>"fadeOut"</span>),
-  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/domains.html'>getDefaultReactiveDomain</a></span>()
+  <span class='kw'>keepVisible</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>.options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/domains.html'>getDefaultReactiveDomain</a></span>()
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -167,13 +165,19 @@ values.</p>
       <td><p>the toast title.  Defaults to <code>NULL</code></p></td>
     </tr>
     <tr>
+      <th>keepVisible</th>
+      <td><p>a logical. If <code>TRUE</code>, the toast notification will remain visible until removed with <code><a href='hideToast.html'>hideToast</a></code>. If <code>FALSE</code>, the default, the toast will automatically hide once the "showDuration" option has elapsed.</p></td>
+    </tr>
+    <tr>
       <th>.options</th>
       <td><p>other options to pass to the <code>toastr</code> JavaScript library.  See 
-<a href='https://codeseven.github.io/toastr/demo.html'>https://codeseven.github.io/toastr/demo.html</a> for a full demo of options.</p></td>
+<a href='https://codeseven.github.io/toastr/demo.html'>https://codeseven.github.io/toastr/demo.html</a> for a full demo of options. Valid options are "positionClass",
+"progressBar", "timeOut", "closeButton", "newestOnTop", "preventDuplicates", "showDuration", "hideDuration", 
+"extendedTimeOut", "showEasing", "hideEasing", "showMethod", &amp; "hideMethod"</p></td>
     </tr>
     <tr>
       <th>session</th>
-      <td><p>the Shiny session.  Defaults to <code><a href='https://rdrr.io/pkg/shiny/man/domains.html'>shiny::getDefaultReactiveDomain()</a></code>.</p></td>
+      <td><p>the Shiny session.  Defaults to <code><a href='https://shiny.rstudio.com/reference/shiny/latest/domains.html'>shiny::getDefaultReactiveDomain()</a></code>.</p></td>
     </tr>
     </table>
 

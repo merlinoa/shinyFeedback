@@ -1,10 +1,10 @@
 ---
-title: "shinyFeedback Intro"
+title: "shinyFeedback Introduction"
 author: "Andy Merlino"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ShinyFeedback Introduction}
+  %\VignetteIndexEntry{shinyFeedback Introduction}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
