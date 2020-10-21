@@ -74,9 +74,19 @@ LoadingButtons.prototype.resetLoading = function (inputId) {
 var loadingButtons = new LoadingButtons();
 
 // event listeners
-$(document).on('shiny:sessioninitialized', function() {
+if (typeof Shiny === "undefined") {
+  // Shiny has not yet initialized, so listen for initialization and then create 
+  // custom message handler
+  $(document).on('shiny:sessioninitialized', function() {
+    // Reset button to original state
+    Shiny.addCustomMessageHandler('resetLoadingButton', function(message) {
+      loadingButtons.resetLoading(message.inputId);
+    });
+  });
+} else {
   // Reset button to original state
   Shiny.addCustomMessageHandler('resetLoadingButton', function(message) {
     loadingButtons.resetLoading(message.inputId);
   });
-});
+}
+

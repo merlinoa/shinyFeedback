@@ -62,7 +62,7 @@ loadingButton <- function(
         fontAwesomeDependency() 
       ),
       htmltools::singleton(
-        tags$script(src = "shinyfeedback/js/loadingbutton.js"),
+        tags$script(src = "shinyfeedback/js/loadingbutton.js?version=1"),
       ),
       tags$script(sprintf(
         "loadingButtons.create('%s', %s)",

@@ -1,3 +1,7 @@
+# shinyFeedback 0.3.0.9000
+
+- Fixed `resetLoadingButton()` to work if `loadingButton()` does not exist in the initial app UI (#50) - Thanks @matthijsvanderloos!
+
 # shinyFeedback 0.3.0
 
 - updated ".options" argument to showToast to use the `shinyFeedback` default options for
