@@ -119,7 +119,7 @@
             
       if (message.icon) {
         $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + 
-        message.color + "; margin-right: 20px;'>" + message.icon + "</span>").insertAfter(obj.input);
+        message.color + ";'>" + message.icon + "</span>").insertAfter(obj.input);
       } else {
         $("#" + message.inputId + "-icon").remove();
       }
