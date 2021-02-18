@@ -1,7 +1,7 @@
 Package: shinyFeedback
 Type: Package
 Title: Display User Feedback in Shiny Apps
-Version: 0.3.0.9000
+Version: 0.3.0.9001
 Date: 2020-09-22
 Authors@R: c(
   person("Andy", "Merlino", email = "andy.merlino@tychobra.com", role = c("aut", "cre")),

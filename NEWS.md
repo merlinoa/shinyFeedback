@@ -1,5 +1,6 @@
-# shinyFeedback 0.3.0.9000
+# shinyFeedback 0.3.0.9001
 
+- Updated pickerInput input binding name to "shinyWidgets.pickerInput" to reflect change in `shinyWidgets`.
 - Fixed `resetLoadingButton()` to work if `loadingButton()` does not exist in the initial app UI (#50) - Thanks @matthijsvanderloos!
 
 # shinyFeedback 0.3.0
