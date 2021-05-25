@@ -1,7 +1,8 @@
 #' valueBoxModuleUI
 #'
 #' @param id the Shiny module id
-#' @param subtitle The subtitle to be displayed in the value box
+#' @param subtitle The subtitle to be displayed in the value box.  Set to "__server__" to
+#' dynamically render the subtitle from the server.
 #' @param icon An icon made by the `shiny::icon()`
 #' @param backgroundColor A hex color code string
 #' @param textColor A hex color code string
@@ -25,7 +26,14 @@ valueBoxModuleUI <- function(
   iconColor = "#00000026"
 ) {
   ns <- shiny::NS(id)
-    
+  
+  if (identical(subtitle, "__server__")) {
+    subtitle_out <- shiny::textOutput(ns("subtitle"))  
+  } else {
+    subtitle_out <- subtitle
+  }
+   
+  
   boxContent <- tags$div(
     class = "sf-small-box",
     style = paste0("background-color: ", backgroundColor, "; color: ", textColor, ";"),
@@ -36,7 +44,7 @@ valueBoxModuleUI <- function(
         shiny::textOutput(ns("value_out"))
       ),
       tags$div(
-        tags$p(subtitle),
+        tags$p(subtitle_out),
         style = "font-size: 15px; height: 20.91px; margin-bottom: 10px"
       )
     ),
@@ -73,12 +81,14 @@ valueBoxModuleUI <- function(
 #' @param session the Shiny server session
 #' @param value Either a reactive or an R object that can be coerced into a string.
 #' The value to be displayed in the value box.
+#' @param subtitle reactive to dynamically set the subtitle.  Set the "subtitle" argument
+#' of \code{valueBoxModuleUI()} to "__server__" to display this subtitle.
 #'
 #' @importFrom shiny reactive is.reactive renderText
 #'
 #' @export
 #'
-valueBoxModule <- function(input, output, session, value) {
+valueBoxModule <- function(input, output, session, value, subtitle = function() NULL) {
   
   
   value_prep <- shiny::reactive({
@@ -93,6 +103,10 @@ valueBoxModule <- function(input, output, session, value) {
   
   output$value_out <- shiny::renderText({
     value_prep()
+  })
+  
+  output$subtitle <- shiny::renderText({
+    subtitle()
   })
   
 }

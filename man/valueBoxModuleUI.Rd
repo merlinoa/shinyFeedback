@@ -18,7 +18,8 @@ valueBoxModuleUI(
 \arguments{
 \item{id}{the Shiny module id}
 
-\item{subtitle}{The subtitle to be displayed in the value box}
+\item{subtitle}{The subtitle to be displayed in the value box.  Set to "__server__" to
+dynamically render the subtitle from the server.}
 
 \item{icon}{An icon made by the `shiny::icon()`}
 

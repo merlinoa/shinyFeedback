@@ -4,7 +4,7 @@
 \alias{valueBoxModule}
 \title{valueBoxModule}
 \usage{
-valueBoxModule(input, output, session, value)
+valueBoxModule(input, output, session, value, subtitle = function() NULL)
 }
 \arguments{
 \item{input}{the Shiny server input}
@@ -15,6 +15,9 @@ valueBoxModule(input, output, session, value)
 
 \item{value}{Either a reactive or an R object that can be coerced into a string.
 The value to be displayed in the value box.}
+
+\item{subtitle}{reactive to dynamically set the subtitle.  Set the "subtitle" argument
+of \code{valueBoxModuleUI()} to "__server__" to display this subtitle.}
 }
 \description{
 Server function for the `valueBoxModule`.  `valueBoxModule` is similar to 
