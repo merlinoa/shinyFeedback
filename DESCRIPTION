@@ -18,6 +18,7 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 Imports:
+    fontawesome,
     htmltools,
     jsonlite,
     shiny

@@ -6,6 +6,7 @@
 #' @param toastr boolean: source in JS/CSS to use showToast functions (Default: TRUE)
 #'
 #' @importFrom htmltools tagList
+#' @importFrom fontawesome fa_html_dependency
 #' 
 #' @section Example:
 #' \preformatted{
@@ -38,7 +39,7 @@ useShinyFeedback <- function(
   if (isTRUE(feedback)) {
     feedback_deps <- htmltools::tagList(
       feedbackDependency(),
-      fontAwesomeDependency()
+      fontawesome::fa_html_dependency()
     )
   }
   
