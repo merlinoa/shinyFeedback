@@ -1,4 +1,4 @@
-# shinyFeedback 0.3.0.9000
+# shinyFeedback 0.4.0
 
 - Using {fontawesome} package rather than shiny to bring in icons.  Resolves breaking change introduced
 in {shiny} 0.1.7 where {shiny} switched from vendoring the icons to using the {fontawesome} package.
