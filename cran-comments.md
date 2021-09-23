@@ -1,7 +1,9 @@
 ## Test environments
-* local OS X install, R 4.0.2
-* ubuntu 16.04 (on travis-ci), R 4.0.2
-* win-builder (devel and release)
+* local OS X install, R 4.1.1
+* Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+* Fedora Linux, R-devel, clang, gfortran
+* Ubuntu Linux 20.04.1 LTS, R-release, GCC
+* win-builder, R Under development (unstable)
 
 ## R CMD check results
 
@@ -9,5 +11,5 @@
 
 ## Reverse dependencies
 
-Two reverse dependencies checked with revdepcheck.  There
+Four reverse dependencies checked with revdepcheck.  There
 were no problems.
