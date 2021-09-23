@@ -23,19 +23,6 @@ toastrDependency <- function() {
   )
 }
 
-
-
-#' @importFrom htmltools htmlDependency
-fontAwesomeDependency <- function() {
-  htmlDependency(
-    "font-awesome", 
-    "5.3.1", 
-    "www/shared/fontawesome", 
-    package = "shiny", 
-    stylesheet = c("css/all.min.css", "css/v4-shims.min.css")
-  )
-}
-
 #' @importFrom utils packageVersion
 valueBoxDependency <- function() {
   htmltools::htmlDependency(
