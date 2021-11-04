@@ -245,7 +245,7 @@
     /* Custom right margin */
     "setIcon": function(inputObject, message) {
       if (message.icon) {
-        $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + "; margin-right: 40px;'>" + message.icon + "</span>").insertAfter(obj.input);
+        $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + "; margin-right: 40px;'>" + message.icon + "</span>").insertAfter(inputObject.input);
       } else {
         $("#" + message.inputId + "-icon").remove();
       }
