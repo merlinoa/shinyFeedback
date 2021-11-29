@@ -1,3 +1,7 @@
+# shinyFeedback 0.4.0.9000
+
+- bug fix for `airPickerInputFeedback`
+
 # shinyFeedback 0.4.0
 
 - Using {fontawesome} package rather than shiny to bring in icons.  Resolves breaking change introduced
