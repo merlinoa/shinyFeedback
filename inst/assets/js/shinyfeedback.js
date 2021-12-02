@@ -353,6 +353,7 @@
     {name: "shiny.textInput", feedback: textInputFeedback},
     {name: "shiny.pickerInput", feedback: pickerInputFeedback},
     {name: "shinyWidgets.pickerInput", feedback: pickerInputFeedback},
+    {name: "shinyWidgets.autonumericInput", feedback: numericInputFeedback},
     {name: "shiny.fileInputBinding", feedback: fileInputFeedback}
   ];
   

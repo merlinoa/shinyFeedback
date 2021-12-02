@@ -1,6 +1,7 @@
 # shinyFeedback 0.4.0.9000
 
-- bug fix for `airPickerInputFeedback`
+- Bug fix for `airPickerInputFeedback`
+- Add support for `shinyWidgets::autonumericInput` & `shinyWidgets::currencyInput`
 
 # shinyFeedback 0.4.0
 
