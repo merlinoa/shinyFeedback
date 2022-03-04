@@ -1,5 +1,7 @@
 
-#' @noRd showToast_default_options
+#' showToast_default_options
+#'
+#' @noRd 
 showToast_default_options <- list(
   positionClass = "toast-bottom-center",
   progressBar = TRUE,

@@ -403,6 +403,9 @@
       
       if (feedbackFun.hasFeedback(theInput) === false) {
         feedbackFun.show(theInput, message);
+      } else {
+        feedbackFun.hide(theInput, message);
+        feedbackFun.show(theInput, message);
       }
       
     }
@@ -445,7 +448,10 @@
       if (message.show === true) {
         if (feedbackFun.hasFeedback(theInput) === false) {
           feedbackFun.show(theInput, message)  
-        } 
+        } else {
+          feedbackFun.hide(theInput, message)
+          feedbackFun.show(theInput, message)
+        }
       } else {
         feedbackFun.hide(theInput, message)
       }
