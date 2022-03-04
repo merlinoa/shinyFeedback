@@ -44,6 +44,8 @@ feedback <- function(
 
 #' feedbackWarning
 #'
+#' @importFrom shiny icon getDefaultReactiveDomain
+#'
 #' @rdname feedback
 #'
 #' @export
@@ -53,7 +55,7 @@ feedbackWarning <- function(
   show, 
   text = "Ye be warned",
   color = "#F89406", 
-  icon = shiny::icon("warning-sign", lib="glyphicon"),
+  icon = shiny::icon("warning-sign", lib = "glyphicon"),
   session = shiny::getDefaultReactiveDomain()
 ) {
   
@@ -63,13 +65,14 @@ feedbackWarning <- function(
     text,
     color, 
     icon,
-    session = shiny::getDefaultReactiveDomain()
+    session = session
   )
   
 }
 
 #' feedbackDanger
-#' 
+#'
+#' @importFrom shiny icon getDefaultReactiveDomain 
 #'
 #' @rdname feedback
 #'
@@ -80,7 +83,7 @@ feedbackDanger <- function(
   show, 
   text = "Danger, turn back!",
   color = "#d9534f", 
-  icon = shiny::icon("exclamation-sign", lib="glyphicon"),
+  icon = shiny::icon("exclamation-sign", lib = "glyphicon"),
   session = shiny::getDefaultReactiveDomain()
 ) {
   
@@ -90,13 +93,14 @@ feedbackDanger <- function(
     text,
     color, 
     icon,
-    session = shiny::getDefaultReactiveDomain()
+    session = session
   )
   
 }
 
 #' feedbackSuccess
-#' 
+#'
+#' @importFrom shiny icon getDefaultReactiveDomain
 #'
 #' @rdname feedback
 #'
@@ -107,7 +111,7 @@ feedbackSuccess <- function(
   show, 
   text = NULL,
   color = "#5cb85c", 
-  icon = shiny::icon("ok", lib="glyphicon"),
+  icon = shiny::icon("ok", lib = "glyphicon"),
   session = shiny::getDefaultReactiveDomain()
 ) {
   
@@ -117,7 +121,7 @@ feedbackSuccess <- function(
     text,
     color, 
     icon,
-    session = shiny::getDefaultReactiveDomain()
+    session = session
   )
   
 }
