@@ -76,7 +76,7 @@ the value box does not flash onto the screen when rendered." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">shinyFeedback</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -84,7 +84,7 @@ the value box does not flash onto the screen when rendered." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -116,7 +116,7 @@ the value box does not flash onto the screen when rendered." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/merlinoa/shinyFeedback/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -146,7 +146,7 @@ only the actual value is rerendered).  By moving the box content to the UI
 the value box does not flash onto the screen when rendered.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>valueBoxModule</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>, <span class='no'>value</span>)</pre>
+    <pre class="usage"><span class='fu'>valueBoxModule</span><span class='op'>(</span><span class='va'>input</span>, <span class='va'>output</span>, <span class='va'>session</span>, <span class='va'>value</span>, subtitle <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,6 +167,11 @@ the value box does not flash onto the screen when rendered.</p>
       <th>value</th>
       <td><p>Either a reactive or an R object that can be coerced into a string.
 The value to be displayed in the value box.</p></td>
+    </tr>
+    <tr>
+      <th>subtitle</th>
+      <td><p>reactive to dynamically set the subtitle.  Set the "subtitle" argument
+of <code><a href='valueBoxModuleUI.html'>valueBoxModuleUI()</a></code> to "__server__" to display this subtitle.</p></td>
     </tr>
     </table>
 
@@ -190,7 +195,7 @@ The value to be displayed in the value box.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

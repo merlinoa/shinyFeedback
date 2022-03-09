@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">shinyFeedback</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -71,7 +71,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/merlinoa/shinyFeedback/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -85,13 +85,13 @@
 
       
 
-      </header><div class="row">
+      </header><script src="shinyFeedback-intro_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>shinyFeedback Introduction</h1>
                         <h4 class="author">Andy Merlino</h4>
             
-            <h4 class="date">2020-09-23</h4>
+            <h4 class="date">2021-09-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/merlinoa/shinyFeedback/blob/master/vignettes/shinyFeedback-intro.Rmd"><code>vignettes/shinyFeedback-intro.Rmd</code></a></small>
       <div class="hidden name"><code>shinyFeedback-intro.Rmd</code></div>
@@ -107,15 +107,15 @@
 <p><img src="feedback_screenshot.png"></p>
 <p><code>shinyFeedback</code> currently works with the following <code>shiny</code> and <code>shinyWidgets</code> inputs:</p>
 <ul>
-<li><code><a href="https://shiny.rstudio.com/reference/shiny/latest/dateInput.html">shiny::dateInput()</a></code></li>
-<li><code><a href="https://shiny.rstudio.com/reference/shiny/latest/dateRangeInput.html">shiny::dateRangeInput()</a></code></li>
-<li><code><a href="https://shiny.rstudio.com/reference/shiny/latest/fileInput.html">shiny::fileInput()</a></code></li>
-<li><code><a href="https://shiny.rstudio.com/reference/shiny/latest/numericInput.html">shiny::numericInput()</a></code></li>
-<li><code><a href="https://shiny.rstudio.com/reference/shiny/latest/passwordInput.html">shiny::passwordInput()</a></code></li>
-<li><code><a href="https://shiny.rstudio.com/reference/shiny/latest/selectInput.html">shiny::selectInput()</a></code></li>
-<li><code><a href="https://shiny.rstudio.com/reference/shiny/latest/sliderInput.html">shiny::sliderInput()</a></code></li>
-<li><code><a href="https://shiny.rstudio.com/reference/shiny/latest/textAreaInput.html">shiny::textAreaInput()</a></code></li>
-<li><code><a href="https://shiny.rstudio.com/reference/shiny/latest/textInput.html">shiny::textInput()</a></code></li>
+<li><code><a href="https://rdrr.io/pkg/shiny/man/dateInput.html">shiny::dateInput()</a></code></li>
+<li><code><a href="https://rdrr.io/pkg/shiny/man/dateRangeInput.html">shiny::dateRangeInput()</a></code></li>
+<li><code><a href="https://rdrr.io/pkg/shiny/man/fileInput.html">shiny::fileInput()</a></code></li>
+<li><code><a href="https://rdrr.io/pkg/shiny/man/numericInput.html">shiny::numericInput()</a></code></li>
+<li><code><a href="https://rdrr.io/pkg/shiny/man/passwordInput.html">shiny::passwordInput()</a></code></li>
+<li><code><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">shiny::selectInput()</a></code></li>
+<li><code><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html">shiny::sliderInput()</a></code></li>
+<li><code><a href="https://rdrr.io/pkg/shiny/man/textAreaInput.html">shiny::textAreaInput()</a></code></li>
+<li><code><a href="https://rdrr.io/pkg/shiny/man/textInput.html">shiny::textInput()</a></code></li>
 <li><code><a href="https://rdrr.io/pkg/shinyWidgets/man/airDatepicker.html">shinyWidgets::airDatepickerInput()</a></code></li>
 <li><code><a href="https://rdrr.io/pkg/shinyWidgets/man/pickerInput.html">shinyWidgets::pickerInput()</a></code></li>
 </ul>
@@ -125,119 +125,122 @@
 <a href="#setup" class="anchor"></a>Setup</h2>
 <p>In order to use <code>shinyFeedback</code> you need to include the <code><a href="../reference/useShinyFeedback.html">useShinyFeedback()</a></code> function at the top of your UI.</p>
 <p>The following is a minimal example of a <code>shiny</code> app that uses <code>shinyFeedback</code>. Run the following code in your R console to run the app.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shinyFeedback</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/merlinoa/shinyFeedback">shinyFeedback</a></span><span class="op">)</span>
 
-<span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidPage</a></span>(
-  <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span>(), <span class="co"># include shinyFeedback</span>
-
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/textInput.html">textInput</a></span>(
+<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+  <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span><span class="op">(</span><span class="op">)</span>, <span class="co"># include shinyFeedback</span>
+  
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textInput.html">textInput</a></span><span class="op">(</span>
     <span class="st">"myInput"</span>,
     <span class="st">"Warn if &gt;3 characters"</span>,
-    <span class="kw">value</span> <span class="kw">=</span> <span class="st">""</span>
-  )
-)
+    value <span class="op">=</span> <span class="st">""</span>
+  <span class="op">)</span>
+<span class="op">)</span>
 
-<span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span>(<span class="no">input</span>$<span class="no">myInput</span>, {
+<span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">myInput</span>, <span class="op">{</span>
+    
+    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">myInput</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">3</span><span class="op">)</span> <span class="op">{</span>
+      <span class="fu"><a href="../reference/showFeedback.html">showFeedbackWarning</a></span><span class="op">(</span>
+        inputId <span class="op">=</span> <span class="st">"myInput"</span>,
+        text <span class="op">=</span> <span class="st">"too many chars"</span>
+      <span class="op">)</span>  
+    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+      <span class="fu"><a href="../reference/hideFeedback.html">hideFeedback</a></span><span class="op">(</span><span class="st">"myInput"</span><span class="op">)</span>
+    <span class="op">}</span>
+    
+  <span class="op">}</span><span class="op">)</span>
+<span class="op">}</span>
 
-    <span class="kw">if</span> (<span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span>(<span class="no">input</span>$<span class="no">myInput</span>) <span class="kw">&gt;</span> <span class="fl">3</span>) {
-      <span class="fu"><a href="../reference/showFeedback.html">showFeedbackWarning</a></span>(
-        <span class="kw">inputId</span> <span class="kw">=</span> <span class="st">"myInput"</span>,
-        <span class="kw">text</span> <span class="kw">=</span> <span class="st">"too many chars"</span>
-      )
-    } <span class="kw">else</span> {
-      <span class="fu"><a href="../reference/hideFeedback.html">hideFeedback</a></span>(<span class="st">"myInput"</span>)
-    }
-
-  })
-}
-
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
-<p>The above app has one <code><a href="https://shiny.rstudio.com/reference/shiny/latest/textInput.html">textInput()</a></code> input in the UI. In the server function, we write the code to conditionally display a feedback message. If the text input has more than 3 characters, the feedback message is displayed.</p>
+<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></code></pre></div>
+<p>The above app has one <code><a href="https://rdrr.io/pkg/shiny/man/textInput.html">textInput()</a></code> input in the UI. In the server function, we write the code to conditionally display a feedback message. If the text input has more than 3 characters, the feedback message is displayed.</p>
 </div>
 <div id="feedback" class="section level1">
 <h1 class="hasAnchor">
 <a href="#feedback" class="anchor"></a><code>feedback()</code>
 </h1>
-<p>The <code><a href="../reference/feedback.html">feedback()</a></code> function is an alternative to using <code><a href="../reference/showFeedback.html">showFeedback()</a></code> and <code><a href="../reference/hideFeedback.html">hideFeedback()</a></code>. With <code><a href="../reference/feedback.html">feedback()</a></code> the feedback message is shown/hidden based on whether the <code>show</code> argument to <code><a href="../reference/feedback.html">feedback()</a></code> is “truthy”. “truthiness” is determined by <code><a href="https://shiny.rstudio.com/reference/shiny/latest/req.html">shiny::isTruthy()</a></code>. <code><a href="../reference/feedback.html">feedback()</a></code> works nicely with reactive expressions that use <code><a href="https://shiny.rstudio.com/reference/shiny/latest/req.html">shiny::req()</a></code> to check the validity of Shiny inputs. e.g.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shinyFeedback</span>)
+<p>The <code><a href="../reference/feedback.html">feedback()</a></code> function is an alternative to using <code><a href="../reference/showFeedback.html">showFeedback()</a></code> and <code><a href="../reference/hideFeedback.html">hideFeedback()</a></code>. With <code><a href="../reference/feedback.html">feedback()</a></code> the feedback message is shown/hidden based on whether the <code>show</code> argument to <code><a href="../reference/feedback.html">feedback()</a></code> is “truthy”. “truthiness” is determined by <code><a href="https://rdrr.io/pkg/shiny/man/isTruthy.html">shiny::isTruthy()</a></code>. <code><a href="../reference/feedback.html">feedback()</a></code> works nicely with reactive expressions that use <code><a href="https://rdrr.io/pkg/shiny/man/req.html">shiny::req()</a></code> to check the validity of Shiny inputs. e.g.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/merlinoa/shinyFeedback">shinyFeedback</a></span><span class="op">)</span>
 
-<span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidPage</a></span>(
-  <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span>(), <span class="co"># include shinyFeedback</span>
-
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/selectInput.html">selectInput</a></span>(
+<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+  <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span><span class="op">(</span><span class="op">)</span>, <span class="co"># include shinyFeedback</span>
+  
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
     <span class="st">"dataset"</span>,
     <span class="st">"Dataset"</span>,
-    <span class="kw">choices</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+    choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
       <span class="st">"airquality"</span>,
       <span class="st">"Unknown dataset"</span>
-    )
-  ),
+    <span class="op">)</span>
+  <span class="op">)</span>,
+  
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderTable.html">tableOutput</a></span><span class="op">(</span><span class="st">'data_table'</span><span class="op">)</span>
+<span class="op">)</span>
 
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tableOutput.html">tableOutput</a></span>(<span class="st">'data_table'</span>)
-)
+<span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="va">data_out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reactive.html">reactive</a></span><span class="op">(</span><span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/req.html">req</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">dataset</span><span class="op">)</span>
+    
+    <span class="va">dataset_exists</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">dataset</span>, <span class="st">"package:datasets"</span><span class="op">)</span>
+    <span class="fu"><a href="../reference/feedback.html">feedbackWarning</a></span><span class="op">(</span><span class="st">"dataset"</span>, <span class="op">!</span><span class="va">dataset_exists</span>, <span class="st">"Unknown dataset"</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/req.html">req</a></span><span class="op">(</span><span class="va">dataset_exists</span>, cancelOutput <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
-<span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
+    <span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">dataset</span>, <span class="st">"package:datasets"</span><span class="op">)</span>
+  <span class="op">}</span><span class="op">)</span>
+  
+  <span class="va">output</span><span class="op">$</span><span class="va">data_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderTable.html">renderTable</a></span><span class="op">(</span><span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu">data_out</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">}</span><span class="op">)</span>
+<span class="op">}</span>
 
-  <span class="no">data_out</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/reactive.html">reactive</a></span>({
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/req.html">req</a></span>(<span class="no">input</span>$<span class="no">dataset</span>)
-
-    <span class="no">dataset_exists</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span>(<span class="no">input</span>$<span class="no">dataset</span>, <span class="st">"package:datasets"</span>)
-    <span class="fu"><a href="../reference/feedback.html">feedbackWarning</a></span>(<span class="st">"dataset"</span>, !<span class="no">dataset_exists</span>, <span class="st">"Unknown dataset"</span>)
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/req.html">req</a></span>(<span class="no">dataset_exists</span>, <span class="kw">cancelOutput</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-
-    <span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span>(<span class="no">input</span>$<span class="no">dataset</span>, <span class="st">"package:datasets"</span>)
-  })
-
-  <span class="no">output</span>$<span class="no">data_table</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/renderTable.html">renderTable</a></span>({
-    <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu">data_out</span>())
-  })
-}
-
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></code></pre></div>
 <div id="usage-inside-shiny-modules" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage-inside-shiny-modules" class="anchor"></a>Usage Inside Shiny Modules</h2>
 <p><code>shinyFeedback</code> works inside <a href="https://shiny.rstudio.com/articles/modules.html">shiny modules</a>.</p>
 <p>As for all modules, input and output IDs in the module UI code must be wrapped in <code>shiny::ns()</code> calls. Inside your module server code, you need <em>not</em> wrap input or output IDs inside <code>shiny::ns()</code>; shinyFeedback will automatically prepend the namespace of your current module.</p>
 <p>Here is a simple example using shinyFeedback inside a module:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shinyFeedback</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/merlinoa/shinyFeedback">shinyFeedback</a></span><span class="op">)</span>
 
-<span class="no">numberInput</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">id</span>) {
-  <span class="no">ns</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/NS.html">NS</a></span>(<span class="no">id</span>)
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/reexports.html">tagList</a></span>(
-    <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span>(),
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/numericInput.html">numericInput</a></span>(
-      <span class="fu">ns</span>(<span class="st">"warningInput"</span>),
+<span class="va">numberInput</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">ns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/NS.html">NS</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/tagList.html">tagList</a></span><span class="op">(</span>
+    <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span><span class="op">(</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/numericInput.html">numericInput</a></span><span class="op">(</span>
+      <span class="fu">ns</span><span class="op">(</span><span class="st">"warningInput"</span><span class="op">)</span>,
       <span class="st">"Warn if Negative"</span>,
-      <span class="kw">value</span> <span class="kw">=</span> <span class="fl">0</span>
-    )
-  )
-}
+      value <span class="op">=</span> <span class="fl">0</span>
+    <span class="op">)</span>
+  <span class="op">)</span>
+<span class="op">}</span>
 
-<span class="no">number</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span>(<span class="no">input</span>$<span class="no">warningInput</span>, {
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/req.html">req</a></span>(<span class="no">input</span>$<span class="no">warningInput</span>)
-    <span class="kw">if</span> (<span class="no">input</span>$<span class="no">warningInput</span> <span class="kw">&lt;</span> <span class="fl">0</span>) {
-      <span class="fu"><a href="../reference/showFeedback.html">showFeedbackWarning</a></span>(<span class="kw">inputId</span> <span class="kw">=</span> <span class="st">"warningInput"</span>)
-    } <span class="kw">else</span> {
-      <span class="fu"><a href="../reference/hideFeedback.html">hideFeedback</a></span>(<span class="st">"warningInput"</span>)
-    }
-  })
-}
+<span class="va">number</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">warningInput</span>, <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/req.html">req</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">warningInput</span><span class="op">)</span>
+    <span class="kw">if</span> <span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">warningInput</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+      <span class="fu"><a href="../reference/showFeedback.html">showFeedbackWarning</a></span><span class="op">(</span>inputId <span class="op">=</span> <span class="st">"warningInput"</span><span class="op">)</span>
+    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+      <span class="fu"><a href="../reference/hideFeedback.html">hideFeedback</a></span><span class="op">(</span><span class="st">"warningInput"</span><span class="op">)</span>
+    <span class="op">}</span>
+  <span class="op">}</span><span class="op">)</span>
+<span class="op">}</span>
 
-<span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidPage</a></span>(
-  <span class="fu">numberInput</span>(<span class="kw">id</span> <span class="kw">=</span> <span class="st">"numberFoo"</span>)
-)
+<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+  <span class="fu">numberInput</span><span class="op">(</span>id <span class="op">=</span> <span class="st">"numberFoo"</span><span class="op">)</span>
+<span class="op">)</span>
 
-<span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>) {
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/callModule.html">callModule</a></span>(<span class="kw">module</span> <span class="kw">=</span> <span class="no">number</span>, <span class="kw">id</span> <span class="kw">=</span> <span class="st">"numberFoo"</span>)
-}
+<span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/callModule.html">callModule</a></span><span class="op">(</span>module <span class="op">=</span> <span class="va">number</span>, id <span class="op">=</span> <span class="st">"numberFoo"</span><span class="op">)</span>
+<span class="op">}</span>
 
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>
@@ -257,7 +260,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

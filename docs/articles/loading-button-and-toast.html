@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">shinyFeedback</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -71,7 +71,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/merlinoa/shinyFeedback/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -85,13 +85,13 @@
 
       
 
-      </header><div class="row">
+      </header><script src="loading-button-and-toast_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>loadingButton and showToast</h1>
                         <h4 class="author">Andy Merlino</h4>
             
-            <h4 class="date">2020-09-23</h4>
+            <h4 class="date">2021-09-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/merlinoa/shinyFeedback/blob/master/vignettes/loading-button-and-toast.Rmd"><code>vignettes/loading-button-and-toast.Rmd</code></a></small>
       <div class="hidden name"><code>loading-button-and-toast.Rmd</code></div>
@@ -103,159 +103,162 @@
 <div id="loadingbutton" class="section level1">
 <h1 class="hasAnchor">
 <a href="#loadingbutton" class="anchor"></a>loadingButton</h1>
-<p><code>loadingButton</code> is similar to <code><a href="https://shiny.rstudio.com/reference/shiny/latest/actionButton.html">shiny::actionButton()</a></code> but, when clicked, it changes styles to resemble a loading state. Your Shiny app can then make some calculations or execute some database queries while the button is in this loading state. Once your app is done loading, call <code><a href="../reference/resetLoadingButton.html">resetLoadingButton()</a></code> to restore the loading button to an active state.</p>
-<video width="100%" height="240" autoplay loop muted playsinline src="loadingButton.mp4"></video><div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shinyFeedback</span>)
+<p><code>loadingButton</code> is similar to <code><a href="https://rdrr.io/pkg/shiny/man/actionButton.html">shiny::actionButton()</a></code> but, when clicked, it changes styles to resemble a loading state. Your Shiny app can then make some calculations or execute some database queries while the button is in this loading state. Once your app is done loading, call <code><a href="../reference/resetLoadingButton.html">resetLoadingButton()</a></code> to restore the loading button to an active state.</p>
+<video width="100%" height="240" autoplay loop muted playsinline src="loadingButton.mp4"></video><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/merlinoa/shinyFeedback">shinyFeedback</a></span><span class="op">)</span>
 
-<span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidPage</a></span>(
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidRow</a></span>(
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/column.html">column</a></span>(
+<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidRow</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/column.html">column</a></span><span class="op">(</span>
       <span class="fl">12</span>,
-      <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/reexports.html">br</a></span>(),
-      <span class="fu"><a href="../reference/loadingButton.html">loadingButton</a></span>(
-        <span class="st">"myLoadingButton"</span>,
-        <span class="kw">label</span> <span class="kw">=</span> <span class="st">"Submit"</span>
-      ),
-      <span class="fu"><a href="../reference/loadingButton.html">loadingButton</a></span>(
-        <span class="st">"myCancelButton"</span>,
-        <span class="kw">label</span> <span class="kw">=</span> <span class="st">"Cancel"</span>,
-        <span class="kw">class</span> <span class="kw">=</span> <span class="st">"btn btn-danger"</span>,
-        <span class="kw">loadingLabel</span> <span class="kw">=</span> <span class="st">"Cancelling..."</span>,
-      )
-    )
-  )
-)
+      <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">br</a></span><span class="op">(</span><span class="op">)</span>,
+      <span class="fu"><a href="../reference/loadingButton.html">loadingButton</a></span><span class="op">(</span>
+        <span class="st">"myLoadingButton"</span>, 
+        label <span class="op">=</span> <span class="st">"Submit"</span>
+      <span class="op">)</span>,
+      <span class="fu"><a href="../reference/loadingButton.html">loadingButton</a></span><span class="op">(</span>
+        <span class="st">"myCancelButton"</span>, 
+        label <span class="op">=</span> <span class="st">"Cancel"</span>,
+        class <span class="op">=</span> <span class="st">"btn btn-danger"</span>,
+        loadingLabel <span class="op">=</span> <span class="st">"Cancelling..."</span>,
+      <span class="op">)</span>
+    <span class="op">)</span>
+  <span class="op">)</span>
+<span class="op">)</span>
 
-<span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
-
-
+<span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
+  
+  
   <span class="co"># reset the loadingButton to its active state after 3 seconds</span>
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span>(<span class="no">input</span>$<span class="no">myLoadingButton</span>, {
-    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span>(<span class="fl">3</span>)
-    <span class="fu"><a href="../reference/resetLoadingButton.html">resetLoadingButton</a></span>(<span class="st">"myLoadingButton"</span>)
-  })
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">myLoadingButton</span>, <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
+    <span class="fu"><a href="../reference/resetLoadingButton.html">resetLoadingButton</a></span><span class="op">(</span><span class="st">"myLoadingButton"</span><span class="op">)</span>
+  <span class="op">}</span><span class="op">)</span>
+  
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">myCancelButton</span>, <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
+    <span class="fu"><a href="../reference/resetLoadingButton.html">resetLoadingButton</a></span><span class="op">(</span><span class="st">"myCancelButton"</span><span class="op">)</span>
+  <span class="op">}</span><span class="op">)</span>
+  
+<span class="op">}</span>
 
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span>(<span class="no">input</span>$<span class="no">myCancelButton</span>, {
-    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span>(<span class="fl">3</span>)
-    <span class="fu"><a href="../reference/resetLoadingButton.html">resetLoadingButton</a></span>(<span class="st">"myCancelButton"</span>)
-  })
 
-}
-
-
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="showtoast" class="section level1">
 <h1 class="hasAnchor">
 <a href="#showtoast" class="anchor"></a>showToast</h1>
 <p>Show a toast notification. <code><a href="../reference/showToast.html">showToast()</a></code> wraps the JavaScript <a href="https://github.com/CodeSeven/toastr">toastr library</a>. To use <code><a href="../reference/showToast.html">showToast()</a></code> include <code><a href="../reference/useShinyFeedback.html">useShinyFeedback()</a></code> at the top of your ui. If you only want to use the toasts you can set the “feedback” argument to <code>FALSE</code> to only include css and js for the toasts.</p>
-<video width="100%" height="240" autoplay loop muted playsinline src="showToast.mp4"></video><div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shinyFeedback</span>)
+<video width="100%" height="240" autoplay loop muted playsinline src="showToast.mp4"></video><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/merlinoa/shinyFeedback">shinyFeedback</a></span><span class="op">)</span>
 
-<span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidPage</a></span>(
-  <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span>(<span class="kw">feedback</span> <span class="kw">=</span> <span class="fl">FALSE</span>),
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidRow</a></span>(
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/column.html">column</a></span>(
+<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+  <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span><span class="op">(</span>feedback <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidRow</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/column.html">column</a></span><span class="op">(</span>
       <span class="fl">12</span>,
-      <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/reexports.html">br</a></span>(),
-      <span class="fu"><a href="../reference/loadingButton.html">loadingButton</a></span>(
-        <span class="st">"myFirstButton"</span>,
-        <span class="kw">label</span> <span class="kw">=</span> <span class="st">"Submit"</span>
-      )
-    )
-  )
-)
+      <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">br</a></span><span class="op">(</span><span class="op">)</span>,
+      <span class="fu"><a href="../reference/loadingButton.html">loadingButton</a></span><span class="op">(</span>
+        <span class="st">"myFirstButton"</span>, 
+        label <span class="op">=</span> <span class="st">"Submit"</span>
+      <span class="op">)</span>
+    <span class="op">)</span>
+  <span class="op">)</span>
+<span class="op">)</span>
 
-<span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
-
-
+<span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
+  
+  
   <span class="co"># reset the loadingButton to its active state after 2 seconds</span>
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span>(<span class="no">input</span>$<span class="no">myFirstButton</span>, {
-    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span>(<span class="fl">2</span>)
-    <span class="fu"><a href="../reference/resetLoadingButton.html">resetLoadingButton</a></span>(<span class="st">"myFirstButton"</span>)
-    <span class="fu"><a href="../reference/showToast.html">showToast</a></span>(
-      <span class="st">"success"</span>,
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">myFirstButton</span>, <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
+    <span class="fu"><a href="../reference/resetLoadingButton.html">resetLoadingButton</a></span><span class="op">(</span><span class="st">"myFirstButton"</span><span class="op">)</span>
+    <span class="fu"><a href="../reference/showToast.html">showToast</a></span><span class="op">(</span>
+      <span class="st">"success"</span>, 
       <span class="st">"I'll toast to that!"</span>
-    )
-  })
+    <span class="op">)</span>
+  <span class="op">}</span><span class="op">)</span>
+  
+<span class="op">}</span>
 
-}
-
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></code></pre></div>
 <p>shinyFeedback is not the first R package to wrap the toastr JavaScript library. The <a href="https://github.com/MangoTheCat/shinytoastr">shinytoastr package</a> did this years ago. The main difference between the <code><a href="../reference/showToast.html">shinyFeedback::showToast()</a></code> implementation and <code>shinytoastr</code>’s is that we supply a “.options” argument rather than having an argument for each toastr option. This allows you to more easily set global toast options. e.g.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># use this list for all your toasts</span>
-<span class="no">myToastOptions</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-  <span class="kw">positionClass</span> <span class="kw">=</span> <span class="st">"toast-top-right"</span>,
-  <span class="kw">progressBar</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-  <span class="kw">timeOut</span> <span class="kw">=</span> <span class="fl">3000</span>,
-  <span class="kw">closeButton</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># use this list for all your toasts</span>
+<span class="va">myToastOptions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+  positionClass <span class="op">=</span> <span class="st">"toast-top-right"</span>,
+  progressBar <span class="op">=</span> <span class="cn">FALSE</span>,
+  timeOut <span class="op">=</span> <span class="fl">3000</span>,
+  closeButton <span class="op">=</span> <span class="cn">TRUE</span>,
 
   <span class="co"># same as defaults</span>
-  <span class="kw">newestOnTop</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-  <span class="kw">preventDuplicates</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-  <span class="kw">showDuration</span> <span class="kw">=</span> <span class="fl">300</span>,
-  <span class="kw">hideDuration</span> <span class="kw">=</span> <span class="fl">1000</span>,
-  <span class="kw">extendedTimeOut</span> <span class="kw">=</span> <span class="fl">1000</span>,
-  <span class="kw">showEasing</span> <span class="kw">=</span> <span class="st">"linear"</span>,
-  <span class="kw">hideEasing</span> <span class="kw">=</span> <span class="st">"linear"</span>,
-  <span class="kw">showMethod</span> <span class="kw">=</span> <span class="st">"fadeIn"</span>,
-  <span class="kw">hideMethod</span> <span class="kw">=</span> <span class="st">"fadeOut"</span>
-)
+  newestOnTop <span class="op">=</span> <span class="cn">TRUE</span>,
+  preventDuplicates <span class="op">=</span> <span class="cn">FALSE</span>,
+  showDuration <span class="op">=</span> <span class="fl">300</span>,
+  hideDuration <span class="op">=</span> <span class="fl">1000</span>,
+  extendedTimeOut <span class="op">=</span> <span class="fl">1000</span>,
+  showEasing <span class="op">=</span> <span class="st">"linear"</span>,
+  hideEasing <span class="op">=</span> <span class="st">"linear"</span>,
+  showMethod <span class="op">=</span> <span class="st">"fadeIn"</span>,
+  hideMethod <span class="op">=</span> <span class="st">"fadeOut"</span>
+<span class="op">)</span>
 
 
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shinyFeedback</span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/merlinoa/shinyFeedback">shinyFeedback</a></span><span class="op">)</span>
 
-<span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidPage</a></span>(
-  <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span>(<span class="kw">feedback</span> <span class="kw">=</span> <span class="fl">FALSE</span>),
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidRow</a></span>(
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/column.html">column</a></span>(
+<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+  <span class="fu"><a href="../reference/useShinyFeedback.html">useShinyFeedback</a></span><span class="op">(</span>feedback <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidRow</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/column.html">column</a></span><span class="op">(</span>
       <span class="fl">12</span>,
-      <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/reexports.html">br</a></span>(),
-      <span class="fu"><a href="../reference/loadingButton.html">loadingButton</a></span>(
-        <span class="st">"myLoadingButton"</span>,
-        <span class="kw">label</span> <span class="kw">=</span> <span class="st">"Submit"</span>
-      ),
-      <span class="fu"><a href="../reference/loadingButton.html">loadingButton</a></span>(
-        <span class="st">"myErrorButton"</span>,
-        <span class="kw">label</span> <span class="kw">=</span> <span class="st">"Error"</span>,
-        <span class="kw">class</span> <span class="kw">=</span> <span class="st">"btn btn-danger"</span>,
-        <span class="kw">loadingLabel</span> <span class="kw">=</span> <span class="st">"Erroring..."</span>,
-      )
-    )
-  )
-)
+      <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">br</a></span><span class="op">(</span><span class="op">)</span>,
+      <span class="fu"><a href="../reference/loadingButton.html">loadingButton</a></span><span class="op">(</span>
+        <span class="st">"myLoadingButton"</span>, 
+        label <span class="op">=</span> <span class="st">"Submit"</span>
+      <span class="op">)</span>,
+      <span class="fu"><a href="../reference/loadingButton.html">loadingButton</a></span><span class="op">(</span>
+        <span class="st">"myErrorButton"</span>, 
+        label <span class="op">=</span> <span class="st">"Error"</span>,
+        class <span class="op">=</span> <span class="st">"btn btn-danger"</span>,
+        loadingLabel <span class="op">=</span> <span class="st">"Erroring..."</span>,
+      <span class="op">)</span>
+    <span class="op">)</span>
+  <span class="op">)</span>
+<span class="op">)</span>
 
-<span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
-
-
+<span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
+  
+  
   <span class="co"># reset the loadingButton to its active state after 2 seconds</span>
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span>(<span class="no">input</span>$<span class="no">myLoadingButton</span>, {
-    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span>(<span class="fl">2</span>)
-    <span class="fu"><a href="../reference/resetLoadingButton.html">resetLoadingButton</a></span>(<span class="st">"myLoadingButton"</span>)
-    <span class="fu"><a href="../reference/showToast.html">showToast</a></span>(
-      <span class="st">"success"</span>,
-      <span class="st">"I'll toast to that!"</span>,
-      <span class="kw">.options</span> <span class="kw">=</span> <span class="no">myToastOptions</span>
-    )
-  })
-
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span>(<span class="no">input</span>$<span class="no">myErrorButton</span>, {
-    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span>(<span class="fl">2</span>)
-    <span class="fu"><a href="../reference/resetLoadingButton.html">resetLoadingButton</a></span>(<span class="st">"myErrorButton"</span>)
-    <span class="fu"><a href="../reference/showToast.html">showToast</a></span>(
-      <span class="st">"error"</span>,
-      <span class="st">"Your toast is on fire!"</span>,
-      <span class="kw">.options</span> <span class="kw">=</span> <span class="no">myToastOptions</span>
-    )
-  })
-
-}
-
-
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">myLoadingButton</span>, <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
+    <span class="fu"><a href="../reference/resetLoadingButton.html">resetLoadingButton</a></span><span class="op">(</span><span class="st">"myLoadingButton"</span><span class="op">)</span>
+    <span class="fu"><a href="../reference/showToast.html">showToast</a></span><span class="op">(</span>
+      <span class="st">"success"</span>, 
+      <span class="st">"I'll toast to that!"</span>, 
+      .options <span class="op">=</span> <span class="va">myToastOptions</span>
+    <span class="op">)</span>
+  <span class="op">}</span><span class="op">)</span>
+  
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">myErrorButton</span>, <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
+    <span class="fu"><a href="../reference/resetLoadingButton.html">resetLoadingButton</a></span><span class="op">(</span><span class="st">"myErrorButton"</span><span class="op">)</span>
+    <span class="fu"><a href="../reference/showToast.html">showToast</a></span><span class="op">(</span>
+      <span class="st">"error"</span>, 
+      <span class="st">"Your toast is on fire!"</span>, 
+      .options <span class="op">=</span> <span class="va">myToastOptions</span>
+    <span class="op">)</span>
+  <span class="op">}</span><span class="op">)</span>
+  
+<span class="op">}</span>
 
 
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
+
+
+<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></code></pre></div>
 </div>
   </div>
 
@@ -274,7 +277,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -245,7 +245,7 @@
     /* Custom right margin */
     "setIcon": function(inputObject, message) {
       if (message.icon) {
-        $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + "; margin-right: 40px;'>" + message.icon + "</span>").insertAfter(obj.input);
+        $("<span id='" + message.inputId + "-icon' class='form-control-feedback' style='color: " + message.color + "; margin-right: 40px;'>" + message.icon + "</span>").insertAfter(inputObject.input);
       } else {
         $("#" + message.inputId + "-icon").remove();
       }
@@ -353,6 +353,7 @@
     {name: "shiny.textInput", feedback: textInputFeedback},
     {name: "shiny.pickerInput", feedback: pickerInputFeedback},
     {name: "shinyWidgets.pickerInput", feedback: pickerInputFeedback},
+    {name: "shinyWidgets.autonumericInput", feedback: numericInputFeedback},
     {name: "shiny.fileInputBinding", feedback: fileInputFeedback}
   ];
   
@@ -405,6 +406,9 @@
       
       if (feedbackFun.hasFeedback(theInput) === false) {
         feedbackFun.show(theInput, message);
+      } else {
+        feedbackFun.hide(theInput, message);
+        feedbackFun.show(theInput, message);
       }
       
     }
@@ -447,7 +451,10 @@
       if (message.show === true) {
         if (feedbackFun.hasFeedback(theInput) === false) {
           feedbackFun.show(theInput, message)  
-        } 
+        } else {
+          feedbackFun.hide(theInput, message)
+          feedbackFun.show(theInput, message)
+        }
       } else {
         feedbackFun.hide(theInput, message)
       }

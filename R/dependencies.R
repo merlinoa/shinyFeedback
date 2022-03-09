@@ -1,5 +1,6 @@
 
 #' @importFrom htmltools htmlDependency
+#' @importFrom utils packageVersion
 feedbackDependency <- function() {
   htmltools::htmlDependency(
     name = "feedback",
@@ -23,6 +24,7 @@ toastrDependency <- function() {
   )
 }
 
+#' @importFrom htmltools htmlDependency
 #' @importFrom utils packageVersion
 valueBoxDependency <- function() {
   htmltools::htmlDependency(

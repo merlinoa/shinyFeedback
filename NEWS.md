@@ -1,4 +1,10 @@
-# shinyFeedback 0.3.0.9000
+# shinyFeedback 0.4.0.9000
+
+- Bug fix for `airPickerInputFeedback`
+- Add support for `shinyWidgets::autonumericInput` & `shinyWidgets::currencyInput`
+- Bug fix for updating feedback properties in single `observe`/`observeEvent` ([#55](https://github.com/merlinoa/shinyFeedback/issues/55) & [#63](https://github.com/merlinoa/shinyFeedback/issues/63))
+
+# shinyFeedback 0.4.0
 
 - Using {fontawesome} package rather than shiny to bring in icons.  Resolves breaking change introduced
 in {shiny} 0.1.7 where {shiny} switched from vendoring the icons to using the {fontawesome} package.

@@ -35,7 +35,8 @@ showFeedbackSuccess(
   inputId,
   text = NULL,
   color = "#5cb85c",
-  icon = shiny::icon("ok", lib = "glyphicon")
+  icon = shiny::icon("ok", lib = "glyphicon"),
+  session = shiny::getDefaultReactiveDomain()
 )
 }
 \arguments{

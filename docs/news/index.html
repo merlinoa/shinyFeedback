@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">shinyFeedback</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -79,7 +79,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -111,7 +111,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/merlinoa/shinyFeedback/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -132,6 +132,17 @@
       <small>Source: <a href='https://github.com/merlinoa/shinyFeedback/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="shinyfeedback-040" class="section level1">
+<h1 class="page-header" data-toc-text="0.4.0">
+<a href="#shinyfeedback-040" class="anchor"></a>shinyFeedback 0.4.0<small> Unreleased </small>
+</h1>
+<ul>
+<li>Using {fontawesome} package rather than shiny to bring in icons. Resolves breaking change introduced in {shiny} 0.1.7 where {shiny} switched from vendoring the icons to using the {fontawesome} package.</li>
+<li>Added “subtitle” argument to <code>valueMoxModule()</code> to allow for dynamically setting the subtitle.</li>
+<li>Updated pickerInput input binding name to “shinyWidgets.pickerInput” to reflect change in <code>shinyWidgets</code>.</li>
+<li>Fixed <code><a href="../reference/resetLoadingButton.html">resetLoadingButton()</a></code> to work if <code><a href="../reference/loadingButton.html">loadingButton()</a></code> does not exist in the initial app UI (<a href='https://github.com/merlinoa/shinyFeedback/issues/50'>#50</a>) - Thanks <a href='https://github.com/matthijsvanderloos'>@matthijsvanderloos</a>!</li>
+</ul>
+</div>
     <div id="shinyfeedback-030" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.0">
 <a href="#shinyfeedback-030" class="anchor"></a>shinyFeedback 0.3.0<small> 2020-09-22 </small>
@@ -140,7 +151,7 @@
 <li>updated “.options” argument to showToast to use the <code>shinyFeedback</code> default options for any options not included in the list passed to “.options” (<a href='https://github.com/merlinoa/shinyFeedback/issues/46'>#46</a>)</li>
 <li>new function <code><a href="../reference/hideToast.html">hideToast()</a></code> to programmatically hide all toasts (<a href='https://github.com/merlinoa/shinyFeedback/issues/44'>#44</a>)</li>
 <li>simplified and deduped JavaScript (<a href='https://github.com/merlinoa/shinyFeedback/issues/42'>#42</a>) - Thanks <a href='https://github.com/jcheng5'>@jcheng5</a>!</li>
-<li>added input feedback support for <code><a href="https://shiny.rstudio.com/reference/shiny/latest/fileInput.html">shiny::fileInput()</a></code> (<a href='https://github.com/merlinoa/shinyFeedback/issues/41'>#41</a>)</li>
+<li>added input feedback support for <code><a href="https://rdrr.io/pkg/shiny/man/fileInput.html">shiny::fileInput()</a></code> (<a href='https://github.com/merlinoa/shinyFeedback/issues/41'>#41</a>)</li>
 <li>updated “shinyWidgets.AirPickerInput” name to reflect the change to <code>shinyWidgets</code>
 </li>
 <li>bug fix to maintain all input styles other than the border style applied by shinyFeedback when feedback is removed (<a href='https://github.com/merlinoa/shinyFeedback/issues/36'>#36</a>)</li>
@@ -156,7 +167,7 @@
 <li>added input feedback support for the following inputs:
 <ul>
 <li>
-<code><a href="https://shiny.rstudio.com/reference/shiny/latest/dateRangeInput.html">shiny::dateRangeInput()</a></code> - Thanks <a href='https://github.com/pcogis'>@pcogis</a>!</li>
+<code><a href="https://rdrr.io/pkg/shiny/man/dateRangeInput.html">shiny::dateRangeInput()</a></code> - Thanks <a href='https://github.com/pcogis'>@pcogis</a>!</li>
 <li>
 <code>shinyWidgets::airDatePickerInput()</code> - Thanks <a href='https://github.com/pcogis'>@pcogis</a>!</li>
 <li><code><a href="https://rdrr.io/pkg/shinyWidgets/man/pickerInput.html">shinyWidgets::pickerInput()</a></code></li>
@@ -202,7 +213,7 @@
 <a href="#shinyfeedback-002" class="anchor"></a>shinyFeedback 0.0.2<small> 2016-12-20 </small>
 </h1>
 <ul>
-<li>support for <code><a href="https://shiny.rstudio.com/reference/shiny/latest/selectInput.html">shiny::selectInput()</a></code>
+<li>support for <code><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">shiny::selectInput()</a></code>
 </li>
 <li>feedback messages are no longer displayed for non supported <code>shiny::*Input()</code>s</li>
 <li>support for multiple feedbacks for a single shiny input</li>
@@ -236,7 +247,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
