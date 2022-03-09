@@ -2,6 +2,7 @@
 
 - Bug fix for `airPickerInputFeedback`
 - Add support for `shinyWidgets::autonumericInput` & `shinyWidgets::currencyInput`
+- Bug fix for updating feedback properties in single `observe`/`observeEvent` ([#55](https://github.com/merlinoa/shinyFeedback/issues/55) & [#63](https://github.com/merlinoa/shinyFeedback/issues/63))
 
 # shinyFeedback 0.4.0
 
