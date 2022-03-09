@@ -27,7 +27,7 @@ ui <- fluidPage(
   
   # new select input to try (period in name)
   selectInput(
-    "data_set2",
+    "data.set2",
     "Data.set2",
     choices = c(
       "airquality",
@@ -48,7 +48,7 @@ server <- function(input, output, session) {
     #Apply the same warning to dataset2
     feedbackWarning("dataset2", !dataset_exists, "Unknown dataset")
     #Apply the same warning to data.set2
-    feedbackWarning("data_set2", !dataset_exists, "Unknown dataset")
+    feedbackWarning("data.set2", !dataset_exists, "Unknown dataset")
     req(dataset_exists, cancelOutput = TRUE)
     
     get(input$dataset, "package:datasets")
