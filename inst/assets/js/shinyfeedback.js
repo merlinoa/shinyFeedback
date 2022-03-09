@@ -29,7 +29,7 @@
      * @param message the `message` object sent from Shiny
      */
     "hide": function(inputObject, message) {
-      var msg = {inputId: message.inputId};
+      var msg = {inputId: escapeId(message.inputId)};
       this.setFeedback(inputObject, msg, false);
       this.setColor(inputObject, msg);
       this.setText(inputObject, msg);
