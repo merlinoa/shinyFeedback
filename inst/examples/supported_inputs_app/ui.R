@@ -85,12 +85,12 @@ fluidPage(
     actionButton(
       "removeToast",
       "Remove Toast",
-      icon = icon("trash-o")
+      icon = icon("trash-alt")
     ),
     actionButton(
       "removeToastASAP",
       "Remove Toast ASAP",
-      icon = icon("trash-o")
+      icon = icon("trash-alt")
     )
     
   ),
