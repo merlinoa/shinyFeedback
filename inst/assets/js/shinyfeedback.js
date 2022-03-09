@@ -357,17 +357,23 @@
     {name: "shiny.fileInputBinding", feedback: fileInputFeedback}
   ];
   
+  // from https://github.com/daattali/advanced-shiny/blob/master/update-input/www/app-shinyjs.js
+  // Escape characters that have special selector meaning in jQuery
+  function escapeId(id) {
+    id = id.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+    return(id)
+  }
+  
   // return the element containing the shiny inputId
   function findInput(inputId) {
-    // from https://github.com/daattali/advanced-shiny/blob/master/update-input/www/app-shinyjs.js
     // Escape characters that have special selector meaning in jQuery
-    inputId = inputId.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+    inputId = escapeId(inputId);
     return $("#" + inputId);
   }
   
   function findInputBinding(id) {
     // Escape characters that have special selector meaning in jQuery
-    id = id.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+    id = escapeId(id);
     
     var $el = $("#" + id);
     return $el.data("shinyInputBinding");
