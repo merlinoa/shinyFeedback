@@ -3,27 +3,60 @@ library(shiny)
 devtools::load_all()
 
 ui <- fluidPage(
-  shinyFeedback::useShinyFeedback(),
-  shiny::numericInput("number", "Input value", value = NULL, 
-                      min = 0, max = 4, step = 1)
+  useShinyFeedback(), # include shinyFeedback
   
+  # original input from a vignette example
+  selectInput(
+    "dataset",
+    "Dataset",
+    choices = c(
+      "airquality",
+      "Unknown dataset"
+    )
+  ),
+  
+  # new select input to try
+  selectInput(
+    "dataset2",
+    "Dataset2",
+    choices = c(
+      "airquality",
+      "Unknown dataset"
+    )
+  ),
+  
+  # new select input to try (period in name)
+  selectInput(
+    "data.set2",
+    "Data.set2",
+    choices = c(
+      "airquality",
+      "Unknown dataset"
+    )
+  ),
+  
+  tableOutput('data_table')
 )
 
-server <- function(input, output) {
+server <- function(input, output, session) {
   
-  shiny::observeEvent(input$number, ignoreNULL = FALSE, ignoreInit = TRUE, {
+  data_out <- reactive({
+    req(input$dataset)
     
-    if (is.null(input$number)) {
-      err <- NULL
-    } else if (input$number %in% 0:3) {
-      err <- NULL
-    } else {
-      err <- paste0(input$number, " not valid")
-    }
+    dataset_exists <- exists(input$dataset, "package:datasets")
+    feedbackWarning("dataset", !dataset_exists, "Unknown dataset")
+    #Apply the same warning to dataset2
+    feedbackWarning("dataset2", !dataset_exists, "Unknown dataset")
+    #Apply the same warning to data.set2
+    feedbackWarning("data.set2", !dataset_exists, "Unknown dataset")
+    req(dataset_exists, cancelOutput = TRUE)
     
-    shinyFeedback::feedbackDanger("number", !is.null(err), err)
+    get(input$dataset, "package:datasets")
   })
   
+  output$data_table <- renderTable({
+    head(data_out())
+  })
 }
 
-shinyApp(ui = ui, server = server)
+shinyApp(ui, server)

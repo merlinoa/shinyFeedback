@@ -29,7 +29,7 @@
      * @param message the `message` object sent from Shiny
      */
     "hide": function(inputObject, message) {
-      var msg = {inputId: message.inputId};
+      var msg = {inputId: escapeId(message.inputId)};
       this.setFeedback(inputObject, msg, false);
       this.setColor(inputObject, msg);
       this.setText(inputObject, msg);
@@ -357,15 +357,24 @@
     {name: "shiny.fileInputBinding", feedback: fileInputFeedback}
   ];
   
+  // from https://github.com/daattali/advanced-shiny/blob/master/update-input/www/app-shinyjs.js
+  // Escape characters that have special selector meaning in jQuery
+  function escapeId(id) {
+    id = id.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+    return(id)
+  }
+  
   // return the element containing the shiny inputId
   function findInput(inputId) {
-    // from https://github.com/daattali/advanced-shiny/blob/master/update-input/www/app-shinyjs.js
-    // Escape characterss that have special selector meaning in jQuery
-    inputId = inputId.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+    // Escape characters that have special selector meaning in jQuery
+    inputId = escapeId(inputId);
     return $("#" + inputId);
   }
   
   function findInputBinding(id) {
+    // Escape characters that have special selector meaning in jQuery
+    id = escapeId(id);
+    
     var $el = $("#" + id);
     return $el.data("shinyInputBinding");
   }
