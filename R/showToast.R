@@ -78,6 +78,6 @@ showToast <- function(
     )
   )
   
-  invisible()
+  invisible(NULL)
 }
 

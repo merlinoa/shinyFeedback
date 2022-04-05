@@ -23,6 +23,6 @@ hideToast <- function(
     )
   )
   
-  invisible()
+  invisible(NULL)
 }
 
