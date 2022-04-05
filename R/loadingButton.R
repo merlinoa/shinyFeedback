@@ -17,6 +17,7 @@
 #' @importFrom htmltools span tags singleton
 #' @importFrom jsonlite toJSON
 #' @importFrom fontawesome fa_html_dependency
+#' @importFrom shiny addResourcePath
 #'
 loadingButton <- function(
   inputId,

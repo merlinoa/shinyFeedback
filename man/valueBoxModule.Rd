@@ -17,7 +17,7 @@ valueBoxModule(input, output, session, value, subtitle = function() NULL)
 The value to be displayed in the value box.}
 
 \item{subtitle}{reactive to dynamically set the subtitle.  Set the "subtitle" argument
-of \code{valueBoxModuleUI()} to "__server__" to display this subtitle.}
+of \code{valueBoxModuleUI()} to \code{"__server__"} to display this subtitle.}
 }
 \description{
 Server function for the `valueBoxModule`.  `valueBoxModule` is similar to 

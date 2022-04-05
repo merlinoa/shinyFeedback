@@ -2,8 +2,8 @@
 #' 
 #' function to load js for using \code{shinyFeedback}
 #' 
-#' @param feedback boolean: source in JS/CSS to use shinyFeedback functions (Default: TRUE)
-#' @param toastr boolean: source in JS/CSS to use showToast functions (Default: TRUE)
+#' @param feedback boolean: source in JS/CSS to use shinyFeedback functions (Default: \code{TRUE})
+#' @param toastr boolean: source in JS/CSS to use showToast functions (Default: \code{TRUE})
 #'
 #' @importFrom htmltools tagList
 #' @importFrom fontawesome fa_html_dependency

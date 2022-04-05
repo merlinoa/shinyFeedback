@@ -7,9 +7,9 @@
 useShinyFeedback(feedback = TRUE, toastr = TRUE)
 }
 \arguments{
-\item{feedback}{boolean: source in JS/CSS to use shinyFeedback functions (Default: TRUE)}
+\item{feedback}{boolean: source in JS/CSS to use shinyFeedback functions (Default: \code{TRUE})}
 
-\item{toastr}{boolean: source in JS/CSS to use showToast functions (Default: TRUE)}
+\item{toastr}{boolean: source in JS/CSS to use showToast functions (Default: \code{TRUE})}
 }
 \description{
 function to load js for using \code{shinyFeedback}

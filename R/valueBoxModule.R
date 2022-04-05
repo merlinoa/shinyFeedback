@@ -10,8 +10,8 @@
 #' @param href A url
 #' @param iconColor A valid color string
 #'
-#' @importFrom htmltools tags
-#' @importFrom shiny NS
+#' @importFrom htmltools singleton tags
+#' @importFrom shiny NS textOutput
 #'
 #' @export
 #'
@@ -82,7 +82,7 @@ valueBoxModuleUI <- function(
 #' @param value Either a reactive or an R object that can be coerced into a string.
 #' The value to be displayed in the value box.
 #' @param subtitle reactive to dynamically set the subtitle.  Set the "subtitle" argument
-#' of \code{valueBoxModuleUI()} to "__server__" to display this subtitle.
+#' of \code{valueBoxModuleUI()} to \code{"__server__"} to display this subtitle.
 #'
 #' @importFrom shiny reactive is.reactive renderText
 #'
