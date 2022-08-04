@@ -6,6 +6,9 @@
 #' @param text text string to display below input
 #' @param color the color of the feedback
 #' @param icon an html icon tag
+#' @param textPosition the CSS position for the div containing the feedback text.  The
+#' default is "relative".  Set to "absolute" to keep the text from shifting other 
+#' elements on the page.
 #' @param session the \code{shiny} session
 #' 
 #' @importFrom shiny getDefaultReactiveDomain
@@ -55,6 +58,7 @@ showFeedback <- function(
   text = NULL, 
   color = NULL, 
   icon = NULL,
+  textPosition = "relative",
   session = shiny::getDefaultReactiveDomain()
 ) {
   
@@ -73,7 +77,8 @@ showFeedback <- function(
       inputId = ns(inputId),
       text = text,
       color = color,
-      icon = icon
+      icon = icon,
+      textPosition = textPosition
     )
   )
 }
@@ -124,6 +129,7 @@ showFeedbackWarning <- function(
   text = "Ye be warned",
   color = "#F89406", 
   icon = shiny::icon("warning-sign", lib = "glyphicon"),
+  textPosition = "relative",
   session = shiny::getDefaultReactiveDomain()
 ) {
   
@@ -132,6 +138,7 @@ showFeedbackWarning <- function(
     text = text,
     color = color,
     icon = icon,
+    textPosition = textPosition,
     session = session
   )
 }
@@ -150,6 +157,7 @@ showFeedbackDanger <- function(
   text = "Danger, turn back!",
   color = "#d9534f", 
   icon = shiny::icon("exclamation-sign", lib = "glyphicon"),
+  textPosition = "relative",
   session = shiny::getDefaultReactiveDomain()
 ) {
   
@@ -158,6 +166,7 @@ showFeedbackDanger <- function(
     text = text,
     color = color,
     icon = icon,
+    textPosition = textPosition,
     session = session
   )
 }
@@ -176,6 +185,7 @@ showFeedbackSuccess <- function(
   text = NULL,
   color = "#5cb85c", 
   icon = shiny::icon("ok", lib = "glyphicon"),
+  textPosition = "relative",
   session = shiny::getDefaultReactiveDomain()
 ) {
   
@@ -184,6 +194,7 @@ showFeedbackSuccess <- function(
     text = text,
     color = color,
     icon = icon,
+    textPosition = textPosition,
     session = session
   )
 }
