@@ -60,7 +60,7 @@
     },
     "setText": function(inputObject, message) {
       if (message.text) {
-        $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(inputObject.input);
+        $("<div id='" + message.inputId + "-text'><p style='color: " + message.color + "; position: " + message.textPosition + "; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(inputObject.input);
       } else {
         $("#" + message.inputId + "-text").remove();
       }
@@ -237,7 +237,7 @@
     /* Puts the message after inputDiv, not input */
     "setText": function(inputObject, message) {
       if (message.text) {
-        $("<div id='" + message.inputId + "-text'><p style='color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(inputObject.inputDiv);
+        $("<div id='" + message.inputId + "-text'><p style='color: " + message.color + "; position: " + message.textPosition + "; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(inputObject.inputDiv);
       } else {
         $("#" + message.inputId + "-text").remove();
       }

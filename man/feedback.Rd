@@ -13,6 +13,7 @@ feedback(
   text = NULL,
   color = NULL,
   icon = NULL,
+  textPosition = "relative",
   session = shiny::getDefaultReactiveDomain()
 )
 
@@ -22,6 +23,7 @@ feedbackWarning(
   text = "Ye be warned",
   color = "#F89406",
   icon = shiny::icon("warning-sign", lib = "glyphicon"),
+  textPosition = "relative",
   session = shiny::getDefaultReactiveDomain()
 )
 
@@ -31,6 +33,7 @@ feedbackDanger(
   text = "Danger, turn back!",
   color = "#d9534f",
   icon = shiny::icon("exclamation-sign", lib = "glyphicon"),
+  textPosition = "relative",
   session = shiny::getDefaultReactiveDomain()
 )
 
@@ -40,6 +43,7 @@ feedbackSuccess(
   text = NULL,
   color = "#5cb85c",
   icon = shiny::icon("ok", lib = "glyphicon"),
+  textPosition = "relative",
   session = shiny::getDefaultReactiveDomain()
 )
 }
@@ -54,6 +58,10 @@ uses `shiny::isTruthy()` to evaluate its value to `TRUE` or `FALSE`.}
 \item{color}{the color of the feedback}
 
 \item{icon}{an html icon tag}
+
+\item{textPosition}{the CSS position for the div containing the feedback text.  The
+default is "relative".  Set to "absolute" to keep the text from shifting other 
+elements on the page.}
 
 \item{session}{the \code{shiny} session}
 }

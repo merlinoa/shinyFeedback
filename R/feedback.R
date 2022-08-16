@@ -19,6 +19,7 @@ feedback <- function(
   text = NULL, 
   color = NULL, 
   icon = NULL,
+  textPosition = "relative",
   session = shiny::getDefaultReactiveDomain()
 ) {
   
@@ -36,7 +37,8 @@ feedback <- function(
       inputId = ns(inputId), 
       show = shiny::isTruthy(show), 
       text = text, 
-      color = color, 
+      color = color,
+      textPosition = textPosition,
       icon = icon
     )
   )
@@ -56,6 +58,7 @@ feedbackWarning <- function(
   text = "Ye be warned",
   color = "#F89406", 
   icon = shiny::icon("warning-sign", lib = "glyphicon"),
+  textPosition = "relative",
   session = shiny::getDefaultReactiveDomain()
 ) {
   
@@ -65,6 +68,7 @@ feedbackWarning <- function(
     text,
     color, 
     icon,
+    textPosition,
     session = session
   )
   
@@ -84,6 +88,7 @@ feedbackDanger <- function(
   text = "Danger, turn back!",
   color = "#d9534f", 
   icon = shiny::icon("exclamation-sign", lib = "glyphicon"),
+  textPosition = "relative",
   session = shiny::getDefaultReactiveDomain()
 ) {
   
@@ -93,6 +98,7 @@ feedbackDanger <- function(
     text,
     color, 
     icon,
+    textPosition,
     session = session
   )
   
@@ -112,6 +118,7 @@ feedbackSuccess <- function(
   text = NULL,
   color = "#5cb85c", 
   icon = shiny::icon("ok", lib = "glyphicon"),
+  textPosition = "relative",
   session = shiny::getDefaultReactiveDomain()
 ) {
   
@@ -121,6 +128,7 @@ feedbackSuccess <- function(
     text,
     color, 
     icon,
+    textPosition,
     session = session
   )
   
