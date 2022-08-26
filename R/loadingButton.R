@@ -4,6 +4,7 @@
 #'
 #' @param inputId the input id
 #' @param label the button text (label)
+#' @param icon the button icon (default: \code{NULL}).
 #' @param class the class(es) to apply to the button
 #' @param style style for button (pre-loading); character string w/ CSS styling format: "color: black; background-color: red;"
 #' @param loadingLabel text to show after button is clicked (e.g. during loading)
@@ -22,6 +23,7 @@
 loadingButton <- function(
   inputId,
   label,
+  icon = NULL,
   class = "btn btn-primary",
   style = "width: 150px;",
   loadingLabel = "Loading...",
@@ -36,8 +38,12 @@ loadingButton <- function(
   if (is.null(loadingClass)) loadingClass <- class
   if (is.null(loadingStyle)) loadingStyle <- style
   
+  # Validate the icon
+  icon <- validateIcon(icon)
+  
   rOptions <- list(
-    "label" = label, 
+    "label" = label,
+    "icon" = icon$attribs$class,
     "class" = class,
     "style" = style,
     "loadingLabel" = loadingLabel,
@@ -57,7 +63,7 @@ loadingButton <- function(
       id = inputId,
       class = class,
       style = style,
-      label
+      list(icon, label)
     ),
     tags$head(
       htmltools::singleton(
@@ -96,4 +102,22 @@ resetLoadingButton <- function(inputId, session = shiny::getDefaultReactiveDomai
       inputId = session$ns(inputId)
     )
   )
+}
+
+
+#' validateIcon
+#' 
+#' Validate the icon (from \code{shiny:::validateIcon})
+#' 
+#' @noRd
+validateIcon <- function(icon) {
+  if (is.null(icon) || identical(icon, character(0))) {
+    return(icon)
+  }
+  else if (inherits(icon, "shiny.tag") && icon$name == "i") {
+    return(icon)
+  }
+  else {
+    stop("Invalid icon. Use Shiny's 'icon()' function to generate a valid icon")
+  }
 }

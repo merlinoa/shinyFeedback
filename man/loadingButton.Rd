@@ -7,6 +7,7 @@
 loadingButton(
   inputId,
   label,
+  icon = NULL,
   class = "btn btn-primary",
   style = "width: 150px;",
   loadingLabel = "Loading...",
@@ -19,6 +20,8 @@ loadingButton(
 \item{inputId}{the input id}
 
 \item{label}{the button text (label)}
+
+\item{icon}{the button icon (default: \code{NULL}).}
 
 \item{class}{the class(es) to apply to the button}
 

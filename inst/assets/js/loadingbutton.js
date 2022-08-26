@@ -45,7 +45,11 @@ LoadingButtons.prototype.create = function (inputId, options) {
     var loading_button = $(this);
 
     loading_button.attr('disabled', true);
-    loading_button.html('<i class="fas fa-' + options.loadingSpinner + ' fa-spin"></i> ' + options.loadingLabel);
+    loading_button.html(
+      '<i class="fas fa-' + options.loadingSpinner + ' fa-spin"></i> ' + 
+      '<i class="' + options.icon + '"></i> ' +
+      options.loadingLabel
+    );
     loading_button.attr('style', options.loadingStyle);
     loading_button.removeClass(options["class"]);
     loading_button.addClass(options.loadingClass);
@@ -65,7 +69,10 @@ LoadingButtons.prototype.resetLoading = function (inputId) {
     
   // restore the active (i.e. non loading styles)
   loading_button.attr('disabled', false);
-  loading_button.html(options_.label);
+  loading_button.html(
+    '<i class="' + options_.icon + '"></i> ' +
+    options_.label
+  );
   loading_button.attr('style', options_.style);
   loading_button.removeClass(options_.loadingClass);
   loading_button.addClass(options_["class"]);
