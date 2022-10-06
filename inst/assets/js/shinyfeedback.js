@@ -394,7 +394,8 @@
     {name: "shinyWidgets.pickerInput", feedback: pickerInputFeedback},
     {name: "shinyWidgets.autonumericInput", feedback: numericInputFeedback},
     {name: "shiny.fileInputBinding", feedback: fileInputFeedback},
-    {name: "shinyWidgets.textInputIcon", feedback: shinyWidgetsTextInputIcon}
+    {name: "shinyWidgets.textInputIcon", feedback: shinyWidgetsTextInputIcon},
+    {name: "shinyWidgets.numericInputIcon", feedback: shinyWidgetsTextInputIcon}
   ];
   
   // from https://github.com/daattali/advanced-shiny/blob/master/update-input/www/app-shinyjs.js
