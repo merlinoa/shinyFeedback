@@ -127,6 +127,45 @@
   });
   
   
+    // shinyWidgetsTextInputIcon functions
+  var shinyWidgetsTextInputIcon = $.extend({}, baseInputFeedback, {
+    "setColor": function(inputObject, message) {
+      if (message.color) {
+        inputObject.label.css("color", message.color);
+        inputObject.formGroup.find('.sw-input-icon').css("border", "1px solid " + message.color);
+        inputObject.formGroup.find('span').css("color", message.color);
+        inputObject.input.css("border", "1px solid " + message.color);
+      } else {
+        inputObject.label.css("color", "");
+        inputObject.formGroup.find('.sw-input-icon').css("border", "");
+        inputObject.formGroup.find('span').css("color", "");
+        inputObject.input.css("border", "");
+      }
+    },
+    "setText": function(inputObject, message) {
+      if (message.text) {
+        $("<span id='" + message.inputId + "-text' style='position: absolute;color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</span>").insertAfter( $("#" + message.inputId).parent());
+      } else {
+        $("#" + message.inputId + "-text").remove();
+      }
+    },
+    "find": function(inputId) {
+      var input = findInput(inputId);
+      var formGroup = input.closest(".form-group");
+      var inputDiv = input.parent().parent()
+      var label = inputDiv.children("label");
+    
+      return {
+        "input": input,
+        "inputDiv": inputDiv,
+        "label": label,
+        "formGroup": formGroup
+      };
+    },
+    
+  });
+  
+  
   // selectInputFeedback functions
   var selectInputFeedback = $.extend({}, baseInputFeedback, {
     "find": function(inputId) {
@@ -354,7 +393,9 @@
     {name: "shiny.pickerInput", feedback: pickerInputFeedback},
     {name: "shinyWidgets.pickerInput", feedback: pickerInputFeedback},
     {name: "shinyWidgets.autonumericInput", feedback: numericInputFeedback},
-    {name: "shiny.fileInputBinding", feedback: fileInputFeedback}
+    {name: "shiny.fileInputBinding", feedback: fileInputFeedback},
+    {name: "shinyWidgets.textInputIcon", feedback: shinyWidgetsTextInputIcon},
+    {name: "shinyWidgets.numericInputIcon", feedback: shinyWidgetsTextInputIcon}
   ];
   
   // from https://github.com/daattali/advanced-shiny/blob/master/update-input/www/app-shinyjs.js
