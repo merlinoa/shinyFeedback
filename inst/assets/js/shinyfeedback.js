@@ -144,7 +144,7 @@
     },
     "setText": function(inputObject, message) {
       if (message.text) {
-        $("<div id='" + message.inputId + "-text'><p style='color: " + message.color + "; position: " + message.textPosition + "; margin-top: 0px;'>"+ message.text +"</p>").insertAfter(inputObject.inputDiv);
+        $("<span id='" + message.inputId + "-text' style='position: absolute;color: " + message.color +"; margin-top: 0px;'>"+ message.text +"</span>").insertAfter( $("#" + message.inputId).parent());
       } else {
         $("#" + message.inputId + "-text").remove();
       }
