@@ -6,7 +6,8 @@ function LoadingButtons() {
 }  
 
 LoadingButtons.prototype.create = function (inputId, options) {
-  
+  var id = Math.random(1);
+  console.log("Creating button with id " + id);
   var btn_value = null;
   // find all loading buttons in the dom and remove any loading buttons from 
   // this.buttons that are no longer in the dom. By running this "garbage collection"
@@ -34,7 +35,7 @@ LoadingButtons.prototype.create = function (inputId, options) {
   $(document).on('click', "#" + inputId, function() {
     // increment the button value by 1.  This is consistent with how `shiny::actionButton`
     // value works.
-    
+    console.log("Click button " + id + " with value ", btn_value);
     if (btn_value === null) {
       btn_value = 1;
     } else {
