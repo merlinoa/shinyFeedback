@@ -48,7 +48,7 @@ LoadingButtons.prototype.create = function (inputId, options) {
     // exists in this.buttons
     self.buttons = self.buttons.filter(obj => {
       if (obj.inputId == inputId) {
-        $(document).off('click', "#" + inputId, obj.handler);
+        $(document).off('click', "#" + inputId, obj.click_handler);
       };
       return loadingIds.includes("sf-loading-button-" + obj.inputId) && (obj.inputId !== inputId);
     });  
