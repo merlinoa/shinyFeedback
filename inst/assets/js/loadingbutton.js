@@ -8,6 +8,9 @@ function LoadingButtons() {
 LoadingButtons.prototype.create = function (inputId, options) {
   
   var btn_value = null;
+  // setting input value to null is important when button with the same ID is recreated
+  Shiny.setInputValue(inputId, btn_value);
+  
   // find all loading buttons in the dom and remove any loading buttons from 
   // this.buttons that are no longer in the dom. By running this "garbage collection"
   // each time we add a new loading button to the dom we protect against the this.loadingButtons
