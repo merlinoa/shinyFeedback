@@ -6,35 +6,20 @@ function LoadingButtons() {
 }  
 
 LoadingButtons.prototype.create = function (inputId, options) {
-  
+  var id = Math.random(1);
+  console.log("Creating button with id " + id);
   var btn_value = null;
   // find all loading buttons in the dom and remove any loading buttons from 
   // this.buttons that are no longer in the dom. By running this "garbage collection"
   // each time we add a new loading button to the dom we protect against the this.loadingButtons
   // object growing out of control as loading buttons are quickly added and removed from the dom
   var self = this;
-  $(function() {
-    var allDOMLoadingButtons = $(document).find(".sf-loading-button");
-    var loadingIds = [];
-    for(var obj of allDOMLoadingButtons) {
-      loadingIds.push(obj.id);
-    }
-    
-    // if element in this.buttons represents a loadingButton that is no longer in the DOM
-    // then remove it from this.buttons.  Also remove remove it if the button being added already
-    // exists in this.buttons
-    self.buttons = self.buttons.filter(obj => {
-      return loadingIds.includes("sf-loading-button-" + obj.inputId) && (obj.inputId !== inputId);
-    });  
   
-    self.buttons.push({inputId: inputId, options: options}); 
-  });
-  
-  // Disable button & change text
-  $(document).on('click', "#" + inputId, function() {
+  click_button = function() {
     // increment the button value by 1.  This is consistent with how `shiny::actionButton`
     // value works.
-    
+    console.log("Click button " + id + " with value ", btn_value);
+
     if (btn_value === null) {
       btn_value = 1;
     } else {
@@ -49,7 +34,30 @@ LoadingButtons.prototype.create = function (inputId, options) {
     loading_button.attr('style', options.loadingStyle);
     loading_button.removeClass(options["class"]);
     loading_button.addClass(options.loadingClass);
+  };
+  
+  $(function() {
+    var allDOMLoadingButtons = $(document).find(".sf-loading-button");
+    var loadingIds = [];
+    for(var obj of allDOMLoadingButtons) {
+      loadingIds.push(obj.id);
+    }
+    
+    // if element in this.buttons represents a loadingButton that is no longer in the DOM
+    // then remove it from this.buttons.  Also remove remove it if the button being added already
+    // exists in this.buttons
+    self.buttons = self.buttons.filter(obj => {
+      if (obj.inputId == inputId) {
+        $(document).off('click', "#" + inputId, obj.click_handler);
+      };
+      return loadingIds.includes("sf-loading-button-" + obj.inputId) && (obj.inputId !== inputId);
+    });  
+  
+    self.buttons.push({inputId: inputId, options: options, click_handler: click_button}); 
   });
+  
+  // Disable button & change text
+  $(document).on('click', "#" + inputId, click_button);
 };
 
 LoadingButtons.prototype.resetLoading = function (inputId) {
